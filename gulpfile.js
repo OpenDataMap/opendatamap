@@ -12,16 +12,16 @@ function getTask (task) {
 }
 
 gulp.task("build", function () {
-  gulp.start('htmlCopy')
+  gulp.start('htmlCopy');
   getTask('tslint');
   gulp.start('tsc');
-  gulp.start('scssCompile')
+  gulp.start('scssCompile');
 });
 gulp.task('serve', function () {
-  gulp.start('htmlCopy')
+  gulp.start('htmlCopy');
   getTask('tslint');
   gulp.start('tsc');
-  gulp.start('scssCompile')
+  gulp.start('scssCompile');
   browserSync.init({
     server: {
       baseDir: "./dist"
@@ -30,14 +30,14 @@ gulp.task('serve', function () {
   gulp.watch("src/index.html").on('change', function () {
     gulp.start('htmlCopy');
     browserSync.reload();
-  })
+  });
   gulp.watch("src/scss/*.scss", [ 'scssCompile' ]);
   gulp.watch([ "src/*.ts", "src/lib/*.ts" ]).on('change', function () {
     gulp.start('tsc');
     browserSync.reload();
   })
-})
-gulp.task('default', ['serve'])
+});
+gulp.task('default', ['serve']);
 
 gulp.task('scssCompile', function () {
   return gulp.src("src/scss/*.scss")
@@ -50,13 +50,13 @@ gulp.task('htmlCopy', function () {
   return gulp.src('src/index.html')
     .pipe(replace('scss', 'css'))
     .pipe(replace('ts', 'js'))
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('dist'));
 })
 
 gulp.task('tsc', function () {
   var tsResult = tsProject.src()
-    .pipe(tsProject())
+    .pipe(tsProject());
   return tsResult
-    // .pipe(uglify())
+    .pipe(uglify())
     .pipe(gulp.dest("dist"));
 })
