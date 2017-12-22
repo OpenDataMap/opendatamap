@@ -1,0 +1,24 @@
+{
+  "name": "freifunk-nodeviewer",
+  "version": "1.0.0",
+  "description": "Visualize Freifunk Nodes and Meshes",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Freifunk-Siegburg",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "@types/jquery": "^3.2.17",
+    "@types/materialize-css": "0.100.2",
+    "browser-sync": "^2.21.0",
+    "gulp": "^3.9.1",
+    "gulp-cli": "^1.4.0",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-replace": "^0.6.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-tsc": "^1.3.2",
+    "gulp-typescript": "^3.2.3",
+    "gulp-uglify": "^3.0.0",
+    "typescript": "^2.6.2"
+  }
+}
