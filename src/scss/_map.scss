@@ -1,0 +1,7 @@
+@import "materialize/sass/materialize";
+#map-container {
+  width: 70vw;
+  @extend .deep-purple;
+  height: 100%;
+  float: right;
+}

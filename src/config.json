@@ -1,0 +1,7 @@
+{
+  "title": "Freifunk Siegburg Map",
+  "dataURLs": [
+    "https://map.freifunk-siegburg.de/data/",
+    "https://map.freifunk-troisdorf.de/data/"
+  ]
+}

@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
+    "module": "es6",
     "target": "es5",
+    "jsx": "react",
     "sourceMap": false,
     "noImplicitAny": false,
     "removeComments": true,
