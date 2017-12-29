@@ -1,6 +1,7 @@
 import 'jquery';
 import 'materialize-css';
 import {getNodeList} from './lib/getNodes';
+import {leafletInit} from './lib/leafletInit';
 
 // console.log($);
 $.getJSON('config.json', (data) => {
@@ -10,5 +11,6 @@ $.getJSON('config.json', (data) => {
     $(document).attr('title', config.title);
     $('#sidebar-title').html(config.title);
     const nodelist = getNodeList(config);
-    console.log(nodelist);
+    // Init Leaflet
+    leafletInit(config);
 });

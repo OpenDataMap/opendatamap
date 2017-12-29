@@ -1,7 +1,17 @@
 @import "../../node_modules/materialize-css/sass/materialize";
 #map-container {
   width: 70vw;
-  @extend .deep-purple;
   height: 100%;
   float: right;
+  .leaflet-bar {
+    border: none;
+    a {
+      width: 40px;
+      height: 40px;
+      line-height: 35px;
+      font-size: 30px;
+      font-weight: 100;
+      border: 0;
+    }
+  }
 }
