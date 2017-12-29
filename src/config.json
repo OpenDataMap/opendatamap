@@ -8,6 +8,12 @@
     "layer": {
       "url": "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}{r}.png",
       "attribution": "&copy; <a href=\"https://carto.com/location-data-services/basemaps/\" target=\"_blank\">Carto</a>, <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
-    }
+    },
+    "center": [
+      50.797467,
+      7.206706
+    ],
+    "minZoom": 10,
+    "maxZoom": 17
   }
 }
