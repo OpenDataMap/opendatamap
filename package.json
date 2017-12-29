@@ -11,6 +11,7 @@
     "@types/jquery": "^3.2.17",
     "@types/materialize-css": "0.100.2",
     "browser-sync": "^2.21.0",
+    "css-loader": "^0.28.7",
     "gulp": "^3.9.1",
     "gulp-cli": "^1.4.0",
     "gulp-load-plugins": "^1.5.0",
@@ -20,6 +21,8 @@
     "gulp-typescript": "^3.2.3",
     "gulp-uglify": "^3.0.0",
     "gulp-webpack": "^1.5.0",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
     "typescript": "^2.6.2",
     "webpack": "^3.10.0",
     "webpack-stream": "^4.0.0"
