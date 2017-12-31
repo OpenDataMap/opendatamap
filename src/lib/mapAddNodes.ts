@@ -49,10 +49,19 @@ export function mapAddNodes(leafletMap, nodelist, config) {
                     myZoom.end = leafletMap.getZoom();
                     var zoomDiff = myZoom.start - myZoom.end;
                     if (zoomDiff > 0) {
-                        mapNodeCircle.setRadius(mapNodeCircle.getRadius() * 2);
+                        for (var i = 0; i < zoomDiff; i++) {
+                            mapNodeCircle.setRadius(mapNodeCircle.getRadius() * 2);
+                        }
                     } else if (zoomDiff < 0) {
-                        mapNodeCircle.setRadius(mapNodeCircle.getRadius() / 2);
+                        for (var i = 0; i > zoomDiff; i--) {
+                            mapNodeCircle.setRadius(mapNodeCircle.getRadius() / 2);
+                        }
                     }
+                });
+
+                // Zoom to node by clicking on it
+                mapNodeCircle.on('click', function(e){
+                    leafletMap.setView(e.latlng, 17);
                 });
             }
         }
