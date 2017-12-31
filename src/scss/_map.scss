@@ -1,4 +1,5 @@
 @import "../../node_modules/materialize-css/sass/materialize";
+@import "variables";
 #map-container {
   width: 70vw;
   height: 100%;
@@ -14,4 +15,8 @@
       border: 0;
     }
   }
+}
+.leaflet-tooltip-node {
+  color: $ff_magenta !important;
+  border: 1px solid $ff_yellow !important;
 }

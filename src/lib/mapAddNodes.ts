@@ -7,6 +7,7 @@ export function mapAddNodes(leafletMap, nodelist, config) {
             const nodeLocation = nodes[node].nodeinfo.location;
             if (nodeLocation !== undefined) {
                 const nodeflags = nodes[node].flags;
+                const hostname = nodes[node].nodeinfo.hostname;
 
                 // define color which has the node circle on the map
                 let color;
@@ -28,6 +29,11 @@ export function mapAddNodes(leafletMap, nodelist, config) {
                     color: color,
                     fillOpacity: 0.9
                 }).addTo(leafletMap);
+
+                // add Tooltip to cicle
+                mapNodeCircle.bindTooltip(hostname, {
+                    className: 'leaflet-tooltip-node'
+                });
 
                 // Settings and functions that keep the size of the nodecircle on the map
                 const myZoom = {
