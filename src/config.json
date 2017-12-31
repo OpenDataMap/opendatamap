@@ -14,6 +14,7 @@
       7.206706
     ],
     "minZoom": 10,
-    "maxZoom": 17
+    "maxZoom": 18,
+    "newNodeBreakpoint": 1209600
   }
 }

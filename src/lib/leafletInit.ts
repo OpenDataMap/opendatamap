@@ -10,10 +10,11 @@ export function leafletInit(config) {
     });
 
     L.control.zoom({
-        position: 'topright'
+        position: 'topright',
     }).addTo(map);
 
     L.tileLayer(config.map.layer.url, {
         attribution: config.map.layer.attribution
     }).addTo(map);
+    return map;
 }

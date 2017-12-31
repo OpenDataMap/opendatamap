@@ -27,6 +27,10 @@
   height: 15px;
   display: inline-block;
   border-radius: 50%;
+  margin-left: 15px;
+  &:first-child {
+    margin-left: 0;
+  }
   &#sidebar-legend-new {
     @extend .green, .darken-1;
   }
