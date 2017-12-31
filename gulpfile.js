@@ -6,11 +6,6 @@ var replace = require('gulp-replace');
 var webpack = require('webpack');
 var webpackStream = require('webpack-stream');
 
-
-function getTask(task) {
-    return require('./gulp/tasks/' + task)(gulp, plugins);
-}
-
 gulp.task("build", function () {
     gulp.start('htmlCopy');
     gulp.start('scssCompile');
