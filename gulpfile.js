@@ -14,6 +14,7 @@ function getTask(task) {
 gulp.task("build", function () {
     gulp.start('htmlCopy');
     gulp.start('scssCompile');
+    gulp.start('webpack');
 });
 gulp.task('serve', function () {
     gulp.start('htmlCopy');
@@ -31,8 +32,6 @@ gulp.task('serve', function () {
     gulp.watch("src/scss/*.scss", ['scssCompile']);
     gulp.watch(["src/*.ts", "src/lib/*.ts", "src/config.json", "src/lib/*.js"]).on('change', function () {
         gulp.start('webpack');
-        gulp.src('src/config.json')
-            .pipe(gulp.dest('dist'));
         browserSync.reload();
     })
 });
@@ -53,7 +52,9 @@ gulp.task('htmlCopy', function () {
         .pipe(gulp.dest('dist'));
 })
 gulp.task('webpack', function () {
-    return gulp.src('src/main.ts')
+    gulp.src('src/config.json')
+        .pipe(gulp.dest('dist'));
+    gulp.src('src/main.ts')
         .pipe(webpackStream(require('./webpack.config.js'), webpack))
         .pipe(gulp.dest('dist/'));
 
