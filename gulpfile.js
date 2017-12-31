@@ -36,8 +36,8 @@ gulp.task('scssCompile', function () {
         .pipe(sass())
         .pipe(gulp.dest("dist/css"))
         .pipe(browserSync.stream());
-    return gulp.src('src/scss/materialize/fonts/*')
-        .pipe(gulp.dest('dist/fonts'));
+    return gulp.src('node_modules/materialize-css/dist/fonts/roboto/*')
+        .pipe(gulp.dest('dist/fonts/roboto'));
 })
 
 gulp.task('htmlCopy', function () {
