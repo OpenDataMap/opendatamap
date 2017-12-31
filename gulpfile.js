@@ -1,6 +1,5 @@
 var gulp = require("gulp");
 var browserSync = require('browser-sync').create();
-var plugins = require('gulp-load-plugins')();
 var sass = require('gulp-sass');
 var replace = require('gulp-replace');
 var webpack = require('webpack');
