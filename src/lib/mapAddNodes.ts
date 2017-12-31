@@ -25,7 +25,7 @@ export function mapAddNodes(leafletMap, nodelist, config) {
 
                 // Add circle for node on map.
                 const mapNodeCircle = L.circle([nodeLocation.latitude, nodeLocation.longitude], {
-                    radius: 35,
+                    radius: 75,
                     color: color,
                     fillOpacity: 0.9
                 }).addTo(leafletMap);
