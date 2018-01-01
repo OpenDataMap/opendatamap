@@ -1,10 +1,25 @@
 @import url('https://fonts.googleapis.com/css?family=Assistant');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
-
+.assistant {
+  font-family: "Assistant", sans-serif;
+}
 .bold {
   font-weight: 700;
 }
-.assistant {
-  font-family: "Assistant", sans-serif;
+body {
+  font-size: 15px;
+}
+h1 {
+  font-size: 28px;
+}
+h3 {
+  margin-top: 0;
+  font-size: 25px;
+}
+h4 {
+  font-size: 22px;
+}
+h5 {
+  font-size: 19px;
 }

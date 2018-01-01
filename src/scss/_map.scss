@@ -13,6 +13,10 @@
       font-size: 30px;
       font-weight: 100;
       border: 0;
+      transition: .3s ease;
+      &:hover {
+        color: $ff_magenta;
+      }
     }
   }
 }

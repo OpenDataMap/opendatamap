@@ -1,6 +1,7 @@
 @import "../../node_modules/materialize-css/sass/materialize";
 @import "typography";
 @import "variables";
+// General
 #sidebar-container {
   width: $sidebar-width;
   float: left;
@@ -11,16 +12,18 @@
     padding: 15px 20px;
   }
 }
+
+// Top
 #sidebar-title {
-  @extend .assistant, .bold
+  @extend .assistant, .thin;
+  margin-top: 0;
 }
 
 #sidebar-head {
   @extend .grey, .lighten-4;
-  position: absolute;
-  top: 0;
   width: $sidebar-width;
 }
+
 .sidebar-legend-nodesymbol {
   width: 15px;
   height: 15px;
@@ -40,6 +43,7 @@
     @extend .red, .darken-3;
   }
 }
+
 #sidebar-head-search {
   margin-top: 25px;
   /* label color */
@@ -68,5 +72,28 @@
   /* icon prefix focus color */
   .input-field .prefix.active {
     color: #dc0067;
+  }
+}
+
+// Bottom
+#sidebar-bottom {
+  .tabs {
+    .tab > a {
+      color: $ff_magenta;
+    }
+    .indicator {
+      background-color: $ff_yellow;
+    }
+  }
+  h3 {
+    @extend .assistant, .thin;
+  }
+  #sidebar-bottom-about {
+    h5 {
+      @extend .thin, .assistant;
+    }
+    a {
+      color: $ff_magenta;
+    }
   }
 }

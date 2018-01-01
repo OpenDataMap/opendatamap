@@ -1,8 +1,8 @@
 import * as L from 'leaflet';
 
-export function mapAddNodes(leafletMap, nodelist, config) {
-    for (var key in nodelist) {
-        const nodes = nodelist[key].nodes;
+export function mapAddNodes(leafletMap, nodeSourceList, config) {
+    for (var nodeSource in nodeSourceList) {
+        const nodes = nodeSourceList[nodeSource].nodes;
         for (var node in nodes) {
             const nodeLocation = nodes[node].nodeinfo.location;
             if (nodeLocation !== undefined) {
