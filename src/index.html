@@ -33,10 +33,22 @@
         </div>
         <div id="sidebar-bottom">
             <ul class="tabs tabs-fixed-width">
-                <li class="tab col s6"><a href="#sidebar-bottom-nodes">Knoten</a></li>
-                <li class="tab col s6"><a class="active" href="#sidebar-bottom-about">&Uuml;ber</a></li>
+                <li class="tab col s6"><a class="active" href="#sidebar-bottom-nodes">Knoten</a></li>
+                <li class="tab col s6"><a href="#sidebar-bottom-about">&Uuml;ber</a></li>
             </ul>
-            <div id="sidebar-bottom-nodes"></div>
+            <div id="sidebar-bottom-nodes"class="container">
+                <table class="responsive-table highlight">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Clients</th>
+                    </tr>
+                    </thead>
+
+                    <tbody id="sidebar-bottom-nodes-tablebody">
+                    </tbody>
+                </table>
+            </div>
             <div id="sidebar-bottom-about" class="container">
                 <h3>&Uuml;ber Nodeviewer</h3>
                 <h5>GNU Affero General Public Licence v3.0</h5>

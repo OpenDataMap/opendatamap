@@ -6,6 +6,8 @@
   width: $sidebar-width;
   float: left;
   height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   .container {
     width: calc(100% - 20px) !important;
@@ -78,6 +80,7 @@
 // Bottom
 #sidebar-bottom {
   .tabs {
+    overflow-x: hidden;
     .tab > a {
       color: $ff_magenta;
     }
@@ -94,6 +97,15 @@
     }
     a {
       color: $ff_magenta;
+    }
+  }
+  table {
+    font-family: Assistant, sans-serif !important;
+    th {
+      padding: 3px 5px !important;
+    }
+    td {
+      padding: 3.5px;
     }
   }
 }

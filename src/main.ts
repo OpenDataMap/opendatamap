@@ -4,6 +4,7 @@ import {getNodeList} from './lib/getNodes';
 import {leafletInit} from './lib/leafletInit';
 import {initSidebarHeadStats} from './lib/initSidebarHeadStats';
 import {mapAddNodes} from './lib/mapAddNodes';
+import {sidebarAddNodes} from './lib/sidebarAddNodes';
 
 $.getJSON('config.json', (config) => {
     // set website title
@@ -21,5 +22,8 @@ $.getJSON('config.json', (config) => {
 
         // Add Nodes To Map
         mapAddNodes(leafletMap, nodelist, config);
+
+        // Add Nodes to sidebar
+        sidebarAddNodes(nodelist)
     });
 });
