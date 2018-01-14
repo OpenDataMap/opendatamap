@@ -1,0 +1,27 @@
+@import "variables";
+#preloader {
+  height: 100vh;
+  width: 100vw;
+  #preloader-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+    height: 0;
+  }
+  .preloader-wrapper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    .spinner-magenta-only {
+      border-color: $ff_magenta;
+    }
+  }
+}

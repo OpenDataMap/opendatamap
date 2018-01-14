@@ -8,22 +8,23 @@ import {sidebarAddNodes} from './lib/sidebarAddNodes';
 
 $.getJSON('config.json', (config) => {
     // set website title
-    $('main').removeClass('hidden');
     $(document).attr('title', config.title);
     $('#sidebar-title').html(config.title);
 
     // get list of nodes
     getNodeList(config, function (nodelist) {
-        // Init Leaflet
-        const leafletMap = leafletInit(config);
 
         // Init Sidebar Head Stats
         initSidebarHeadStats(nodelist);
-
-        // Add Nodes To Map
-        mapAddNodes(leafletMap, nodelist, config);
-
         // Add Nodes to sidebar
         sidebarAddNodes(nodelist)
+        $(function () {
+            $('#preloader').addClass('hidden');
+            $('main').removeClass('hidden');
+            // Init Leaflet
+            const leafletMap = leafletInit(config);
+            // Add Nodes To Map
+            mapAddNodes(leafletMap, nodelist, config);
+        })
     });
 });

@@ -10,7 +10,6 @@ export function sidebarAddNodes (nodeSourceList) {
                 "<td>" + clients + "</td>" +
                 "</tr>";
             $('#sidebar-bottom-nodes-tablebody').append(htmlTableRowNode);
-            console.log(nodes[node])
         }
     }
 }
