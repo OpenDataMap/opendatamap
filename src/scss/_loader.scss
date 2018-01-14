@@ -1,7 +1,10 @@
 @import "variables";
 #preloader {
+  background-color: #fff;
+  z-index: 1;
   height: 100vh;
   width: 100vw;
+  position: absolute;
   #preloader-text {
     position: absolute;
     top: 0;

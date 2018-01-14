@@ -25,6 +25,7 @@ $.getJSON('config.json', (config) => {
             const leafletMap = leafletInit(config);
             // Add Nodes To Map
             mapAddNodes(leafletMap, nodelist, config);
+            $('ul.tabs').tabs()
         })
     });
 });
