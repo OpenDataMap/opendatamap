@@ -1,11 +1,11 @@
 {
-  "name": "freifunk-nodeviewer",
+  "name": "OpenDataMap",
   "version": "1.0.0",
-  "description": "Visualize Freifunk Nodes and Meshes",
+  "description": "Visualize OpenData Map",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Freifunk-Siegburg",
+  "author": "LabCode.de",
   "license": "GPL-3.0",
   "devDependencies": {
     "@types/jquery": "^3.2.17",
@@ -18,6 +18,7 @@
     "gulp-replace": "^0.6.1",
     "gulp-sass": "^3.1.0",
     "node-sass": "^4.7.2",
+    "ts-loader": "^3.2.0",
     "typescript": "^2.6.2",
     "webpack": "^3.10.0",
     "webpack-stream": "^4.0.0"

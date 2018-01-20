@@ -1,9 +1,13 @@
 {
-  "title": "Freifunk Siegburg Map",
-  "dataURLs": [
-    "https://map.freifunk-siegburg.de/data/",
-    "https://map.freifunk-troisdorf.de/data/",
-    "https://map.freifunk-hennef.de/data/"
+  "title": "OpenData Map Rhein-Sieg",
+  "modules": [
+    {
+      "moduleName": "freifunk",
+      "config": {
+        "layerName": "Freifunk Siegburg",
+        "dataURL": "https://map.freifunk-siegburg.de/data/"
+      }
+    }
   ],
   "map": {
     "layer": {
@@ -15,7 +19,6 @@
       7.206706
     ],
     "minZoom": 10,
-    "maxZoom": 18,
-    "newNodeBreakpoint": 1209600
+    "maxZoom": 18
   }
 }

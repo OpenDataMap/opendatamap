@@ -6,14 +6,18 @@ module.exports = {
         rules: [
             {
                 exclude: /node_modules/
+            },
+            {
+              test: /\.tsx?$/,
+              loader: "ts-loader"
             }
         ]
     },
     resolve: {
-        extensions: [ '.tsx', '.ts', '.js' ]
+        extensions: [ '.tsx', '.ts', '.js', '.jsx']
     },
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist')
-    }
+    },
 };
