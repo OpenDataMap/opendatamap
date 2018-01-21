@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <title>opendatamap</title>
     <link rel="stylesheet" href="scss/main.scss">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
@@ -26,6 +27,8 @@
     </h5>
 </div>
 <main class="hidden">
+    <div id="map-container">
+    </div>
     <div id="sidebar-container">
         <div id="sidebar-head">
             <div class="container">
@@ -52,7 +55,7 @@
                 <li class="tab col s6"><a class="active" href="#sidebar-bottom-nodes">Nodes</a></li>
                 <li class="tab col s6"><a href="#sidebar-bottom-about">&Uuml;ber</a></li>
             </ul>
-            <div id="sidebar-bottom-nodes"class="container">
+            <div id="sidebar-bottom-nodes" class="container">
             </div>
             <div id="sidebar-bottom-about" class="container">
                 <h3>&Uuml;ber OpenDataMap</h3>
@@ -65,8 +68,6 @@
                 <p>The source code is available at <a href="https://github.com/OpenDataMap/opendatamap">https://github.com/OpenDataMap/opendatamap</a>.</p>
             </div>
         </div>
-    </div>
-    <div id="map-container">
     </div>
 </main>
 <script src="bundle.js"></script>

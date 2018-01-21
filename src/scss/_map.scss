@@ -4,6 +4,10 @@
   width: 70vw;
   height: 100%;
   float: right;
+  @media screen and (max-width: $medium-screen) {
+    width: 100vw;
+    height: 50%;
+  }
   .leaflet-bar {
     border: none;
     a {

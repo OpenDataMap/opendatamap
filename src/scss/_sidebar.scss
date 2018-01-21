@@ -8,7 +8,11 @@
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
-
+  @media screen and (max-width: $medium-screen) {
+    width: 100vw;
+    height: 50%;
+    float: right !important;
+  }
   .container {
     width: calc(100% - 20px) !important;
     padding: 15px 20px;
@@ -23,7 +27,7 @@
 
 #sidebar-head {
   @extend .grey, .lighten-4;
-  width: $sidebar-width;
+  width: 100%;
 }
 
 .sidebar-legend-nodesymbol {
