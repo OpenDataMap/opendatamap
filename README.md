@@ -1,4 +1,6 @@
-# nodeviewer
-An alternative to [meshviewer](https://github.com/ffrgb/meshviewer). Currently in development.
+# OpenDataMap
+OpenDataMap is an online visualization tool for every type of node. 
+## documentation
+You can view the documentation under [https://doc.opendatamap.labcode.de](https://doc.opendatamap.labcode.de).
 ## maintainer
 - [labcode_de](https://github.com/labcode-de)
