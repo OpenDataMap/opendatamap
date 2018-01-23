@@ -24,7 +24,7 @@ gulp.task('serve', function () {
         browserSync.reload();
     });
     gulp.watch("src/scss/*.scss", ['scssCompile']);
-    gulp.watch(["src/*.ts", "src/lib/*.ts", "src/config.json", "src/lib/*.js", 'src/lib/modules/*/*.ts']).on('change', function () {
+    gulp.watch(["src/*.ts", "src/lib/*.ts", "src/config.json", "src/lib/*.js", 'src/lib/modules/*/*.ts', "src/lib/map/*.ts"]).on('change', function () {
         gulp.start('webpack');
         browserSync.reload();
     })

@@ -7,6 +7,20 @@
         "layerName": "Freifunk Siegburg",
         "dataURL": "https://map.freifunk-siegburg.de/data/"
       }
+    },
+    {
+      "moduleName": "freifunk",
+      "config": {
+        "layerName": "Freifunk Troisdorf",
+        "dataURL": "https://map.freifunk-troisdorf.de/data/"
+      }
+    },
+    {
+      "moduleName": "freifunk",
+      "config": {
+        "layerName": "Freifunk Hennef",
+        "dataURL": "https://map.freifunk-hennef.de/data/"
+      }
     }
   ],
   "map": {

@@ -3,4 +3,5 @@ interface INode {
     longitude: Number;
     showOnMap: Boolean;
     name: String;
+    online: Boolean;
 }

@@ -21,6 +21,7 @@ export function toJSON (config, rawNodes, cb) {
             node.longitude = 0;
             node.showOnMap = false;
         }
+        node.online = !!currentNode.flags.online;
         node.name = currentNode.nodeinfo.hostname;
         source.nodes.push(node);
     }

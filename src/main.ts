@@ -1,7 +1,8 @@
 import 'jquery';
 import 'materialize-css';
-import {leafletInit} from './lib/leafletInit';
+import {leafletInit} from './lib/map/leafletInit';
 import * as modules from './lib/modules/modules';
+import {addNodes} from "./lib/map/addNodes";
 
 
 $.getJSON('config.json', (config) => {
@@ -9,15 +10,15 @@ $.getJSON('config.json', (config) => {
     $(document).attr('title', config.title);
     $('#sidebar-title').html(config.title);
     $(() => {
-        config.modules.forEach(function (module) {
-            modules[module.moduleName](module.config, (nodes) => {
-                console.log(nodes);
-            });
-        });
-        $('#preloader').addClass('hidden');
-        $('main').removeClass('hidden');
+        // $('#preloader').addClass('hidden');
+        // $('main').removeClass('hidden');
         // Init Leaflet
         const leafletMap = leafletInit(config);
+        config.modules.forEach(function (module) {
+            modules[module.moduleName](module.config, (source) => {
+                addNodes(source, leafletMap);
+            });
+        });
         // Add Nodes To Map
         // mapAddNodes(leafletMap, nodelist, config);
         $('ul.tabs').tabs()
