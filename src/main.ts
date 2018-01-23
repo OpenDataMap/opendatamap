@@ -10,17 +10,17 @@ $.getJSON('config.json', (config) => {
     $(document).attr('title', config.title);
     $('#sidebar-title').html(config.title);
     $(() => {
-        // $('#preloader').addClass('hidden');
-        // $('main').removeClass('hidden');
         // Init Leaflet
         const leafletMap = leafletInit(config);
+        // Add Nodes To Map
         config.modules.forEach(function (module) {
             modules[module.moduleName](module.config, (source) => {
                 addNodes(source, leafletMap);
             });
         });
-        // Add Nodes To Map
-        // mapAddNodes(leafletMap, nodelist, config);
-        $('ul.tabs').tabs()
+        // Init Tabs
+        $('ul.tabs').tabs();
+
+        $('#preloader').remove();
     });
 });
