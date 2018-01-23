@@ -46,7 +46,7 @@ export function addNodes(source, leafletMap) {
         });
 
         // Zoom to node by clicking on it
-        mapNodeCircle.on('click', function(e){
+        mapNodeCircle.on('click', function(e: any){
             leafletMap.setView(e.latlng, 17);
         });
 
