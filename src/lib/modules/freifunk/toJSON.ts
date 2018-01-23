@@ -1,17 +1,11 @@
 import 'jquery';
-interface INode {
-    latitude: Number;
-    longitude: Number;
-    showOnMap: Boolean;
-    name: String;
-}
+import '../../interfaces/INode'
+import '../../interfaces/ISource'
 export function toJSON (config, rawNodes, cb) {
-    let nodes = {
-        "nodes": [
-
-        ],
-        "config": {
-            "name": config.layerName
+    let source = <ISource> {
+        nodes: [],
+        config: {
+            name: config.layerName
         }
     };
     rawNodes = rawNodes.nodes;
@@ -28,7 +22,7 @@ export function toJSON (config, rawNodes, cb) {
             node.showOnMap = false;
         }
         node.name = currentNode.nodeinfo.hostname;
-        nodes.nodes.push(node);
+        source.nodes.push(node);
     }
-    cb(nodes);
+    cb(source);
 }
