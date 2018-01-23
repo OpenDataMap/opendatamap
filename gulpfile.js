@@ -7,7 +7,7 @@ var webpackStream = require('webpack-stream');
 
 gulp.task("build", function () {
     gulp.start('htmlCopy');
-    gulp.start('scssCompile');
+    gulp.start('scssCompileBuild');
     gulp.start('webpack');
 });
 gulp.task('serve', function () {
@@ -38,6 +38,14 @@ gulp.task('scssCompile', function () {
         .pipe(browserSync.stream());
     return gulp.src('node_modules/materialize-css/dist/fonts/roboto/*')
         .pipe(gulp.dest('dist/fonts/roboto'));
+})
+
+gulp.task('scssCompileBuild', function () {
+  gulp.src('node_modules/materialize-css/dist/fonts/roboto/*')
+    .pipe(gulp.dest('dist/fonts/roboto'));
+  return gulp.src("src/scss/*.scss")
+    .pipe(sass())
+    .pipe(gulp.dest("dist/css"))
 })
 
 gulp.task('htmlCopy', function () {
