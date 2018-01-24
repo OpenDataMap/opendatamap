@@ -1,7 +1,7 @@
 import * as L from 'leaflet';
 
-export function addNodes(source, leafletMap) {
-    const nodes = source.nodes;
+export function addNodes(sourceJSON, leafletMap) {
+    const nodes = sourceJSON.nodes;
     for (var node in nodes) {
         const currentNode = nodes[node];
         let nodeColorOnMap;

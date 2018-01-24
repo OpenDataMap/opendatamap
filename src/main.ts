@@ -2,7 +2,6 @@ import 'jquery';
 import 'materialize-css';
 import {leafletInit} from './lib/map/leafletInit';
 import * as modules from './lib/modules/modules';
-import {addNodes} from "./lib/map/addNodes";
 
 
 $.getJSON('config.json', (config) => {
@@ -12,11 +11,10 @@ $.getJSON('config.json', (config) => {
     $(() => {
         // Init Leaflet
         const leafletMap = leafletInit(config);
-        // Add Nodes To Map
+
+        // Init Config modules
         config.modules.forEach(function (module) {
-            modules[module.moduleName](module.config, (source) => {
-                addNodes(source, leafletMap);
-            });
+            modules[module.moduleName](module.config, leafletMap);
         });
         // Init Tabs
         $('ul.tabs').tabs();
