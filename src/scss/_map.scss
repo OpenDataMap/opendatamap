@@ -20,6 +20,17 @@
       transition: .3s ease;
       &:hover {
         color: $ff_magenta;
+        &.leaflet-disabled {
+          color: #bbb !important;
+        }
+      }
+      &:first-child {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+      }
+      &:last-child {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
       }
     }
   }
