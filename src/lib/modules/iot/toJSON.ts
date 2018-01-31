@@ -1,6 +1,6 @@
 import 'jquery';
-import '../../interfaces/INode'
-import '../../interfaces/ISource'
+import './INode';
+import '../../interfaces/ISource';
 
 export function toJSON (config, rawNodes, cb) {
     let source = <ISource> {
@@ -24,6 +24,7 @@ export function toJSON (config, rawNodes, cb) {
         }
         node.online = !!currentNode.flags.online;
         node.name = currentNode.nodeinfo.hostname;
+        node.dB = currentNode.flags.dB;
         source.nodes.push(node);
     }
     cb(source);

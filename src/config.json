@@ -21,6 +21,13 @@
         "layerName": "Freifunk Hennef",
         "dataURL": "https://map.freifunk-hennef.de/data/"
       }
+    },
+    {
+      "moduleName": "iot",
+      "config": {
+        "layerName": "IoT Hennef",
+        "dataURL": "http://www.armster.de/caspar/"
+      }
     }
   ],
   "map": {
