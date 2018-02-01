@@ -23,9 +23,9 @@
       }
     },
     {
-      "moduleName": "iot",
+      "moduleName": "iotmapper",
       "config": {
-        "layerName": "IoT Hennef",
+        "layerName": "IoT Mapper Hennef",
         "dataURL": "http://www.armster.de/caspar/"
       }
     }

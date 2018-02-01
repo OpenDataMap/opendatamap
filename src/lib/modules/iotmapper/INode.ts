@@ -1,8 +1,8 @@
-interface INode {
+interface IIoTMapperNode {
     latitude: Number;
     longitude: Number;
     showOnMap: Boolean;
     name: String;
-    online: Boolean;
     dB: Number;
+    gateways: Array<Object>;
 }
