@@ -12,15 +12,17 @@ export function toJSON (config, rawNodes, cb) {
     rawNodes = rawNodes.nodes;
     for(const currentNodeID in rawNodes) {
         const currentNode = rawNodes[currentNodeID];
-        let node = <INode> {};
+        let node = <INode> {
+            latitude: 0,
+            longitude: 0,
+            showOnMap: false,
+            online: false,
+            name: ""
+        };
         if(currentNode.nodeinfo.location !== undefined) {
             node.latitude = currentNode.nodeinfo.location.latitude;
             node.longitude = currentNode.nodeinfo.location.longitude;
             node.showOnMap = true;
-        } else {
-            node.latitude = 0;
-            node.longitude = 0;
-            node.showOnMap = false;
         }
         node.online = !!currentNode.flags.online;
         node.name = currentNode.nodeinfo.hostname;
