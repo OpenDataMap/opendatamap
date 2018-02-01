@@ -1,6 +1,6 @@
 import 'jquery';
 import './INode';
-import '../../interfaces/ISource';
+import './ISource';
 
 export function toJSON (config, rawNodes, cb) {
     let source = <ISource> {
