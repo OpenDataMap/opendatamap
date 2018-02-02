@@ -10,14 +10,15 @@ export function toJSON (config, rawNodes, cb) {
         }
     };
     rawNodes = rawNodes.nodes;
-    for(const currentNodeID in rawNodes) {
-        const currentNode = rawNodes[currentNodeID];
+    rawNodes.forEach((currentNode) => {
         let node = <INode> {
             latitude: 0,
             longitude: 0,
             showOnMap: false,
             online: false,
-            name: ""
+            clients: 0,
+            name: "",
+            showOnSitebar: true
         };
         if(currentNode.nodeinfo.location !== undefined) {
             node.latitude = currentNode.nodeinfo.location.latitude;
@@ -26,7 +27,10 @@ export function toJSON (config, rawNodes, cb) {
         }
         node.online = !!currentNode.flags.online;
         node.name = currentNode.nodeinfo.hostname;
+        if(currentNode.statistics.clients !== undefined) {
+            node.clients = currentNode.statistics.clients;
+        }
         source.nodes.push(node);
-    }
+    });
     cb(source);
 }

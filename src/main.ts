@@ -12,9 +12,11 @@ $.getJSON('config.json', (config) => {
     // Init Leaflet
     leafletInit(config, (leafletMap, leafletLayerControl) => {
         // Init Config modules
-        config.modules.forEach(function (module) {
-            modules[module.moduleName](module.config, leafletMap, leafletLayerControl);
-        });
+        for(const moduleID in config.modules) {
+            const module = config.modules[moduleID];
+            modules[module.moduleName](module.config, leafletMap, leafletLayerControl, moduleID);
+        }
+        $('#sidebar-bottom-nodes-chooser').collapsible();
         // Init Tabs
         $('ul.tabs').tabs();
         $('#preloader').remove();

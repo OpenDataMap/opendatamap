@@ -3,8 +3,7 @@ import * as L from 'leaflet';
 export function addNodes(sourceJSON, leafletMap, leafletLayerControl) {
     const nodes = sourceJSON.nodes;
     let layerFreiunkNodes = L.layerGroup();
-    for (var node in nodes) {
-        const currentNode = nodes[node];
+    nodes.forEach((currentNode) => {
         let nodeColorOnMap;
         if(currentNode.online) {
             nodeColorOnMap = '#1565C0';
@@ -51,7 +50,7 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerControl) {
             leafletMap.setView(e.latlng, 17);
         });
         layerFreiunkNodes.addLayer(mapNodeCircle);
-    }
-    layerFreiunkNodes.addTo(leafletMap)
+    });
+    layerFreiunkNodes.addTo(leafletMap);
     leafletLayerControl.addOverlay(layerFreiunkNodes, sourceJSON.config.name);
 }

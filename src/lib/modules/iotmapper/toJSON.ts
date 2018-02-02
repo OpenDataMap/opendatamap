@@ -12,8 +12,7 @@ export function toJSON (config, rawNodes, cb) {
         }
     };
     rawNodes = rawNodes.nodes;
-    for(const currentNodeID in rawNodes) {
-        const currentNode = rawNodes[currentNodeID];
+    rawNodes.forEach((currentNode) => {
         let node = <IIoTMapperNode> {
             latitude: 0,
             longitude: 0,
@@ -29,8 +28,7 @@ export function toJSON (config, rawNodes, cb) {
         }
         node.name = currentNode.nodeinfo.hostname;
         node.dB = currentNode.nodeinfo.dB;
-        for(const currentGatewayID in currentNode.gateways) {
-            const currentGateway = currentNode.gateways[currentGatewayID];
+        currentNode.gateways.forEach((currentGateway) => {
             let gateway = <IIoTMapperGateway> {};
             if(currentGateway.location !== undefined) {
                 gateway.latitude = currentGateway.location.latitude;
@@ -52,8 +50,8 @@ export function toJSON (config, rawNodes, cb) {
             } else {
                 source.gateways.push(gateway);
             }
-        }
+        });
         source.nodes.push(node);
-    }
+    });
     cb(source);
 }

@@ -6,12 +6,9 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerNodes) {
     let layerIoTMapper = L.layerGroup();
     let layerIoTMapperGateways = L.layerGroup();
     let layerIoTMapperGatewaysLines = L.layerGroup();
-    for (const node in nodes) {
-        const currentNode = nodes[node];
-
+    nodes.forEach((currentNode) => {
         // add line from node to gateway to the map
-        for (gateway in currentNode.gateways) {
-            const currentGateway = currentNode.gateways[gateway];
+        currentNode.gateways.forEach((currentGateway) => {
             let gatewayColorOnMap = dBColor(currentGateway.dB);
             const mapGatewayPolyline = L.polyline([[currentNode.latitude, currentNode.longitude],[currentGateway.latitude, currentGateway.longitude]], {
                 weight: 5,
@@ -19,7 +16,7 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerNodes) {
                 opacity: 0.5
             });
             layerIoTMapperGatewaysLines.addLayer(mapGatewayPolyline);
-        }
+        });
 
         // add node to the map
         let nodeColorOnMap = dBColor(currentNode.dB);
@@ -73,13 +70,11 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerNodes) {
         mapNodeCircle.on('click', function(e: any){
             leafletMap.setView(e.latlng, 17);
         });
-    }
+    })
 
     // add gateways to the map
     const gateways = sourceJSON.gateways;
-    for (gateway in gateways) {
-        const currentGateway = gateways[gateway];
-
+    gateways.forEach((currentGateway) => {
         // add gateway to the map
         let gatewayColorOnMap;
         gatewayColorOnMap = '#009ee0';
@@ -125,7 +120,7 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerNodes) {
         mapGatewayCircle.on('click', function(e: any){
             leafletMap.setView(e.latlng, 17);
         });
-    }
+    });
     layerIoTMapper.addTo(leafletMap);
     layerIoTMapperGateways.addTo(leafletMap);
     layerIoTMapperGatewaysLines.addTo(leafletMap);
