@@ -1,43 +1,41 @@
 ﻿import * as L from 'leaflet';
 
-export function addNodes(sourceJSON, leafletMap) {
+export function addNodes(sourceJSON, leafletMap, layerControl) {
     const nodes = sourceJSON.nodes;
+    var layerIoTMapper = L.layerGroup();
+    var layerIoTMapperGateways = L.layerGroup();
+    var layerIoTMapperGatewaysLines = L.layerGroup();
     for (var node in nodes) {
         const currentNode = nodes[node];
-        let nodeColorOnMap;
-        if(currentNode.dB <= -60 && currentNode.dB >= -69) {
-            nodeColorOnMap = '#CC8822';
-        } else if(currentNode.dB <= -70 && currentNode.dB >= -79) {
-            nodeColorOnMap = '#888822';
-        } else if(currentNode.dB <= -80 && currentNode.dB >= -89) {
-            nodeColorOnMap = '#88CC22';
-        } else if(currentNode.dB <= -90 && currentNode.dB >= -99) {
-            nodeColorOnMap = '#22CC22';
-        } else if(currentNode.dB <= -100 && currentNode.dB >= -109) {
-            nodeColorOnMap = '#22CC88';
-        } else if(currentNode.dB <= -110 && currentNode.dB >= -119) {
-            nodeColorOnMap = '#228888';
-        } else if(currentNode.dB <= -120 && currentNode.dB >= -129) {
-            nodeColorOnMap = '#2288CC';
-        } else if(currentNode.dB <= -130 && currentNode.dB >= -139) {
-            nodeColorOnMap = '#2222CC';
-        } else {
-            nodeColorOnMap = '#CC2222';
+
+        // add line from node to gateway to the map
+        for (var gateway in currentNode.gateways) {
+            const currentGateway = currentNode.gateways[gateway];
+            let gatewayColorOnMap = dBColor(currentGateway.dB);
+            const mapGatewayPolyline = L.polyline([[currentNode.latitude, currentNode.longitude],[currentGateway.latitude, currentGateway.longitude]], {
+                weight: 5,
+                color: gatewayColorOnMap,
+                opacity: 0.5
+            });
+            layerIoTMapperGatewaysLines.addLayer(mapGatewayPolyline);
         }
 
+        // add node to the map
+        let nodeColorOnMap = dBColor(currentNode.dB);
         const mapNodeCircleBlur = L.circle([currentNode.latitude, currentNode.longitude], {
             radius: 150,
             color: nodeColorOnMap,
             opacity: 0,
             fillOpacity: 0.3
-        }).addTo(leafletMap);
-
+        });
+        layerIoTMapper.addLayer(mapNodeCircleBlur);
         const mapNodeCircle = L.circle([currentNode.latitude, currentNode.longitude], {
             radius: 25,
             color: nodeColorOnMap,
             opacity: 0,
             fillOpacity: 0.5
-        }).addTo(leafletMap);
+        });
+        layerIoTMapper.addLayer(mapNodeCircle);
 
         // add Tooltip to cicle
         mapNodeCircle.bindTooltip(currentNode.name, {
@@ -75,17 +73,23 @@ export function addNodes(sourceJSON, leafletMap) {
             leafletMap.setView(e.latlng, 17);
         });
     }
+
+    // add gateways to the map
     const gateways = sourceJSON.gateways;
     for (var gateway in gateways) {
         const currentGateway = gateways[gateway];
-        let gatewayColorOnMap;
-        gatewayColorOnMap = '#888888';
 
+        // add gateway to the map
+        let gatewayColorOnMap;
+        gatewayColorOnMap = '#009ee0';
         const mapGatewayCircle = L.circle([currentGateway.latitude, currentGateway.longitude], {
             radius: 200,
+            weight: 3,
             color: gatewayColorOnMap,
-            fillOpacity: 0.9
-        }).addTo(leafletMap);
+            opacity: 0.9,
+            fillOpacity: 0.5
+        });
+        layerIoTMapperGateways.addLayer(mapGatewayCircle);
 
         // add Tooltip to cicle
         mapGatewayCircle.bindTooltip(currentGateway.name, {
@@ -121,4 +125,34 @@ export function addNodes(sourceJSON, leafletMap) {
             leafletMap.setView(e.latlng, 17);
         });
     }
+    layerIoTMapper.addTo(leafletMap);
+    layerIoTMapperGateways.addTo(leafletMap);
+    layerIoTMapperGatewaysLines.addTo(leafletMap);
+    layerControl.addOverlay(layerIoTMapper, "IoT Mapper");
+    layerControl.addOverlay(layerIoTMapperGateways, "IoT Mapper Gateways");
+    layerControl.addOverlay(layerIoTMapperGatewaysLines, "IoT Mapper Lines");
+}
+
+function dBColor(dB) {
+    let nodeColorOnMap;
+    if(dB <= -60 && dB >= -69) {
+            nodeColorOnMap = '#CC8822';
+        } else if(dB <= -70 && dB >= -79) {
+            nodeColorOnMap = '#888822';
+        } else if(dB <= -80 && dB >= -89) {
+            nodeColorOnMap = '#88CC22';
+        } else if(dB <= -90 && dB >= -99) {
+            nodeColorOnMap = '#22CC22';
+        } else if(dB <= -100 && dB >= -109) {
+            nodeColorOnMap = '#22CC88';
+        } else if(dB <= -110 && dB >= -119) {
+            nodeColorOnMap = '#228888';
+        } else if(dB <= -120 && dB >= -129) {
+            nodeColorOnMap = '#2288CC';
+        } else if(dB <= -130 && dB >= -139) {
+            nodeColorOnMap = '#2222CC';
+        } else {
+            nodeColorOnMap = '#CC2222';
+        }
+    return nodeColorOnMap;
 }

@@ -4,5 +4,5 @@ interface IIoTMapperNode {
     showOnMap: Boolean;
     name: String;
     dB: Number;
-    gateways: Array<Object>;
+    gateways: Array<IIoTMapperGateway>;
 }
