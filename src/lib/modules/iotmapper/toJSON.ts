@@ -34,6 +34,7 @@ export function toJSON (config, rawNodes, cb) {
                 gateway.latitude = currentGateway.location.latitude;
                 gateway.longitude = currentGateway.location.longitude;
                 gateway.showOnMap = true;
+                gateway.showOnSitebar = true;
             } else {
                 gateway.latitude = 0;
                 gateway.longitude = 0;
