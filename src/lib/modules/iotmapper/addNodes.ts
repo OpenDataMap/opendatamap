@@ -1,15 +1,16 @@
 ﻿import * as L from 'leaflet';
 
-export function addNodes(sourceJSON, leafletMap, layerControl) {
+export function addNodes(sourceJSON, leafletMap, leafletLayerNodes) {
+    let gateway;
     const nodes = sourceJSON.nodes;
-    var layerIoTMapper = L.layerGroup();
-    var layerIoTMapperGateways = L.layerGroup();
-    var layerIoTMapperGatewaysLines = L.layerGroup();
-    for (var node in nodes) {
+    let layerIoTMapper = L.layerGroup();
+    let layerIoTMapperGateways = L.layerGroup();
+    let layerIoTMapperGatewaysLines = L.layerGroup();
+    for (const node in nodes) {
         const currentNode = nodes[node];
 
         // add line from node to gateway to the map
-        for (var gateway in currentNode.gateways) {
+        for (gateway in currentNode.gateways) {
             const currentGateway = currentNode.gateways[gateway];
             let gatewayColorOnMap = dBColor(currentGateway.dB);
             const mapGatewayPolyline = L.polyline([[currentNode.latitude, currentNode.longitude],[currentGateway.latitude, currentGateway.longitude]], {
@@ -76,7 +77,7 @@ export function addNodes(sourceJSON, leafletMap, layerControl) {
 
     // add gateways to the map
     const gateways = sourceJSON.gateways;
-    for (var gateway in gateways) {
+    for (gateway in gateways) {
         const currentGateway = gateways[gateway];
 
         // add gateway to the map
@@ -128,9 +129,9 @@ export function addNodes(sourceJSON, leafletMap, layerControl) {
     layerIoTMapper.addTo(leafletMap);
     layerIoTMapperGateways.addTo(leafletMap);
     layerIoTMapperGatewaysLines.addTo(leafletMap);
-    layerControl.addOverlay(layerIoTMapper, "IoT Mapper");
-    layerControl.addOverlay(layerIoTMapperGateways, "IoT Mapper Gateways");
-    layerControl.addOverlay(layerIoTMapperGatewaysLines, "IoT Mapper Lines");
+    leafletLayerNodes.addOverlay(layerIoTMapper, sourceJSON.config.name);
+    leafletLayerNodes.addOverlay(layerIoTMapperGateways, sourceJSON.config.name + " Gateways");
+    leafletLayerNodes.addOverlay(layerIoTMapperGatewaysLines, sourceJSON.config.name + " Lines");
 }
 
 function dBColor(dB) {

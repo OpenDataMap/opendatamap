@@ -34,6 +34,23 @@
       }
     }
   }
+  .leaflet-control-layers-toggle {
+    background-image: none !important;
+    i.material-icons {
+      @extend .grey-text.text-darken-4;
+      font-size: 44px !important;
+    }
+  }
+  .leaflet-control-layers-selector[type=radio] {
+    + span {
+      margin-left: 15px !important;
+    }
+    opacity: 1 !important;
+  }
+  .leaflet-control-layers-selector[type=checkbox] {
+    position: relative !important;
+    opacity: 1 !important;
+  }
 }
 .leaflet-tooltip-node {
   color: $ff_magenta !important;

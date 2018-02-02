@@ -1,7 +1,8 @@
 import * as L from 'leaflet';
 
-export function addNodes(sourceJSON, leafletMap) {
+export function addNodes(sourceJSON, leafletMap, leafletLayerControl) {
     const nodes = sourceJSON.nodes;
+    let layerFreiunkNodes = L.layerGroup();
     for (var node in nodes) {
         const currentNode = nodes[node];
         let nodeColorOnMap;
@@ -14,7 +15,7 @@ export function addNodes(sourceJSON, leafletMap) {
             radius: 75,
             color: nodeColorOnMap,
             fillOpacity: 0.9
-        }).addTo(leafletMap);
+        })
 
         // add Tooltip to cicle
         mapNodeCircle.bindTooltip(currentNode.name, {
@@ -49,6 +50,8 @@ export function addNodes(sourceJSON, leafletMap) {
         mapNodeCircle.on('click', function(e: any){
             leafletMap.setView(e.latlng, 17);
         });
-
+        layerFreiunkNodes.addLayer(mapNodeCircle);
     }
+    layerFreiunkNodes.addTo(leafletMap)
+    leafletLayerControl.addOverlay(layerFreiunkNodes, sourceJSON.config.name);
 }

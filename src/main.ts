@@ -9,22 +9,14 @@ $.getJSON('config.json', (config) => {
     // set website title
     $(document).attr('title', config.title);
     $('#sidebar-title').html(config.title);
-    $(() => {
-        // Init Leaflet
-        const leafletMap = leafletInit(config);
-
-        const layerControl = L.control.layers({},{},{
-            position: 'bottomright',
-        }).addTo(leafletMap);
-
+    // Init Leaflet
+    leafletInit(config, (leafletMap, leafletLayerControl) => {
         // Init Config modules
         config.modules.forEach(function (module) {
-            modules[module.moduleName](module.config, leafletMap, layerControl);
+            modules[module.moduleName](module.config, leafletMap, leafletLayerControl);
         });
-
         // Init Tabs
         $('ul.tabs').tabs();
-
         $('#preloader').remove();
     });
 });
