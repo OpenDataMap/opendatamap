@@ -26,7 +26,7 @@
       "moduleName": "iotmapper",
       "config": {
         "layerName": "IoT Mapper Hennef",
-        "dataURL": "http://www.armster.de/caspar/"
+        "dataURL": "https://opendatamap.labcode.de/json/"
       }
     }
   ],

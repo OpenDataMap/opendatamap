@@ -4,6 +4,7 @@ var sass = require('gulp-sass');
 var replace = require('gulp-replace');
 var webpack = require('webpack');
 var webpackStream = require('webpack-stream');
+var cssnano = require('gulp-cssnano');
 
 gulp.task("build", function () {
     gulp.start('htmlCopy');
@@ -45,6 +46,7 @@ gulp.task('scssCompileBuild', function () {
     .pipe(gulp.dest('dist/fonts/roboto'));
   return gulp.src("src/scss/*.scss")
     .pipe(sass())
+    .pipe(cssnano())
     .pipe(gulp.dest("dist/css"))
 })
 
