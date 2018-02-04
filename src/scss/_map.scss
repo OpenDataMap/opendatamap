@@ -42,10 +42,8 @@
     }
   }
   .leaflet-control-layers-selector[type=radio] {
-    + span {
-      margin-left: 15px !important;
-    }
     opacity: 1 !important;
+    position: relative !important;
   }
   .leaflet-control-layers-selector[type=checkbox] {
     position: relative !important;
