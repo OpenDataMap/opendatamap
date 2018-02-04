@@ -1,3 +1,5 @@
+/// <reference path="import-images.d.ts" />
+
 import * as L from 'leaflet';
 import {dBColor} from './tools';
 import iconIoTMarker from './images/opendatamap_marker_iot_48px.png'; // pfad anpassen
@@ -7,8 +9,8 @@ export function addGateways(sourceJSON, leafletMap, leafletLayerNodes) {
     let layerIoTMapperGateways = L.layerGroup();
     const gateways = sourceJSON.gateways;
     var iconIoTMapperGateway = L.icon({
-        iconUrl: './images/opendatamap_marker_iot_48px.png', // Anpassen an file-loader
-        shadowUrl: './images/opendatamap_marker_iot_shadow_48px.png', // Anpassen an file-loader
+        iconUrl: iconIoTMarker, // Anpassen an file-loader
+        shadowUrl: iconIoTMarkerShadow, // Anpassen an file-loader
         iconSize:     [48, 48], // size of the icon
         shadowSize:   [48, 48], // size of the shadow
         iconAnchor:   [24, 48], // point of the icon which will correspond to marker's location
