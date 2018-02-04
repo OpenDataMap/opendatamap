@@ -1,7 +1,6 @@
 const path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
-
 module.exports = {
     entry: './src/main.ts',
     module: {
@@ -10,8 +9,18 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
-              test: /\.tsx?$/,
-              loader: "ts-loader"
+                test: /\.tsx?$/,
+                loader: "ts-loader"
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                        }  
+                    }
+                ]
             }
         ]
     },

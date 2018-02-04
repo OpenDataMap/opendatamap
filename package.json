@@ -12,6 +12,7 @@
     "@types/leaflet": "^1.2.4",
     "@types/materialize-css": "0.100.2",
     "browser-sync": "^2.21.0",
+    "file-loader": "^1.1.6",
     "gulp": "^3.9.1",
     "gulp-cli": "^1.4.0",
     "gulp-cssnano": "^2.1.2",

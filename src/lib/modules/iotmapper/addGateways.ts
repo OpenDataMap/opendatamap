@@ -1,23 +1,26 @@
 import * as L from 'leaflet';
-import {dBColor} from "./tools";
+import {dBColor} from './tools';
+import iconIoTMarker from './images/opendatamap_marker_iot_48px.png'; // pfad anpassen
+import iconIoTMarkerShadow from './images/opendatamap_marker_iot_shadow_48px.png'; // pfad anpassen
 
 export function addGateways(sourceJSON, leafletMap, leafletLayerNodes) {
     let layerIoTMapperGateways = L.layerGroup();
     const gateways = sourceJSON.gateways;
+    var iconIoTMapperGateway = L.icon({
+        iconUrl: './images/opendatamap_marker_iot_48px.png', // Anpassen an file-loader
+        shadowUrl: './images/opendatamap_marker_iot_shadow_48px.png', // Anpassen an file-loader
+        iconSize:     [48, 48], // size of the icon
+        shadowSize:   [48, 48], // size of the shadow
+        iconAnchor:   [24, 48], // point of the icon which will correspond to marker's location
+        shadowAnchor: [4, 48],  // the same for the shadow
+        popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    });
     gateways.forEach((currentGateway) => {
-        let gatewayColorOnMap;
-        gatewayColorOnMap = '#009ee0';
-        const mapGatewayCircle = L.circle([currentGateway.latitude, currentGateway.longitude], {
-            radius: 200,
-            weight: 3,
-            color: gatewayColorOnMap,
-            opacity: 0.9,
-            fillOpacity: 0.5
-        });
-        layerIoTMapperGateways.addLayer(mapGatewayCircle);
+        const mapGatewayMarker = L.marker([currentGateway.latitude, currentGateway.longitude], {icon: iconIoTMapperGateway});
+        layerIoTMapperGateways.addLayer(mapGatewayMarker);
 
         // add Tooltip to cicle
-        mapGatewayCircle.bindTooltip(currentGateway.name, {
+        mapGatewayMarker.bindTooltip(currentGateway.name, {
             className: 'leaflet-tooltip-node'
         });
 
@@ -36,17 +39,17 @@ export function addGateways(sourceJSON, leafletMap, leafletLayerNodes) {
             var zoomDiff = myZoom.start - myZoom.end;
             if (zoomDiff > 0) {
                 for (var i = 0; i < zoomDiff; i++) {
-                    mapGatewayCircle.setRadius(mapGatewayCircle.getRadius() * 2);
+//                    mapGatewayCircle.setRadius(mapGatewayCircle.getRadius() * 2);
                 }
             } else if (zoomDiff < 0) {
                 for (var i = 0; i > zoomDiff; i--) {
-                    mapGatewayCircle.setRadius(mapGatewayCircle.getRadius() / 2);
+//                    mapGatewayCircle.setRadius(mapGatewayCircle.getRadius() / 2);
                 }
             }
         });
 
         // Zoom to node by clicking on it
-        mapGatewayCircle.on('click', function(e: any){
+        mapGatewayMarker.on('click', function(e: any){
             leafletMap.setView(e.latlng, 17);
         });
     });
