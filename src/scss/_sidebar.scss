@@ -92,6 +92,16 @@
       background-color: $ff_yellow;
     }
   }
+
+  #sidebar-bottom-nodes-chooser {
+    .switch label input[type=checkbox]:checked + .lever {
+      background-color: #ff99ff;
+      &:after {
+        background-color: $ff_magenta;
+      }
+    }
+  }
+
   h3 {
     @extend .assistant, .thin;
   }
