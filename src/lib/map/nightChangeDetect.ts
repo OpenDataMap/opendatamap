@@ -3,11 +3,11 @@ export function leafletNightChange (leafletMap) {
         // Check current Layer for the night Classname
         const isNightLayer = $(e.layer._container).hasClass("night");
         if(isNightLayer) {
-            $('#stylesheet-main').attr("media", "not");
             $('#stylesheet-night').removeAttr("media");
+            $('#stylesheet-main').attr("media", "not");
         } else {
-            $('#stylesheet-night').attr("media", "not");
             $('#stylesheet-main').removeAttr("media");
+            $('#stylesheet-night').attr("media", "not");
         }
     })
 }
