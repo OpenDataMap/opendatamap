@@ -1,0 +1,74 @@
+@import "../../../node_modules/materialize-css/sass/materialize";
+@import "variables";
+#map-container {
+  width: 70vw;
+  height: 100%;
+  float: right;
+  @media screen and (max-width: $medium-screen) {
+    width: 100vw;
+    height: 50%;
+  }
+  .leaflet-bar {
+    border: none;
+    a {
+      width: 40px;
+      height: 40px;
+      line-height: 35px;
+      font-size: 30px;
+      font-weight: 100;
+      border: 0;
+      transition: .3s ease;
+      &:hover {
+        color: $ff_magenta;
+        &.leaflet-disabled {
+          color: #bbb !important;
+        }
+      }
+      &:first-child {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+      }
+      &:last-child {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
+    }
+  }
+  .leaflet-control-layers {
+    @extend .grey.darken-4;
+    border: none;
+    .leaflet-control-layers-toggle {
+      border-radius: 5px;
+      background-image: none !important;
+      i.material-icons {
+        @extend .white-text;
+        font-size: 44px !important;
+      }
+    }
+  }
+  .leaflet-control-layers-selector[type=radio] {
+    opacity: 1 !important;
+    position: relative !important;
+  }
+  .leaflet-control-layers-selector[type=checkbox] {
+    position: relative !important;
+    opacity: 1 !important;
+  }
+  .leaflet-control-zoom {
+    .leaflet-control-zoom-in, .leaflet-control-zoom-out {
+      background-color: $primary-color-dark;
+      color:  white;
+    }
+  }
+  .leaflet-control-attribution {
+    @extend .white-text;
+    background: #212121;
+    a {
+      @extend .grey-text.text-lighten-1;
+    }
+  }
+}
+.leaflet-tooltip-node {
+  color: $ff_magenta !important;
+  border: 1px solid $ff_yellow !important;
+}

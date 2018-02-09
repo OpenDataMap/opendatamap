@@ -4,9 +4,17 @@ export function leafletInitBaseLayer(config, layerControl, leafletMap) {
     const configLayer = config.map.layer;
     for (const layerID in configLayer) {
         const currentLayer = configLayer[layerID];
-        const leafletTileLayer = L.tileLayer(currentLayer.url, {
-            attribution: currentLayer.attribution
-        });
+        let leafletTileLayer;
+        if(currentLayer.night) {
+            leafletTileLayer= L.tileLayer(currentLayer.url, {
+                attribution: currentLayer.attribution,
+                className: "night"
+            });
+        } else {
+            leafletTileLayer = L.tileLayer(currentLayer.url, {
+                attribution: currentLayer.attribution,
+            });
+        }
 
         // Add to layerControl
         layerControl.addBaseLayer(leafletTileLayer, currentLayer.name);

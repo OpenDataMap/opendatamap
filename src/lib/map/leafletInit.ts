@@ -1,5 +1,6 @@
 import * as L from 'leaflet';
 import {leafletInitBaseLayer} from "./initBaseLayer";
+import {leafletNightChange} from "./nightChangeDetect";
 
 export function leafletInit(config, callback: Function) {
 
@@ -26,6 +27,8 @@ export function leafletInit(config, callback: Function) {
 
     // Change The Icon of the Leaflet Layer Toogle to a material Icon
     $('.leaflet-control-layers-toggle').html('<i class="material-icons">layers</i>');
+
+    leafletNightChange(map);
 
     callback(map, layerControl)
 }

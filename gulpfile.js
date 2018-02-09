@@ -25,6 +25,7 @@ gulp.task('serve', function () {
         browserSync.reload();
     });
     gulp.watch("src/scss/*.scss", ['scssCompile']);
+    gulp.watch("src/scss/night/*.scss", ['scssCompile']);
     gulp.watch(["src/*.ts", "src/lib/*.ts", "src/config.json", "src/lib/*.js", 'src/lib/modules/*/*.ts', "src/lib/map/*.ts"]).on('change', function () {
         gulp.start('webpack');
         browserSync.reload();
@@ -36,6 +37,10 @@ gulp.task('scssCompile', function () {
     gulp.src("src/scss/*.scss")
         .pipe(sass())
         .pipe(gulp.dest("dist/css"))
+        .pipe(browserSync.stream());
+    gulp.src("src/scss/night/*.scss")
+        .pipe(sass())
+        .pipe(gulp.dest("dist/css/night"))
         .pipe(browserSync.stream());
     return gulp.src('node_modules/materialize-css/dist/fonts/roboto/*')
         .pipe(gulp.dest('dist/fonts/roboto'));
