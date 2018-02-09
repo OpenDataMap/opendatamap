@@ -49,7 +49,12 @@ gulp.task('scssCompile', function () {
 gulp.task('scssCompileBuild', function () {
   gulp.src('node_modules/materialize-css/dist/fonts/roboto/*')
     .pipe(gulp.dest('dist/fonts/roboto'));
-  return gulp.src("src/scss/*.scss")
+  gulp.src("src/scss/night/*.scss")
+    .pipe(sass())
+    .pipe(cssnano())
+    .pipe(gulp.dest("dist/css/night"))
+    .pipe(browserSync.stream());
+  gulp.src("src/scss/*.scss")
     .pipe(sass())
     .pipe(cssnano())
     .pipe(gulp.dest("dist/css"))
