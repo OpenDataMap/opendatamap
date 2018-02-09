@@ -100,6 +100,13 @@
       @extend .grey.darken-4;
       border-bottom: 1px solid #424242;
     }
+    .collapsible-body {
+      @extend .white-text;
+      border-bottom: 1px solid #424242;
+    }
+    thead {
+      border-bottom: 1px solid $primary-color-dark;
+    }
     .switch label input[type=checkbox]:checked + .lever {
       background-color: #ff99ff;
       &:after {
