@@ -6,7 +6,8 @@ export function leafletInitBaseLayer(config, layerControl, leafletMap) {
         const currentLayer = configLayer[layerID];
         let leafletTileLayer;
         if(currentLayer.night) {
-            leafletTileLayer= L.tileLayer(currentLayer.url, {
+            // if the night attribute is true add the night classname to the tilelayer
+            leafletTileLayer = L.tileLayer(currentLayer.url, {
                 attribution: currentLayer.attribution,
                 className: "night"
             });

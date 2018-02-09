@@ -23,11 +23,12 @@ export function leafletInit(config, callback: Function) {
     }).addTo(map);
 
     // Add Leaflet BaseLayer
-    leafletInitBaseLayer(config, layerControl, map)
+    leafletInitBaseLayer(config, layerControl, map);
 
     // Change The Icon of the Leaflet Layer Toogle to a material Icon
     $('.leaflet-control-layers-toggle').html('<i class="material-icons">layers</i>');
 
+    // Detect Baselayer Night Change
     leafletNightChange(map);
 
     callback(map, layerControl)
