@@ -1,4 +1,4 @@
-/// <reference path="import-images.d.ts" />
+/// <reference path="addGateways.d.ts" />
 
 import * as L from 'leaflet';
 import {dBColor} from './tools';
