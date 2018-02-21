@@ -16,6 +16,7 @@ gulp.task('serve', function () {
     gulp.start('scssCompile');
     gulp.start('webpack');
     browserSync.init({
+        port: 3003,
         server: {
             baseDir: "./dist"
         }
