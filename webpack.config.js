@@ -18,7 +18,7 @@ module.exports = {
                     {
                         loader: 'file-loader',
                         options: {
-                        }  
+                        }
                     }
                 ]
             }
@@ -32,6 +32,6 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     },
     plugins: [
-      new UglifyJSPlugin()
+      // new UglifyJSPlugin()
     ]
 };
