@@ -1,34 +1,42 @@
 {
   "name": "OpenDataMap",
-  "version": "1.0.0",
-  "description": "Visualize OpenData Map",
+  "version": "0.1",
+  "description": "Visualize OpenData on a map",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "LabCode.de",
-  "license": "GPL-3.0",
+  "contributors": [
+    {
+      "name": "Leo Maroni",
+      "url": "https://labcode.de",
+      "email": "hello@labcode.de"
+    },
+    {
+      "name": "Caspar Armster"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/OpenDataMap/OpenDataMap/issues"
+  },
+  "license": "AGPL-3.0",
   "devDependencies": {
     "@types/jquery": "^3.2.17",
     "@types/leaflet": "^1.2.4",
-    "@types/materialize-css": "0.100.2",
-    "browser-sync": "^2.21.0",
+    "@types/materialize-css": "0.100.2"
+  },
+  "dependencies": {
+    "commander": "latest",
+    "copy-webpack-plugin": "^4.4.2",
+    "express": "^4.16.2",
     "file-loader": "^1.1.6",
-    "gulp": "^3.9.1",
-    "gulp-cli": "^1.4.0",
-    "gulp-cssnano": "^2.1.2",
-    "gulp-load-plugins": "^1.5.0",
-    "gulp-replace": "^0.6.1",
-    "gulp-sass": "^3.1.0",
+    "html-webpack-plugin": "^2.30.1",
+    "jquery": "^3.2.1",
+    "leaflet": "^1.2.0",
+    "materialize-css": "^0.100.2",
     "node-sass": "^4.7.2",
     "ts-loader": "^3.2.0",
     "typescript": "^2.6.2",
     "uglifyjs-webpack-plugin": "^1.1.6",
-    "webpack": "^3.10.0",
-    "webpack-stream": "^4.0.0"
-  },
-  "dependencies": {
-    "jquery": "^3.2.1",
-    "leaflet": "^1.2.0",
-    "materialize-css": "^0.100.2"
+    "webpack": "^3.11.0"
   }
 }

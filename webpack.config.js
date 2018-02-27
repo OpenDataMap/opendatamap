@@ -1,5 +1,7 @@
 const path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
     entry: './src/main.ts',
@@ -18,6 +20,8 @@ module.exports = {
                     {
                         loader: 'file-loader',
                         options: {
+                            outputPath: 'images/',
+                            publicPath: 'assets/'
                         }
                     }
                 ]
@@ -32,6 +36,13 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     },
     plugins: [
-      new UglifyJSPlugin()
+      new UglifyJSPlugin(),
+      new HtmlWebpackPlugin({
+        template: 'src/index.html',
+        inject: false
+      }),
+      new CopyWebpackPlugin([
+        { from: 'node_modules/materialize-css/dist/fonts', to: 'fonts' }
+      ])
     ]
 };
