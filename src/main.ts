@@ -2,7 +2,6 @@
 
 import 'jquery';
 import 'materialize-css';
-import * as L from 'leaflet';
 import {leafletInit} from './lib/map/leafletInit';
 import * as modules from './lib/modules/modules';
 import importConfig from './config.json';

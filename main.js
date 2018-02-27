@@ -22,6 +22,7 @@ commander
     if(webpackBuild.stderr.toString()) throw webpackBuild.stderr.toString()
 
     // sass build
+    fs.mkdirSync('dist/css')
     const mainSassBuild = sass.renderSync({
       file: 'src/scss/light/main.scss',
       outputStyle: "compressed"
