@@ -6,7 +6,7 @@ const child_process = require('child_process');
 const sass = require('node-sass');
 
 commander
-  .version('0.1')
+  .version('0.1.1')
   .description('Server for OpenDataMap')
 
 // server for production use
