@@ -4,10 +4,43 @@ const path = require("path");
 const commander = require('commander');
 const child_process = require('child_process');
 const sass = require('node-sass');
+const watch = require('node-watch');
 
 commander
   .version('0.1.1')
   .description('Server for OpenDataMap')
+
+// development server
+commander
+  .command('development <port>')
+  .alias('dev')
+  .description('server for development use')
+  .action(function (port) {
+    // build the assets
+    console.log('Please wait! The assets were built')
+    buildAssets();
+
+    // start server
+    startServer(port);
+
+    console.log('start watching')
+    watch('./src/', {recursive: true}, function (eventType, filename) {
+      if (filename) {
+        let filetype = filename.lastIndexOf('.')
+        filetype = filename.substring(filetype + 1);
+        switch (filetype) {
+          case "ts":
+          case "html":
+          case "json":
+            buildWebpack();
+            break;
+          case "scss":
+            buildSass();
+            break;
+        }
+      }
+    })
+  })
 
 // server for production use
 commander
@@ -15,28 +48,9 @@ commander
   .alias('prod')
   .description('server for production use')
   .action(function (port) {
+    // build the assets
     console.log('Please wait! The assets were built')
-
-    // webpack-build
-    const webpackBuild = child_process.spawnSync('node_modules/webpack/bin/webpack.js');
-    if(webpackBuild.stderr.toString()) throw webpackBuild.stderr.toString()
-
-    // sass build
-    if (!fs.existsSync('dist/css')){
-      fs.mkdirSync('dist/css')
-    }
-    const mainSassBuild = sass.renderSync({
-      file: 'src/scss/light/main.scss',
-      outputStyle: "compressed"
-    })
-    fs.writeFileSync("dist/css/light.css", mainSassBuild.css);
-    const nightSassBuild = sass.renderSync({
-      file: 'src/scss/night/main.scss',
-      outputStyle: "compressed"
-    })
-    fs.writeFileSync("dist/css/night.css", nightSassBuild.css)
-
-    console.log('The assets finished building. The server will start soon!')
+    buildAssets();
 
     // start server
     startServer(port);
@@ -70,4 +84,32 @@ function startServer (port) {
   server.listen(port);
 
   console.log("OpenDataMap-server is listening on port " + port);
+}
+
+function buildAssets () {
+  buildWebpack();
+  buildSass();
+  console.log('The assets finished building!');
+
+}
+function buildWebpack () {
+  // webpack-build
+  const webpackBuild = child_process.spawnSync('node_modules/webpack/bin/webpack.js');
+  if(webpackBuild.stderr.toString()) throw webpackBuild.stderr.toString()
+}
+function buildSass () {
+  // sass build
+  if (!fs.existsSync('dist/css')){
+    fs.mkdirSync('dist/css')
+  }
+  const mainSassBuild = sass.renderSync({
+    file: 'src/scss/light/main.scss',
+    outputStyle: "compressed"
+  })
+  fs.writeFileSync("dist/css/light.css", mainSassBuild.css);
+  const nightSassBuild = sass.renderSync({
+    file: 'src/scss/night/main.scss',
+    outputStyle: "compressed"
+  })
+  fs.writeFileSync("dist/css/night.css", nightSassBuild.css)
 }
