@@ -81,6 +81,9 @@ function startServer (port) {
   server.get('/assets/images/*', function (req, res) {
     res.sendFile(path.join(__dirname + '/dist/images/' + req.params[ 0 ]));
   });
+  server.get('/assets/data/*', function (req, res) {
+    res.sendFile(path.join(__dirname + '/dist/data/' + req.params[0]));
+  })
   server.listen(port);
 
   console.log("OpenDataMap-server is listening on port " + port);
@@ -90,7 +93,9 @@ function buildAssets () {
   buildWebpack();
   buildSass();
   console.log('The assets finished building!');
-
+  if (!fs.existsSync('dist/data')){
+    fs.mkdirSync('dist/data')
+  }
 }
 function buildWebpack () {
   // webpack-build
