@@ -21,7 +21,7 @@ module.exports = {
                         loader: 'file-loader',
                         options: {
                             outputPath: 'images/',
-                            publicPath: 'assets/'
+                            publicPath: 'assets/images/'
                         }
                     }
                 ]
