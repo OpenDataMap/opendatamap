@@ -63,6 +63,9 @@ if (commander.args.length === 0) {
 
 function startServer (port) {
   const server = express();
+  const cors = require('cors')
+  server.use(cors())
+
   server.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/dist/index.html'));
   });
@@ -92,10 +95,10 @@ function startServer (port) {
 function buildAssets () {
   buildWebpack();
   buildSass();
-  console.log('The assets finished building!');
   if (!fs.existsSync('dist/data')){
     fs.mkdirSync('dist/data')
   }
+  console.log('The assets finished building!');
 }
 function buildWebpack () {
   // webpack-build
