@@ -23,7 +23,7 @@ export function addToSidebar(sourceJSON, moduleID) {
                 '        <div class="switch">' +
                 '            <label>' +
                 '                Aus' +
-                '                <input type="checkbox" checked="checked">' +
+                '                <input disabled type="checkbox" checked="checked">' +
                 '                <span class="lever">' +
                 '                </span>' +
                 '                An' +

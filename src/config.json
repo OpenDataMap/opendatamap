@@ -26,7 +26,7 @@
       "moduleName": "iotmapper",
       "config": {
         "layerName": "IoT Mapper Hennef",
-        "dataURL": "https://opendatamap.labcode.de/json/"
+        "dataURL": "https://map.bonn.codefor.de/assets/data/"
       }
     }
   ],
