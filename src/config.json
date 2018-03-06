@@ -26,7 +26,9 @@
       "moduleName": "iotmapper",
       "config": {
         "layerName": "IoT Mapper Hennef",
-        "dataURL": "https://map.bonn.codefor.de/assets/data/"
+        //"dataURL": "https://map.bonn.codefor.de/assets/data/",
+        "dataURL": "http://localhost:3003/assets/data/",
+        "filterValue": 0.00005
       }
     }
   ],

@@ -1,7 +1,6 @@
 /// <reference path="addGateways.d.ts" />
 
 import * as L from 'leaflet';
-import {dBColor} from './tools';
 import iconIoTMarker from './images/opendatamap_marker_iot_48px.png';
 import iconIoTMarkerShadow from './images/opendatamap_marker_iot_shadow_48px.png';
 

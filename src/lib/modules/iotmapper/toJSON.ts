@@ -44,7 +44,7 @@ export function toJSON (config, rawNodes, cb) {
             gateway.dB = currentGateway.dB;
             node.gateways.push(gateway);
             if(source.gateways.length != 0) {
-                var result = source.gateways.find(function (obj) { return obj.name === gateway.name; });
+                let result = source.gateways.find(function (obj) { return obj.name === gateway.name; });
                 if(result == null) {
                     source.gateways.push(gateway);
                 }
@@ -52,7 +52,16 @@ export function toJSON (config, rawNodes, cb) {
                 source.gateways.push(gateway);
             }
         });
-        source.nodes.push(node);
+        if(source.nodes.length != 0) {
+            let result = source.nodes.find(function (obj) {
+                return ((Math.abs(obj.latitude - node.latitude) < config.filterValue) && (Math.abs(obj.longitude - node.longitude) < config.filterValue)); 
+            });
+            if(result == null) {
+                source.nodes.push(node);
+            }
+        } else {
+            source.nodes.push(node);
+        }
     });
     cb(source);
 }

@@ -1,21 +1,21 @@
 ﻿import * as L from 'leaflet';
-import {dBColor} from "./tools";
+import {dBValues} from "./tools";
 
 export function addNodes(sourceJSON, leafletMap, leafletLayerNodes) {
     const nodes = sourceJSON.nodes;
     let layerIoTMapperNodes = L.layerGroup();
     nodes.forEach((currentNode) => {
-        let nodeColorOnMap = dBColor(currentNode.dB);
+        let nodeValues = dBValues(currentNode.dB);
         const mapNodeCircleBlur = L.circle([currentNode.latitude, currentNode.longitude], {
-            radius: 150,
-            color: nodeColorOnMap,
+            radius: nodeValues.circleSize,
+            color: nodeValues.colorOnMap,
             opacity: 0,
-            fillOpacity: 0.3
+            fillOpacity: nodeValues.circleOpacity
         });
         layerIoTMapperNodes.addLayer(mapNodeCircleBlur);
         const mapNodeCircle = L.circle([currentNode.latitude, currentNode.longitude], {
             radius: 25,
-            color: nodeColorOnMap,
+            color: nodeValues.colorOnMap,
             opacity: 0,
             fillOpacity: 0.5
         });
