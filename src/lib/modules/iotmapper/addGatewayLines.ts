@@ -1,5 +1,5 @@
 import * as L from 'leaflet';
-import {dBValues} from "./tools";
+import {dBValues, geoDistance} from "./tools";
 
 export function addGatewayLines(sourceJSON, leafletMap, leafletLayerNodes) {
     const nodes = sourceJSON.nodes;
@@ -13,6 +13,10 @@ export function addGatewayLines(sourceJSON, leafletMap, leafletLayerNodes) {
                 opacity: 0.5
             });
             layerIoTMapperGatewaysLines.addLayer(mapGatewayPolyline);
+            // add Tooltip to line
+            mapGatewayPolyline.bindTooltip("Distanz: "+Math.round(geoDistance(currentNode.latitude, currentNode.longitude, currentGateway.latitude, currentGateway.longitude)).toLocaleString()+"m", {
+                className: 'leaflet-tooltip-node'
+            });
         });
     })
     layerIoTMapperGatewaysLines.addTo(leafletMap);
