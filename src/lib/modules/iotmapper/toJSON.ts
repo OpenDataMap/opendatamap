@@ -63,5 +63,7 @@ export function toJSON (config, rawNodes, cb) {
             source.nodes.push(node);
         }
     });
+    // sort nodes for dB
+    source.nodes.sort(function(a, b) { return a.dB - b.dB });
     cb(source);
 }

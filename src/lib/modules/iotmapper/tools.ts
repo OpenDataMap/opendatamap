@@ -1,48 +1,37 @@
 export function dBValues(dB) {
     let colorOnMap;
     let circleSize;
-    let circleOpacity;
-    if(dB <= -60 && dB >= -69) {
+    if(dB <= -85 && dB >= -89) {
             colorOnMap = '#CC8822';
-            circleSize = 120;
-            circleOpacity = 0.34;
-        } else if(dB <= -70 && dB >= -79) {
+            circleSize = 125;
+        } else if(dB <= -90 && dB >= -94) {
             colorOnMap = '#888822';
-            circleSize = 140;
-            circleOpacity = 0.32;
-        } else if(dB <= -80 && dB >= -89) {
+            circleSize = 150;
+        } else if(dB <= -95 && dB >= -99) {
             colorOnMap = '#88CC22';
-            circleSize = 160;
-            circleOpacity = 0.30;
-        } else if(dB <= -90 && dB >= -99) {
+            circleSize = 175;
+        } else if(dB <= -100 && dB >= -104) {
             colorOnMap = '#22CC22';
-            circleSize = 180;
-            circleOpacity = 0.28;
-        } else if(dB <= -100 && dB >= -109) {
-            colorOnMap = '#22CC88';
             circleSize = 200;
-            circleOpacity = 0.26;
-        } else if(dB <= -110 && dB >= -119) {
+        } else if(dB <= -105 && dB >= -109) {
+            colorOnMap = '#22CC88';
+            circleSize = 225;
+        } else if(dB <= -110 && dB >= -114) {
             colorOnMap = '#228888';
-            circleSize = 220;
-            circleOpacity = 0.24;
-        } else if(dB <= -120 && dB >= -129) {
+            circleSize = 250;
+        } else if(dB <= -115 && dB >= -119) {
             colorOnMap = '#2288CC';
-            circleSize = 240;
-            circleOpacity = 0.22;
-        } else if(dB <= -130 && dB >= -139) {
+            circleSize = 275;
+        } else if(dB <= -120 && dB >= -150) {
             colorOnMap = '#2222CC';
-            circleSize = 260;
-            circleOpacity = 0.2;
+            circleSize = 300;
         } else {
             colorOnMap = '#CC2222';
             circleSize = 100;
-            circleOpacity = 0.36;
         }
     return {
         colorOnMap: colorOnMap,
-        circleSize: circleSize,
-        circleOpacity: circleOpacity
+        circleSize: circleSize
     };
 }
 

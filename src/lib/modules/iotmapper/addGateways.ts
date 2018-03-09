@@ -13,7 +13,7 @@ export function addGateways(sourceJSON, leafletMap, leafletLayerNodes) {
         iconSize:     [48, 48], // size of the icon
         shadowSize:   [48, 48], // size of the shadow
         iconAnchor:   [24, 48], // point of the icon which will correspond to marker's location
-        shadowAnchor: [4, 48],  // the same for the shadow
+        shadowAnchor: [14, 48],  // the same for the shadow
         popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
     });
     gateways.forEach((currentGateway) => {

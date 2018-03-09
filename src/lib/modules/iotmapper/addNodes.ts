@@ -3,21 +3,24 @@ import {dBValues} from "./tools";
 
 export function addNodes(sourceJSON, leafletMap, leafletLayerNodes) {
     const nodes = sourceJSON.nodes;
-    let layerIoTMapperNodes = L.layerGroup();
+    leafletMap.createPane("iotmapperNodes");
+    let layerIoTMapperNodes = L.layerGroup([], {pane: "iotmapperNodes"});
     nodes.forEach((currentNode) => {
         let nodeValues = dBValues(currentNode.dB);
         const mapNodeCircleBlur = L.circle([currentNode.latitude, currentNode.longitude], {
             radius: nodeValues.circleSize,
             color: nodeValues.colorOnMap,
             opacity: 0,
-            fillOpacity: nodeValues.circleOpacity
+            fillOpacity: 1,
+            pane: "iotmapperNodes"
         });
         layerIoTMapperNodes.addLayer(mapNodeCircleBlur);
         const mapNodeCircle = L.circle([currentNode.latitude, currentNode.longitude], {
             radius: 25,
             color: nodeValues.colorOnMap,
             opacity: 0,
-            fillOpacity: 0.5
+            fillOpacity: 0.5,
+            pane: "iotmapperNodes"
         });
         layerIoTMapperNodes.addLayer(mapNodeCircle);
 
@@ -59,4 +62,5 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerNodes) {
     })
     layerIoTMapperNodes.addTo(leafletMap);
     leafletLayerNodes.addOverlay(layerIoTMapperNodes, sourceJSON.config.name + " Nodes");
+    leafletMap.getPane("iotmapperNodes").style.opacity = 0.6;
 }
