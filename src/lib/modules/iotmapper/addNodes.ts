@@ -60,7 +60,9 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerNodes) {
             leafletMap.setView(e.latlng, 17);
         });
     })
-    layerIoTMapperNodes.addTo(leafletMap);
+    if(sourceJSON.config.iotNodes) {
+        layerIoTMapperNodes.addTo(leafletMap);
+    }
     leafletLayerNodes.addOverlay(layerIoTMapperNodes, sourceJSON.config.name + " Nodes");
     leafletMap.getPane("iotmapperNodes").style.opacity = 0.6;
 }

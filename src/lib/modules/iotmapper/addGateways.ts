@@ -54,6 +54,8 @@ export function addGateways(sourceJSON, leafletMap, leafletLayerNodes) {
             leafletMap.setView(e.latlng, 17);
         });
     });
-    layerIoTMapperGateways.addTo(leafletMap);
+    if(sourceJSON.config.iotGateways) {
+        layerIoTMapperGateways.addTo(leafletMap);
+    }
     leafletLayerNodes.addOverlay(layerIoTMapperGateways, sourceJSON.config.name + " Gateways");
 }

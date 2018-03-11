@@ -8,7 +8,10 @@ export function toJSON (config, rawNodes, cb) {
         nodes: [],
         gateways: [],
         config: {
-            name: config.layerName
+            name: config.layerName,
+            iotNodes: config.iotNodes,
+            iotGateways: config.iotGateways,
+            iotGatewayLines: config.iotGatewayLines
         }
     };
     rawNodes = rawNodes.nodes;

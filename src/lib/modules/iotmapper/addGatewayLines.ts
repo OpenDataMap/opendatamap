@@ -21,7 +21,7 @@ export function addGatewayLines(sourceJSON, leafletMap, leafletLayerNodes) {
             });
         });
     })
-    if(sourceJSON.config.gatewayLines) {
+    if(sourceJSON.config.iotGatewayLines) {
         layerIoTMapperGatewaysLines.addTo(leafletMap);
     }
     leafletLayerNodes.addOverlay(layerIoTMapperGatewaysLines, sourceJSON.config.name + " Linien");
