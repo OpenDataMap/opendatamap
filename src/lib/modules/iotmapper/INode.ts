@@ -1,9 +1,9 @@
 interface IIoTMapperNode {
-    latitude: Number;
-    longitude: Number;
+    latitude: number;
+    longitude: number;
     showOnMap: Boolean;
     name: String;
-    dB: Number;
+    dB: number;
     time: String;
     gateways: Array<IIoTMapperGateway>;
 }

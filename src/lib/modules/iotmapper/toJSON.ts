@@ -72,7 +72,7 @@ export function toJSON (config, rawNodes, cb) {
         mapper.time = node.time;
         mapper.latitude = node.latitude;
         mapper.longitude = node.longitude;
-        if((Date.now() - Date.parse(mapper.time)) <= config.filterMapper) {
+        if((Date.now() - Date.parse(mapper.time.toString())) <= config.filterMapper) {
             mapper.showOnMap = true;
         }
         if(source.mapper.length != 0) {
@@ -85,7 +85,7 @@ export function toJSON (config, rawNodes, cb) {
         }
         if(source.nodes.length != 0) {
             let result = source.nodes.find(function (obj) {
-                return ((Math.abs(obj.latitude - node.latitude) < config.filterValue) && (Math.abs(obj.longitude - node.longitude) < config.filterValue)); 
+                return ((Math.abs(obj.latitude - node.latitude) < config.filterValue) && (Math.abs(obj.longitude - node.longitude) < config.filterValue));
             });
             if(result == null) {
                 source.nodes.push(node);
