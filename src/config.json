@@ -26,7 +26,21 @@
       "moduleName": "iotmapper",
       "config": {
         "layerName": "IoT Mapper Hennef",
-        "dataURL": "https://map.bonn.codefor.de/assets/data/ttn_mapper.json"
+        "dataURL": "https://map.bonn.codefor.de/assets/data/ttn_mapper.json",
+        "filterValue": 0.00005,
+        "filterMapper": 900000,
+        "iotNodes": true,
+        "iotMapper": true,
+        "iotGateways": true,
+        "iotGatewayLines": false
+      }
+    },
+    {
+      "moduleName": "open311",
+      "config": {
+        "layerName": "Open311 Bonn",
+        "dataURL": "https://anliegen.bonn.de/georeport/v2/requests.json?status=open",
+        "open311Nodes": true
       }
     }
   ],

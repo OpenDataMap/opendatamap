@@ -1,23 +1,43 @@
-export function dBColor(dB) {
+export function dBValues(dB) {
     let colorOnMap;
-    if(dB <= -60 && dB >= -69) {
+    let circleSize;
+    if(dB <= -85 && dB >= -89) {
             colorOnMap = '#CC8822';
-        } else if(dB <= -70 && dB >= -79) {
+            circleSize = 125;
+        } else if(dB <= -90 && dB >= -94) {
             colorOnMap = '#888822';
-        } else if(dB <= -80 && dB >= -89) {
+            circleSize = 150;
+        } else if(dB <= -95 && dB >= -99) {
             colorOnMap = '#88CC22';
-        } else if(dB <= -90 && dB >= -99) {
+            circleSize = 175;
+        } else if(dB <= -100 && dB >= -104) {
             colorOnMap = '#22CC22';
-        } else if(dB <= -100 && dB >= -109) {
+            circleSize = 200;
+        } else if(dB <= -105 && dB >= -109) {
             colorOnMap = '#22CC88';
-        } else if(dB <= -110 && dB >= -119) {
+            circleSize = 225;
+        } else if(dB <= -110 && dB >= -114) {
             colorOnMap = '#228888';
-        } else if(dB <= -120 && dB >= -129) {
+            circleSize = 250;
+        } else if(dB <= -115 && dB >= -119) {
             colorOnMap = '#2288CC';
-        } else if(dB <= -130 && dB >= -139) {
+            circleSize = 275;
+        } else if(dB <= -120 && dB >= -150) {
             colorOnMap = '#2222CC';
+            circleSize = 300;
         } else {
             colorOnMap = '#CC2222';
+            circleSize = 100;
         }
-    return colorOnMap;
+    return {
+        colorOnMap: colorOnMap,
+        circleSize: circleSize
+    };
+}
+
+export function geoDistance(lat1, lon1, lat2, lon2) {
+    let p = 0.017453292519943295;    // Math.PI / 180
+    let c = Math.cos;
+    let a = 0.5 - c((lat2 - lat1) * p) / 2 + c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p)) / 2;
+    return 12742000 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
 }
