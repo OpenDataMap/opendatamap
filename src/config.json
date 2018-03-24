@@ -5,28 +5,28 @@
       "moduleName": "freifunk",
       "config": {
         "layerName": "Freifunk Siegburg",
-        "dataURL": "https://map.freifunk-siegburg.de/data/"
+        "dataURL": "https://map.freifunk-siegburg.de/data/nodes.json"
       }
     },
     {
       "moduleName": "freifunk",
       "config": {
         "layerName": "Freifunk Troisdorf",
-        "dataURL": "https://map.freifunk-troisdorf.de/data/"
+        "dataURL": "https://map.freifunk-troisdorf.de/data/nodes.json"
       }
     },
     {
       "moduleName": "freifunk",
       "config": {
         "layerName": "Freifunk Hennef",
-        "dataURL": "https://map.freifunk-hennef.de/data/"
+        "dataURL": "https://map.freifunk-hennef.de/data/nodes.json"
       }
     },
     {
       "moduleName": "iotmapper",
       "config": {
         "layerName": "IoT Mapper Hennef",
-        "dataURL": "https://map.bonn.codefor.de/assets/data/"
+        "dataURL": "https://map.bonn.codefor.de/assets/data/ttn_mapper.json"
       }
     }
   ],

@@ -36,7 +36,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     },
     plugins: [
-      new UglifyJSPlugin(),
+      // new UglifyJSPlugin(),
       new HtmlWebpackPlugin({
         template: 'src/index.html',
         inject: false

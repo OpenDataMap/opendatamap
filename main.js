@@ -1,10 +1,13 @@
 const express = require("express");
 const fs = require('fs');
+const http = require('http')
+const https = require('https')
 const path = require("path");
 const commander = require('commander');
 const child_process = require('child_process');
 const sass = require('node-sass');
 const watch = require('node-watch');
+const cryptojs = require('crypto-js')
 
 commander
   .version('0.1.1')
@@ -22,6 +25,12 @@ commander
 
     // start server
     startServer(port);
+
+    // read config
+    const config = readConfig();
+
+    // download data source trigger
+    downloadDataSourcesTrigger(config);
 
     console.log('start watching')
     watch('./src/', {recursive: true}, function (eventType, filename) {
@@ -120,4 +129,28 @@ function buildSass () {
     outputStyle: "compressed"
   })
   fs.writeFileSync("dist/css/night.css", nightSassBuild.css)
+}
+function downloadDataSources (config) {
+  config.modules.forEach(function(module) {
+    const dataURL = module.config.dataURL;
+    const filename = cryptojs.MD5(dataURL) + dataURL.substring(dataURL.lastIndexOf('.'));
+    if(dataURL.includes('https://')) {
+      https.get(dataURL, function(response) {
+        let file = fs.createWriteStream("dist/data/" + filename);
+        response.pipe(file)
+      });
+    } else {
+      http.get(dataURL, function(response) {
+        let file = fs.createWriteStream("dist/data/" + filename);
+        response.pipe(file)
+      });
+    }
+  });
+}
+function downloadDataSourcesTrigger (config) {
+  downloadDataSources(config);
+  setInterval(downloadDataSources, 60000, config);
+}
+function readConfig () {
+  return JSON.parse(fs.readFileSync("src/config.json"));
 }
