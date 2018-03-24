@@ -61,6 +61,9 @@ commander
     console.log('Please wait! The assets were built')
     buildAssets();
 
+    // read config
+    const config = readConfig();
+
     // download data source trigger
     downloadDataSourcesTrigger(config);
 
