@@ -1,7 +1,8 @@
 {
   "name": "OpenDataMap",
-  "version": "0.1.1",
+  "version": "0.4.1",
   "description": "Visualize OpenData on a map",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,6 +16,10 @@
       "name": "Caspar Armster"
     }
   ],
+  "repository" : {
+    "type" : "git",
+    "url" : "github:OpenDataMap/OpenDataMap"
+  },
   "bugs": {
     "url": "https://github.com/OpenDataMap/OpenDataMap/issues"
   },

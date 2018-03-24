@@ -136,7 +136,12 @@ function buildSass () {
 function downloadDataSources (config) {
   config.modules.forEach(function(module) {
     const dataURL = module.config.dataURL;
-    const filename = cryptojs.MD5(dataURL) + dataURL.substring(dataURL.lastIndexOf('.'));
+    let filename;
+    if (dataURL.indexOf("?") === -1) {
+      filename = cryptojs.MD5(dataURL) + dataURL.substring(dataURL.lastIndexOf('.'));
+    } else {
+      filename = cryptojs.MD5(dataURL) + dataURL.substring(dataURL.lastIndexOf('.'), dataURL.indexOf('?'));
+    }
     if(dataURL.includes('https://')) {
       https.get(dataURL, function(response) {
         let file = fs.createWriteStream("dist/data/" + filename);
