@@ -10,8 +10,8 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerControl) {
         } else {
             nodeColorOnMap = '#C62828';
         }
-        const mapNodeCircle = L.circle([currentNode.latitude, currentNode.longitude], {
-            radius: 75,
+        const mapNodeCircle = L.circleMarker([currentNode.latitude, currentNode.longitude], {
+            radius: 7,
             color: nodeColorOnMap,
             fillOpacity: 0.9
         })
@@ -27,23 +27,23 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerControl) {
             end: leafletMap.getZoom()
         };
 
-        leafletMap.on('zoomstart', function (e) {
-            myZoom.start = leafletMap.getZoom();
-        });
-
-        leafletMap.on('zoomend', function (e) {
-            myZoom.end = leafletMap.getZoom();
-            var zoomDiff = myZoom.start - myZoom.end;
-            if (zoomDiff > 0) {
-                for (var i = 0; i < zoomDiff; i++) {
-                    mapNodeCircle.setRadius(mapNodeCircle.getRadius() * 2);
-                }
-            } else if (zoomDiff < 0) {
-                for (var i = 0; i > zoomDiff; i--) {
-                    mapNodeCircle.setRadius(mapNodeCircle.getRadius() / 2);
-                }
-            }
-        });
+        // leafletMap.on('zoomstart', function (e) {
+        //     myZoom.start = leafletMap.getZoom();
+        // });
+        //
+        // leafletMap.on('zoomend', function (e) {
+        //     myZoom.end = leafletMap.getZoom();
+        //     var zoomDiff = myZoom.start - myZoom.end;
+        //     if (zoomDiff > 0) {
+        //         for (var i = 0; i < zoomDiff; i++) {
+        //             mapNodeCircle.setRadius(mapNodeCircle.getRadius() * 2);
+        //         }
+        //     } else if (zoomDiff < 0) {
+        //         for (var i = 0; i > zoomDiff; i--) {
+        //             mapNodeCircle.setRadius(mapNodeCircle.getRadius() / 2);
+        //         }
+        //     }
+        // });
 
         // Zoom to node by clicking on it
         mapNodeCircle.on('click', function(e: any){
