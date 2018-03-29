@@ -3,31 +3,31 @@ export function dBValues(dB) {
     let circleSize;
     if(dB <= -85 && dB >= -89) {
             colorOnMap = '#CC8822';
-            circleSize = 125;
+            circleSize = 20;
         } else if(dB <= -90 && dB >= -94) {
             colorOnMap = '#888822';
-            circleSize = 150;
+            circleSize = 21.5;
         } else if(dB <= -95 && dB >= -99) {
             colorOnMap = '#88CC22';
-            circleSize = 175;
+            circleSize = 23;
         } else if(dB <= -100 && dB >= -104) {
             colorOnMap = '#22CC22';
-            circleSize = 200;
+            circleSize = 24.5;
         } else if(dB <= -105 && dB >= -109) {
             colorOnMap = '#22CC88';
-            circleSize = 225;
+            circleSize = 26;
         } else if(dB <= -110 && dB >= -114) {
             colorOnMap = '#228888';
-            circleSize = 250;
+            circleSize = 27.5;
         } else if(dB <= -115 && dB >= -119) {
             colorOnMap = '#2288CC';
-            circleSize = 275;
+            circleSize = 29;
         } else if(dB <= -120 && dB >= -150) {
             colorOnMap = '#2222CC';
-            circleSize = 300;
+            circleSize = 30.5;
         } else {
             colorOnMap = '#CC2222';
-            circleSize = 100;
+            circleSize = 15;
         }
     return {
         colorOnMap: colorOnMap,
