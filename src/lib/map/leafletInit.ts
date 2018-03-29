@@ -8,8 +8,7 @@ export function leafletInit(config, callback: Function) {
         zoomControl: false,
         center: config.map.center,
         zoom: 13,
-        minZoom: config.map.minZoom,
-        maxZoom: config.map.maxZoom
+        minZoom: config.map.minZoom
     });
 
     // Add Leaflet Zoom Buttons to map
