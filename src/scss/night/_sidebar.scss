@@ -60,26 +60,6 @@
       }
     }
 
-    .sidebar-legend-nodesymbol {
-      width: 15px;
-      height: 15px;
-      display: inline-block;
-      border-radius: 50%;
-      margin-left: 15px;
-      &:first-child {
-        margin-left: 0;
-      }
-      &#sidebar-legend-new {
-        @extend .green, .darken-1;
-      }
-      &#sidebar-legend-online {
-        @extend .blue, .darken-3;
-      }
-      &#sidebar-legend-offline {
-        @extend .red, .darken-3;
-      }
-    }
-
     // Bottom
     #sidebar-main-bottom {
       .tabs {
