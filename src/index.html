@@ -32,44 +32,56 @@
     <div id="map-container">
     </div>
     <div id="sidebar-container">
-        <div id="sidebar-head">
-            <div class="container">
-                <h1 id="sidebar-title">opendatamap</h1>
-                <div id="sidebar-head-legend">
-                    <p> <span class="sidebar-legend-nodesymbol" id="sidebar-legend-online"></span> Node online <span class="sidebar-legend-nodesymbol" id="sidebar-legend-offline"></span> Node offline</p>
-                </div>
-                <div id="sidebar-head-stats">
-                    <p>Insgesamt <span id="sidebar-head-stats-totalnodes">0</span> Nodes, davon sind <span id="sidebar-head-stats-onlinenodes">0</span> online.</p>
-                </div>
-                <div id="sidebar-head-search">
-                    <div class="input-field">
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix">search</i>
-                            <input id="icon_prefix" disabled type="text" class="validate">
-                            <label for="icon_prefix">Knoten filtern</label>
+        <div id="sidebar-main">
+            <div id="sidebar-head">
+                <div class="container">
+                    <h1 class="sidebar-title" id="mainSidebarTitle">opendatamap</h1>
+                    <div id="sidebar-main-head-legend">
+                        <p> <span class="sidebar-legend-nodesymbol" id="sidebar-legend-online"></span> Node online <span class="sidebar-legend-nodesymbol" id="sidebar-legend-offline"></span> Node offline</p>
+                    </div>
+                    <div id="sidebar-main-head-stats">
+                        <p>Insgesamt <span id="sidebar-head-stats-totalnodes">0</span> Nodes, davon sind <span id="sidebar-head-stats-onlinenodes">0</span> online.</p>
+                    </div>
+                    <div id="sidebar-main-head-search">
+                        <div class="input-field">
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">search</i>
+                                <input id="icon_prefix" disabled type="text" class="validate">
+                                <label for="icon_prefix">Knoten filtern</label>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="sidebar-bottom">
-            <ul class="tabs tabs-fixed-width">
-                <li class="tab col s6"><a class="active" href="#sidebar-bottom-nodes">Nodes</a></li>
-                <li class="tab col s6"><a href="#sidebar-bottom-about">&Uuml;ber</a></li>
-            </ul>
-            <div id="sidebar-bottom-nodes" class="container">
-                <ul class="collapsible" id="sidebar-bottom-nodes-chooser">
+            <div id="sidebar-main-bottom">
+                <ul class="tabs tabs-fixed-width">
+                    <li class="tab col s6"><a class="active" href="#sidebar-bottom-nodes">Nodes</a></li>
+                    <li class="tab col s6"><a href="#sidebar-bottom-about">&Uuml;ber</a></li>
                 </ul>
+                <div id="sidebar-bottom-nodes" class="container">
+                    <ul class="collapsible" id="sidebar-bottom-nodes-chooser">
+                    </ul>
+                </div>
+                <div id="sidebar-bottom-about" class="container">
+                    <h3>&Uuml;ber OpenDataMap</h3>
+                    <h5>GNU Affero General Public Licence v3.0</h5>
+                    <p>Copyright (C) Leo Maroni, Caspar Armster, <a href="https://github.com/OpenDataMap/opendatamap/graphs/contributors">contributors</a></p>
+                    <p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
+                    <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.</p>
+                    <p>You should have received a copy of the GNU Affero General Public License along with this program. If not, see
+                        <a href="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</a>.</p>
+                    <p>The source code is available at <a href="https://github.com/OpenDataMap/opendatamap">https://github.com/OpenDataMap/opendatamap</a>.</p>
+                </div>
             </div>
-            <div id="sidebar-bottom-about" class="container">
-                <h3>&Uuml;ber OpenDataMap</h3>
-                <h5>GNU Affero General Public Licence v3.0</h5>
-                <p>Copyright (C) Leo Maroni, Caspar Armster, <a href="https://github.com/OpenDataMap/opendatamap/graphs/contributors">contributors</a></p>
-                <p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
-                <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.</p>
-                <p>You should have received a copy of the GNU Affero General Public License along with this program. If not, see
-                    <a href="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</a>.</p>
-                <p>The source code is available at <a href="https://github.com/OpenDataMap/opendatamap">https://github.com/OpenDataMap/opendatamap</a>.</p>
+        </div>
+        <div id="sidebar-details" class="hidden">
+            <div id="sidebar-details-close">
+                <i class="material-icons">close</i>
+            </div>
+            <div class="container">
+                <h1 id="sidebar-details-title" class="sidebar-title">Node Name</h1>
+                <table id="sidebar-details-infotable" class="bordered">
+                </table>
             </div>
         </div>
     </div>

@@ -4,7 +4,13 @@
 .assistant {
   font-family: "Assistant", sans-serif;
 }
-.bold {
+.thin-text {
+  font-weight: 100;
+}
+.light-text {
+  font-weight: 400;
+}
+.bold-text {
   font-weight: 700;
 }
 body {

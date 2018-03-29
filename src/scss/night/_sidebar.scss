@@ -18,122 +18,155 @@
     width: calc(100% - 20px) !important;
     padding: 15px 20px;
   }
-}
+  #sidebar-main {
+    // Top
+    #mainSidebarTitle {
+      @extend .assistant, .thin;
+      margin-top: 0;
+    }
 
-// Top
-#sidebar-title {
-  @extend .assistant, .thin;
-  margin-top: 0;
-}
-
-#sidebar-head {
-  @extend .grey, .darken-3;
-  @extend .white-text;
-  width: 100%;
-  #sidebar-head-search {
-    margin-top: 25px;
-    /* label focus color */
-    .input-field input[type=text]:focus + label {
-      color: $ff_magenta;
-    }
-    /* label underline focus color */
-    .input-field input[type=text]:focus {
-      border-bottom: 1px solid $ff_magenta;
-      box-shadow: 0 1px 0 0 $ff_magenta;
-    }
-    /* valid color */
-    .input-field input[type=text].valid {
-      border-bottom: 1px solid white;
-      box-shadow: 0 1px 0 0 white;
-    }
-    /* invalid color */
-    .input-field input[type=text].invalid {
-      border-bottom: 1px solid $ff_magenta;
-      box-shadow: 0 1px 0 0 $ff_magenta;
-    }
-    /* icon prefix focus color */
-    .input-field .prefix.active {
-      color: $ff_magenta;
-    }
-  }
-}
-
-.sidebar-legend-nodesymbol {
-  width: 15px;
-  height: 15px;
-  display: inline-block;
-  border-radius: 50%;
-  margin-left: 15px;
-  &:first-child {
-    margin-left: 0;
-  }
-  &#sidebar-legend-new {
-    @extend .green, .darken-1;
-  }
-  &#sidebar-legend-online {
-    @extend .blue, .darken-3;
-  }
-  &#sidebar-legend-offline {
-    @extend .red, .darken-3;
-  }
-}
-
-// Bottom
-#sidebar-bottom {
-  .tabs {
-    @extend .grey.darken-4;
-    overflow-x: hidden;
-    .tab > a {
-      color: $ff_magenta;
-    }
-    .indicator {
-      background-color: $ff_yellow;
-    }
-  }
-
-  .collapsible#sidebar-bottom-nodes-chooser {
-    border-top: 1px solid #424242;
-    border-right: 1px solid #424242;
-    border-left: 1px solid #424242;
-    .collapsible-header {
-      color: #fff;
-      @extend .grey.darken-4;
-      border-bottom: 1px solid #424242;
-    }
-    .collapsible-body {
+    #sidebar-head {
+      @extend .grey, .darken-3;
       @extend .white-text;
-      border-bottom: 1px solid #424242;
+      width: 100%;
+      #sidebar-main-head-search {
+        margin-top: 25px;
+        /* label focus color */
+        .input-field input[type=text]:focus + label {
+          color: $ff_magenta;
+        }
+        /* label underline focus color */
+        .input-field input[type=text]:focus {
+          border-bottom: 1px solid $ff_magenta;
+          box-shadow: 0 1px 0 0 $ff_magenta;
+        }
+        /* valid color */
+        .input-field input[type=text].valid {
+          border-bottom: 1px solid white;
+          box-shadow: 0 1px 0 0 white;
+        }
+        /* invalid color */
+        .input-field input[type=text].invalid {
+          border-bottom: 1px solid $ff_magenta;
+          box-shadow: 0 1px 0 0 $ff_magenta;
+        }
+        /* icon prefix focus color */
+        .input-field .prefix.active {
+          color: $ff_magenta;
+        }
+      }
     }
-    thead {
-      border-bottom: 1px solid $primary-color-dark;
+
+    .sidebar-legend-nodesymbol {
+      width: 15px;
+      height: 15px;
+      display: inline-block;
+      border-radius: 50%;
+      margin-left: 15px;
+      &:first-child {
+        margin-left: 0;
+      }
+      &#sidebar-legend-new {
+        @extend .green, .darken-1;
+      }
+      &#sidebar-legend-online {
+        @extend .blue, .darken-3;
+      }
+      &#sidebar-legend-offline {
+        @extend .red, .darken-3;
+      }
     }
-    .switch label input[type=checkbox]:checked + .lever {
-      background-color: #ff99ff;
-      &:after {
-        background-color: $ff_magenta;
+
+    // Bottom
+    #sidebar-main-bottom {
+      .tabs {
+        @extend .grey.darken-4;
+        overflow-x: hidden;
+        .tab > a {
+          color: $ff_magenta;
+        }
+        .indicator {
+          background-color: $ff_yellow;
+        }
+      }
+
+      .collapsible#sidebar-bottom-nodes-chooser {
+        border-top: 1px solid #424242;
+        border-right: 1px solid #424242;
+        border-left: 1px solid #424242;
+        .collapsible-header {
+          color: #fff;
+          @extend .grey.darken-4;
+          border-bottom: 1px solid #424242;
+        }
+        .collapsible-body {
+          @extend .white-text;
+          border-bottom: 1px solid #424242;
+        }
+        thead {
+          border-bottom: 1px solid $primary-color-dark;
+        }
+        .switch label input[type=checkbox]:checked + .lever {
+          background-color: #ff99ff;
+          &:after {
+            background-color: $ff_magenta;
+          }
+        }
+      }
+
+      h3 {
+        @extend .assistant, .thin;
+      }
+      #sidebar-bottom-about {
+        @extend .white-text;
+        h5 {
+          @extend .thin, .assistant;
+        }
+        a {
+          color: $ff_magenta;
+        }
+      }
+      table {
+        font-family: Assistant, sans-serif !important;
+        th {
+          padding: 3px 5px !important;
+        }
+        td {
+          padding: 3.5px;
+        }
       }
     }
   }
-
-  h3 {
-    @extend .assistant, .thin;
-  }
-  #sidebar-bottom-about {
-    @extend .white-text;
-    h5 {
-      @extend .thin, .assistant;
-    }
-    a {
-      color: $ff_magenta;
-    }
-  }
-  table {
-    font-family: Assistant, sans-serif !important;
-    th {
-      padding: 3px 5px !important;
+  #sidebar-details {
+    color: #fff;
+    td, th {
+      padding: 5px;
     }
     td {
-      padding: 3.5px;
+      .progress {
+        margin: .5rem 0 !important;
+        height: 18px;
+      }
+    }
+    #sidebar-details-close {
+      width: 3rem;
+      border-radius: 25px;
+      height: 3rem;
+      background-color: #424242;
+      position: relative;
+      right: 15px;
+      top: 15px;
+      margin: 0;
+      float: right;
+      cursor: pointer;
+      i {
+        color: #e0e0e0;
+        font-size: 3rem;
+        transition: color 0.2s;
+        &:hover {
+          color: $ff_magenta;
+        }
+      }
     }
   }
 }

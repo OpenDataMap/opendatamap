@@ -6,7 +6,7 @@ const path = require("path");
 const commander = require('commander');
 const child_process = require('child_process');
 const sass = require('node-sass');
-const watch = require('node-watch');
+const watch = require('recursive-watch');
 const cryptojs = require('crypto-js')
 
 commander
@@ -33,10 +33,9 @@ commander
     downloadDataSourcesTrigger(config);
 
     console.log('start watching')
-    watch('./src/', {recursive: true}, function (eventType, filename) {
+    watch('./src/', function (filename) {
       if (filename) {
-        let filetype = filename.lastIndexOf('.')
-        filetype = filename.substring(filetype + 1);
+        const filetype = filename.substring(filename.lastIndexOf('.') + 1);
         switch (filetype) {
           case "ts":
           case "html":
@@ -102,7 +101,7 @@ function startServer (port) {
   server.get('/assets/data/*', function (req, res) {
     res.sendFile(path.join(__dirname + '/dist/data/' + req.params[0]));
   })
-  server.listen(port);
+  server.listen(port, '0.0.0.0');
 
   console.log("OpenDataMap-server is listening on port " + port);
 }

@@ -1,0 +1,116 @@
+{
+  "siteNames": [
+    {
+      "site": "su-ak",
+      "translatedName": "Altenkirchen"
+    },
+    {
+      "site": "ffsu_d11",
+      "translatedName": "Altenkirchen"
+    },
+    {
+      "site": "su-rr",
+      "translatedName": "Ruppichteroth"
+    },
+    {
+      "site": "su-lo",
+      "translatedName": "Lohmar"
+    },
+    {
+      "site": "ffsu_d03",
+      "translatedName": "Lohmar"
+    },
+    {
+      "site": "su-me",
+      "translatedName": "Meckenheim"
+    },
+    {
+      "site": "su-mu",
+      "translatedName": "Much"
+    },
+    {
+      "site": "su-ne",
+      "translatedName": "Neunkirchen"
+    },
+    {
+      "site": "su-ndk",
+      "translatedName": "Niederkassel"
+    },
+    {
+      "site": "su-nk",
+      "translatedName": "Niederkassel"
+    },
+    {
+      "site": "ffsu_d07",
+      "translatedName": "Niederkassel"
+    },
+    {
+      "site": "su-rhb",
+      "translatedName": "Rheinbach"
+    },
+    {
+      "site": "su-sa",
+      "translatedName": "Sankt Augustin"
+    },
+    {
+      "site": "ffsu_d04",
+      "translatedName": "Sankt Augustin"
+    },
+    {
+      "site": "su-su",
+      "translatedName": "Siegburg"
+    },
+    {
+      "site": "ffsu_d01",
+      "translatedName": "Siegburg"
+    },
+    {
+      "site": "su-wb",
+      "translatedName": "Wachtberg"
+    },
+    {
+      "site": "su-kw",
+      "translatedName": "Koenigswinter"
+    },
+    {
+      "site": "hennef",
+      "translatedName": "Hennef"
+    },
+    {
+      "site": "Hennef",
+      "translatedName": "Hennef"
+    },
+    {
+      "site": "tdf",
+      "translatedName": "Troisdorf"
+    },
+    {
+      "site": "tdf-",
+      "translatedName": "Troisdorf"
+    },
+    {
+      "site": "inn",
+      "translatedName": "Troisdorf"
+    },
+    {
+      "site": "flu",
+      "translatedName": "Troisdorf"
+    },
+    {
+      "site": "tdf-inn",
+      "translatedName": "Troisdorf"
+    },
+    {
+      "site": "evt",
+      "translatedName": "Troisdorf"
+    },
+    {
+      "site": "su-snw",
+      "translatedName": "Soziale NetzWerke"
+    },
+    {
+      "site": "ffsu_d05",
+      "translatedName": "Soziale NetzWerke"
+    }
+  ]
+}

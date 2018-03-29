@@ -8,7 +8,7 @@ import importConfig from './config.json';
 const config = (importConfig as any);
 // set website title
 $(document).attr('title', config.title);
-$('#sidebar-title').html(config.title);
+$('#mainSidebarTitle').html(config.title);
 // Init Leaflet
 leafletInit(config, (leafletMap, leafletLayerControl) => {
     // Init Config modules
