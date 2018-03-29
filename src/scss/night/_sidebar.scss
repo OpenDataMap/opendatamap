@@ -14,6 +14,9 @@
     height: 50%;
     float: right !important;
   }
+  @media only screen and (max-width: 992px) {
+    overflow-x: auto !important;
+  }
   .container {
     width: calc(100% - 20px) !important;
     padding: 15px 20px;
@@ -165,6 +168,26 @@
         transition: color 0.2s;
         &:hover {
           color: $ff_magenta;
+        }
+      }
+    }
+    .container {
+      @media only screen and (min-width: 1200px) and (max-width: 1465px) {
+        font-size: 72.5%;
+        h1 {
+          font-size: 24px;
+        }
+      }
+      @media only screen and (min-width: 1075px) and (max-width: 1199px) {
+        font-size: 65%;
+        h1 {
+          font-size: 22px;
+        }
+      }
+      @media only screen and (min-width: 993px) and (max-width: 1074px) {
+        font-size: 50%;
+        h1 {
+          font-size: 20px;
         }
       }
     }

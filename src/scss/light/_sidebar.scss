@@ -8,6 +8,9 @@
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
+  @media only screen and (max-width: 992px) {
+    overflow-x: auto;
+  }
   @media screen and (max-width: $medium-screen) {
     width: 100vw;
     height: 50%;
@@ -169,10 +172,6 @@
         h1 {
           font-size: 20px;
         }
-      }
-      @media only screen and (max-width: 992px) {
-        overflow-x: auto;
-
       }
     }
   }
