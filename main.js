@@ -57,7 +57,7 @@ commander
   .action(function (port) {
     // build the assets
     console.log('Please wait! The assets were built')
-    // buildAssets();
+    buildAssets();
 
     // read config
     const config = readConfig();
