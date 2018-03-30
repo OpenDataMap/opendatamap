@@ -56,7 +56,7 @@ commander
   .description('server for production use')
   .action(function (port) {
     // build the assets
-    // console.log('Please wait! The assets were built')
+    console.log('Please wait! The assets were built')
     // buildAssets();
 
     // read config
@@ -66,7 +66,7 @@ commander
     downloadDataSourcesTrigger(config);
 
     // start server
-    // startServer(port);
+    startServer(port);
   })
 // show help if no command was entered
 commander.parse(process.argv)
