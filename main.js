@@ -1,7 +1,6 @@
 const express = require("express");
 const fs = require('fs');
-const http = require('http')
-const https = require('https')
+const axios = require('axios');
 const path = require("path");
 const commander = require('commander');
 const child_process = require('child_process');
@@ -57,8 +56,8 @@ commander
   .description('server for production use')
   .action(function (port) {
     // build the assets
-    console.log('Please wait! The assets were built')
-    buildAssets();
+    // console.log('Please wait! The assets were built')
+    // buildAssets();
 
     // read config
     const config = readConfig();
@@ -67,7 +66,7 @@ commander
     downloadDataSourcesTrigger(config);
 
     // start server
-    startServer(port);
+    // startServer(port);
   })
 // show help if no command was entered
 commander.parse(process.argv)
@@ -144,17 +143,14 @@ function downloadDataSources (config) {
     } else {
       filename = cryptojs.MD5(dataURL) + dataURL.substring(dataURL.lastIndexOf('.'), dataURL.indexOf('?'));
     }
-    if(dataURL.includes('https://')) {
-      https.get(dataURL, function(response) {
-        let file = fs.createWriteStream("dist/data/" + filename);
-        response.pipe(file)
-      });
-    } else {
-      http.get(dataURL, function(response) {
-        let file = fs.createWriteStream("dist/data/" + filename);
-        response.pipe(file)
-      });
-    }
+    axios.get(dataURL, {
+      responseType: 'stream'
+    }).then(function (response) {
+      let file = fs.createWriteStream("dist/data/" + filename);
+      response.data.pipe(file);
+    }).catch(function (error) {
+      console.error('Error downloading ' + dataURL + ' - StatusCode: '  + error.response.status);
+    })
   });
 }
 function downloadDataSourcesTrigger (config) {
