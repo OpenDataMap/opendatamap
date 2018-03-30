@@ -15,22 +15,14 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerNodes) {
             pane: "iotmapperNodes"
         });
         layerIoTMapperNodes.addLayer(mapNodeCircleBlur);
-        const mapNodeCircle = L.circleMarker([currentNode.latitude, currentNode.longitude], {
-            radius: 25,
-            color: nodeValues.colorOnMap,
-            opacity: 0,
-            fillOpacity: 0.5,
-            pane: "iotmapperNodes"
-        });
-        // layerIoTMapperNodes.addLayer(mapNodeCircle);
 
         // add Tooltip to cicle
-        mapNodeCircle.bindTooltip(currentNode.name, {
+        mapNodeCircleBlur.bindTooltip(currentNode.name, {
             className: 'leaflet-tooltip-node'
         });
 
         // Zoom to node by clicking on it
-        mapNodeCircle.on('click', function(e: any){
+        mapNodeCircleBlur.on('click', function(e: any){
             leafletMap.setView(e.latlng, 17);
         });
     })

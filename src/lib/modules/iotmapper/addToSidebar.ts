@@ -3,11 +3,21 @@ export function addToSidebar(sourceJSON, moduleID) {
         '  <li id="sidebar-bottom-nodes-chooser-' + moduleID + '">' +
         '      <div class="collapsible-header"><i class="material-icons">layers</i>' + sourceJSON.config.name + '</div>' +
         '      <div class="collapsible-body">' +
-        '          <table class="responsive-table">' +
+        '          <table id="iotmapper-gateways" class="responsive-table">' +
         '              <thead>' +
         '                  <tr>' +
-        '                      <th>Name</th>\n' +
-        '                      <th>Mapping</th>\n' +
+        '                      <th>Gateways</th>\n' +
+        '                      <th>Anzeigen</th>\n' +
+        '                  </tr>' +
+        '              </thead>' +
+        '              <tbody></tbody>' +
+        '          </table>' +
+        '          <br />' +
+        '          <table id="iotmapper-devices" class="responsive-table">' +
+        '              <thead>' +
+        '                  <tr>' +
+        '                      <th>Devices</th>\n' +
+        '                      <th>Anzeigen</th>\n' +
         '                  </tr>' +
         '              </thead>' +
         '              <tbody></tbody>' +
@@ -16,7 +26,7 @@ export function addToSidebar(sourceJSON, moduleID) {
         '   </li>');
     sourceJSON.gateways.forEach((gateway) => {
         if(gateway.showOnSitebar) {
-            $('#sidebar-bottom-nodes-chooser-' + moduleID + ' .collapsible-body table tbody').append('' +
+            $('#iotmapper-gateways tbody').append('' +
                 '<tr>' +
                 '    <td>' + gateway.name + '</td>' +
                 '    <td>' +
@@ -32,5 +42,22 @@ export function addToSidebar(sourceJSON, moduleID) {
                 '    </td>' +
                 '</tr>')
         }
+    })
+    sourceJSON.mapper.forEach((mapper) => {
+        $('#iotmapper-devices tbody').append('' +
+            '<tr>' +
+            '    <td>' + mapper.name + '</td>' +
+            '    <td>' +
+            '        <div class="switch">' +
+            '            <label>' +
+            '                Aus' +
+            '                <input disabled type="checkbox" checked="checked">' +
+            '                <span class="lever">' +
+            '                </span>' +
+            '                An' +
+            '            </label>' +
+            '        </div>' +
+            '    </td>' +
+            '</tr>')
     })
 }
