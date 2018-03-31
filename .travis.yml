@@ -1,7 +1,8 @@
-language: node_js                                                                            
-node_js:                                                                                     
-- '8'                                                                                        
-notifications:                                                                               
-  slack:                                                                                     
-    rooms:                                                                                   
-      secure: nUHsgrpx4e/CxShLZw3dfinrKHoE+3UDG5pA/hP9UEce6Z8eFKybTgmfFmWA+a0vkD8bcqHooIoCB5Gb3CCCAM2FeByskZ5xnw5E4+toM1OXXMLhzZ13K7jQ2NmgwODa9w77/F3+3LkDeUH6Atz1+Ze295qg6uX7RPC9BjKUqpz652v/xgX9/bVBrnBBYnrSMjgECs0Qb1be6Ge7oXb4DKgUeXgZc3P3mHow9S6aTEkZzWA4JvKqjTPI3zl2bwY2+wyT5bxVN1v4HsmN+w7tKVjBEtED5PPLsvHgUiWXUQCaptPZQKzHgZALRDcOnEGfY4DW1JJEhJ/3kB9VcTasaLVdv47pVxawxrSUX56W8ipFhIMqa8ffguKWe13BDQ6s6SYlrYwrOO+oXPBCS2VDO2MOs2sEThpKVfUik1z27aFKHZXuFsd1SjlZB4+iuz0544PCMu2TByeEx0A1KneSGoGgmH9kSk7QxBapUO3vWA6aRRmTqK7H45BhoMOQJCNKhVoYn1wA1pJrAd92/2Eo38MTkU8KE1+Uq+S2FQY7WyUSGTc0cN50D1D5fFC3gp8oHusPwEV+WsWTGuzCFa5b0maMUFiujqBkuv3m24CAprW9IpsbJvUI+o4+nTd6vP0rh9xRmONW/Ce79LPB+Jn19qP/zk9VzKgO68kUZl9TFcU=
+language: node_js
+node_js:
+  - '8'
+dist: "xenial"
+notifications:
+  slack:
+    rooms:
+      secure: M/OFR3gUuTYT331f4vT1vf+sPxUHhDOvLQB1tbQ+RkjOsDJlkzDCmHUfw4riYqxArj0/oKEyBJDiQ2MgUE2pyxKB7+hFaXQ7qjtXW4Z7qCvmhte4F5G+xMH/ZEcDb1iM4xjBe4nKRLQX0kVZGeuBVUW0KHjHDEtwJqXjAfzUoxVQB7LuSmItGKSQEoo0gsZFj8hn+uxIxY8h3kTqzrqxK+a/k5dkZvwyIuk7s+2v580uFiR793HZkBecxryAvVc15SAK0WiBnisFuLQdeNpj4ZIB7Mafd2zrtNPpeUXIr9mL3lMZsjzRoq1AQsSk4bDqwxXA4/S+lfQIt6ek+yi5QXCGpmqGegd81bMaLFBCvQ+O/yh3jAAKhQVzraynLNbXDIDIlP3qAS4VImTkFmieAOV1Qa+T4CrX8kFF8Q4fUxgHSn4NbcxSPBMTmwdhbHTM0NsEU/rK5scNeqHOx5WUsMtnZvnyFCJ9Yj1n51LylgGFjEWUx2X03iU+WFwLXrTm6ctJQb0B2laOshGRoYxBNK++wQMSalnmT8tI1OSjRF5dSglOUcN9L4/vyFpFT4WcTz1y6fCBYEXfys5+ATGyfPN8woXOmIAu0SZEwOmGH07VDJnYF3pDNfJbUXjX/d2cwWLoMpFLiUb13OhgJaBm0h682P/oUVYDyrP70075Qto=
