@@ -49,6 +49,17 @@ commander
     })
   })
 
+// test server
+commander
+  .command('test')
+  .description('test')
+  .action(function() {
+    buildAssets();
+    const config = readConfig();
+    downloadDataSources(config);
+    console.log('Passed');
+  })
+
 // server for production use
 commander
   .command('production <port>')
@@ -116,7 +127,8 @@ function buildAssets () {
 function buildWebpack () {
   // webpack-build
   const webpackBuild = child_process.spawnSync('node_modules/webpack/bin/webpack.js');
-  if(webpackBuild.stderr.toString()) throw webpackBuild.stderr.toString()
+  if(webpackBuild.stderr.toString()) throw webpackBuild.stderr.toString();
+  if(webpackBuild.stdout.toString().includes('Error') || webpackBuild.stdout.toString().includes('ERROR')) throw webpackBuild.stdout.toString();
 }
 function buildSass () {
   // sass build
@@ -126,13 +138,18 @@ function buildSass () {
   const mainSassBuild = sass.renderSync({
     file: 'src/scss/light/main.scss',
     outputStyle: "compressed"
-  })
+  }, function(err, result) {
+    if(err) throw err;
+    fs.writeFileSync('dist/css/light.css', result.css);
+  });
   fs.writeFileSync("dist/css/light.css", mainSassBuild.css);
   const nightSassBuild = sass.renderSync({
     file: 'src/scss/night/main.scss',
     outputStyle: "compressed"
+  }, function(err, result) {
+    if (err) throw err;
+    fs.writeFileSync("dist/css/night.css", result.css);
   })
-  fs.writeFileSync("dist/css/night.css", nightSassBuild.css)
 }
 function downloadDataSources (config) {
   config.modules.forEach(function(module) {
