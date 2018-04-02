@@ -7,6 +7,6 @@ export function getNodes (config, cb) {
         cb(nodes);
     }).fail((error) => {
         Materialize.toast('Problem loading ' + config.layerName, 10000);
-        console.error('Problem with loading the layer ' + config.layerName)
+        console.error('Problem with loading the layer ' + config.layerName);
     })
 }
