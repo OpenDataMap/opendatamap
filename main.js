@@ -135,20 +135,19 @@ function buildSass () {
   if (!fs.existsSync('dist/css')){
     fs.mkdirSync('dist/css')
   }
-  const mainSassBuild = sass.renderSync({
+  sass.render({
     file: 'src/scss/light/main.scss',
     outputStyle: "compressed"
   }, function(err, result) {
     if(err) throw err;
-    fs.writeFileSync('dist/css/light.css', result.css);
+    fs.writeFile('dist/css/light.css', result.css);
   });
-  fs.writeFileSync("dist/css/light.css", mainSassBuild.css);
-  const nightSassBuild = sass.renderSync({
+  sass.render({
     file: 'src/scss/night/main.scss',
     outputStyle: "compressed"
   }, function(err, result) {
     if (err) throw err;
-    fs.writeFileSync("dist/css/night.css", result.css);
+    fs.writeFile("dist/css/night.css", result.css);
   })
 }
 function downloadDataSources (config) {
