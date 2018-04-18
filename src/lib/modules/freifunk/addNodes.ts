@@ -27,11 +27,6 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerControl) {
         mapNodeCircle.bindTooltip(currentNode.name, {
             className: 'leaflet-tooltip-node'
         });
-
-        // Zoom to node by clicking on it
-        mapNodeCircle.on('click', function(e: any){
-            leafletMap.setView(e.latlng, 17);
-        });
         layerFreiunkNodes.addLayer(mapNodeCircle);
     });
     layerFreiunkNodes.addTo(leafletMap);

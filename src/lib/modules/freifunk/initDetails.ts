@@ -7,10 +7,13 @@ const config = (importConfig as any);
 
 export function nodeDetailOnClick(e) {
     const leafletMap = this._map;
+    let actualCenter = leafletMap.getCenter();
+    let actualZoom = leafletMap.getZoom();
+    leafletMap.setView(this._latlng, 17);
     $('#sidebar-details-close').on("click", function () {
        $('#sidebar-details').addClass('hidden');
        $('#sidebar-main').removeClass('hidden');
-        leafletMap.setView(config.map.center, 13);
+        leafletMap.setView(actualCenter, actualZoom);
     });
     const nodedata = <INode> this.options.dataObj;
     let online = nodedata.online;
