@@ -50,7 +50,7 @@ export function nodeDetailOnClick(e) {
             '<td>' + nodedata.service_name + '</td>' +
         '</tr>' +
         '<tr>' +
-            '<th>Firmware</th>' +
+            '<th>Beschreibung</th>' +
             '<td>' + nodedata.description + '</td>' +
         '</tr>' +
         '</tbody>');
