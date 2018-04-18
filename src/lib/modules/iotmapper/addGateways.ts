@@ -33,11 +33,6 @@ export function addGateways(sourceJSON, leafletMap, leafletLayerNodes) {
         mapGatewayMarker.bindTooltip(currentGateway.name, {
             className: 'leaflet-tooltip-node'
         });
-
-        // Zoom to node by clicking on it
-        mapGatewayMarker.on('click', function(e: any){
-            leafletMap.setView(e.latlng, 17);
-        });
     });
     if(sourceJSON.config.iotGateways) {
         layerIoTMapperGateways.addTo(leafletMap);
