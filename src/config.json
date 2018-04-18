@@ -42,6 +42,14 @@
         "dataURL": "https://anliegen.bonn.de/georeport/v2/requests.json?status=open",
         "open311Nodes": true
       }
+    },
+    {
+      "moduleName": "open311",
+      "config": {
+        "layerName": "Open311 Siegburg",
+        "dataURL": "https://anliegen.siegburg.de/georeport/v2/requests.json?status=open",
+        "open311Nodes": true
+      }
     }
   ],
   "map": {
