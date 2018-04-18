@@ -18,10 +18,10 @@ export function addGateways(sourceJSON, leafletMap, leafletLayerNodes) {
         popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
     });
     const customMapGatewayMarker = L.Marker.extend({
-            options: {
-                dataObj: Object
-            }
-        });
+        options: {
+            dataObj: Object
+        }
+    });
     gateways.forEach((currentGateway) => {
         const mapGatewayMarker = new customMapGatewayMarker([currentGateway.latitude, currentGateway.longitude], {
             icon: iconIoTMapperGateway,

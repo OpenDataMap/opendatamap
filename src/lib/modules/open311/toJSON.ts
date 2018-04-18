@@ -17,6 +17,10 @@ export function toJSON (config, rawNodes, cb) {
             service_code: 0,
             service_name: "",
             description: "",
+            requested_datetime: "",
+            updated_datetime: "",
+            address: "",
+            zipcode: "",
             latitude: 0,
             longitude: 0,
             showOnMap: false
@@ -31,6 +35,14 @@ export function toJSON (config, rawNodes, cb) {
         node.service_code = currentNode.service_code;
         node.service_name = currentNode.service_name;
         node.description = currentNode.description;
+        node.requested_datetime = new Date(Date.parse(currentNode.requested_datetime)).toLocaleString();
+        node.updated_datetime = new Date(Date.parse(currentNode.updated_datetime)).toLocaleString();
+        if(currentNode.address !== undefined && currentNode.address != null) {
+            node.address = currentNode.address;
+        }
+        if(currentNode.zipcode !== undefined && currentNode.zipcode != null) {
+            node.zipcode = currentNode.zipcode;
+        }
         source.nodes.push(node);
     });
     cb(source);
