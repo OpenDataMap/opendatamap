@@ -9,7 +9,7 @@ const watch = require('recursive-watch');
 const cryptojs = require('crypto-js')
 
 commander
-  .version('0.1.1')
+  .version('0.4.6')
   .description('Server for OpenDataMap')
 
 // development server

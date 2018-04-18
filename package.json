@@ -1,6 +1,6 @@
 {
   "name": "OpenDataMap",
-  "version": "0.4.4",
+  "version": "0.4.6",
   "description": "Visualize OpenData on a map",
   "main": "main.js",
   "scripts": {
