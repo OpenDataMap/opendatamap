@@ -8,12 +8,17 @@ import {addToSidebar} from "./addToSidebar";
 
 export default function moduleIot(moduleConfig, leafletMap, leafletLayerControl, moduleID) {
     getNodes(moduleConfig, function (rawNodes) {
-        toJSON(moduleConfig, rawNodes, function (formattedNodes) {
-            addGatewayLines(formattedNodes, leafletMap, leafletLayerControl);
-            addGateways(formattedNodes, leafletMap, leafletLayerControl);
-            addNodes(formattedNodes, leafletMap, leafletLayerControl);
-            addMapper(formattedNodes, leafletMap, leafletLayerControl);
-            addToSidebar(formattedNodes, moduleID)
-        });
+        if(((new Date().getTime() - new Date(rawNodes.timestamp).getTime()) / 1000 / 60) > 60) {
+            Materialize.toast('Problem beim Laden von ' + moduleConfig.layerName, 10000);
+            console.error('Problem with loading the layer ' + moduleConfig.layerName);
+        } else {
+            toJSON(moduleConfig, rawNodes, function (formattedNodes) {
+                addGatewayLines(formattedNodes, leafletMap, leafletLayerControl);
+                addGateways(formattedNodes, leafletMap, leafletLayerControl);
+                addNodes(formattedNodes, leafletMap, leafletLayerControl);
+                addMapper(formattedNodes, leafletMap, leafletLayerControl);
+                addToSidebar(formattedNodes, moduleID)
+            });
+        }
     });
 };

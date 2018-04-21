@@ -2,15 +2,15 @@ import 'jquery';
 import './INode';
 import './ISource';
 
-export function toJSON (config, rawNodes, cb) {
+export function toJSON (config, rawData, cb) {
     let source = <ISource> {
         nodes: [],
         config: {
             name: config.layerName
         }
     };
-    rawNodes = rawNodes.nodes;
-    rawNodes.forEach((currentNode) => {
+    rawData = rawData.nodes;
+    rawData.forEach((currentNode) => {
         let node = <INode> {
             name: "",
             online: false,

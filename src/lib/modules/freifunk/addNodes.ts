@@ -5,7 +5,8 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerControl) {
     let layerFreiunkNodes = L.layerGroup();
     nodes.forEach((currentNode) => {
         let nodeColorOnMap;
-        if(currentNode.online) {
+        const currentTimeLastseenDiff = ((new Date().getTime() - currentNode.lastseen.getTime()) / 1000 / 60);
+        if(currentTimeLastseenDiff < 15 && currentNode.online) {
             nodeColorOnMap = '#1565C0';
         } else {
             nodeColorOnMap = '#C62828';
