@@ -20,7 +20,9 @@ export function leafletInit(config, callback: Function) {
     let layerControl = L.control.layers({},{},{
         position: 'bottomright',
     }).addTo(map);
-
+    L.control.scale({
+        imperial: false
+    }).addTo(map);
     // Add Leaflet BaseLayer
     leafletInitBaseLayer(config, layerControl, map);
 
