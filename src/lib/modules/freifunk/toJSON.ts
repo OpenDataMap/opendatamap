@@ -6,7 +6,8 @@ export function toJSON (config, rawData, cb) {
     let source = <ISource> {
         nodes: [],
         config: {
-            name: config.layerName
+            name: config.layerName,
+            standardActivated: config.standardActivated
         }
     };
     rawData = rawData.nodes;

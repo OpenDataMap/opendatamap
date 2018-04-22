@@ -5,10 +5,11 @@ import 'materialize-css';
 import {leafletInit} from './lib/map/leafletInit';
 import * as modules from './lib/modules/modules';
 import importConfig from './config.json';
+import {initLayerChooser} from "./lib/layerChooser/initLayerChooser";
 const config = (importConfig as any);
 // set website title
 $(document).attr('title', config.title);
-$('#mainSidebarTitle').html(config.title);
+$('.titleMap').html(config.title);
 // Init Leaflet
 leafletInit(config, (leafletMap, leafletLayerControl) => {
     // Init Config modules
@@ -17,8 +18,9 @@ leafletInit(config, (leafletMap, leafletLayerControl) => {
         modules[module.moduleName](module.config, leafletMap, leafletLayerControl, moduleID);
 
     }
-    $('#sidebar-bottom-nodes-chooser').collapsible();
+    $('#sidebar-bottom-nodes-layerChooser').collapsible();
     // Init Tabs
     $('ul.tabs').tabs();
+    initLayerChooser(config, leafletMap);
     $('#preloader').remove();
 });

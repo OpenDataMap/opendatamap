@@ -11,7 +11,7 @@ export default function moduleFreifunk(moduleConfig, leafletMap, leafletLayerCon
         } else {
             toJSON(moduleConfig, rawNodes, function (formattedNodes) {
                 addNodes(formattedNodes, leafletMap, leafletLayerControl);
-                addToSidebar(formattedNodes, moduleID)
+                addToSidebar(formattedNodes, moduleID);
             });
         }
     });

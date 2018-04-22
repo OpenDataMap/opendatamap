@@ -28,6 +28,21 @@
         Laden...
     </h5>
 </div>
+<!-- Modal Structure -->
+<div id="modal-chooseModules" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <div class="center">
+            <h2 class="thin-text titleMap">opendatamap</h2>
+        </div>
+        <h4>Module ausw&auml;hlen</h4>
+        <ul class="collection" id="chooseModules-table">
+        </ul>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect btn-flat ">OK, merken</a>
+    </div>
+</div>
+
 <main>
     <div id="map-container">
     </div>
@@ -35,7 +50,7 @@
         <div id="sidebar-main">
             <div id="sidebar-head">
                 <div class="container">
-                    <h1 class="sidebar-title" id="mainSidebarTitle">opendatamap</h1>
+                    <h1 class="sidebar-title titleMap" id="mainSidebarTitle">opendatamap</h1>
                     <div id="sidebar-main-head-search">
                         <div class="input-field">
                             <div class="input-field col s6">
@@ -55,6 +70,7 @@
                 <div id="sidebar-bottom-nodes" class="container">
                     <ul class="collapsible" id="sidebar-bottom-nodes-chooser">
                     </ul>
+                    <div style="position: absolute; left: 15px; bottom: 15px; cursor: pointer;"><a onclick="localStorage.clear(); location.reload();">Zur&uuml;cksetzen</a></div>
                 </div>
                 <div id="sidebar-bottom-about" class="container">
                     <h3>&Uuml;ber OpenDataMap</h3>

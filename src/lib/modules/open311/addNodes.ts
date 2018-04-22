@@ -4,6 +4,7 @@ import * as L from 'leaflet';
 import iconOpen311Marker from './images/opendatamap_marker_open311_48px.png';
 import iconOpen311MarkerShadow from './images/opendatamap_marker_open311_shadow_48px.png';
 import {nodeDetailOnClick} from "./initDetails";
+import {appendToLayerChooser} from "../../layerChooser/initLayerChooser";
 
 export function addNodes(sourceJSON, leafletMap, leafletLayerNodes) {
     let layerOpen311Nodes = L.layerGroup();
@@ -34,8 +35,21 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerNodes) {
             className: 'leaflet-tooltip-node'
         });
     });
-    if(sourceJSON.config.open311Nodes) {
-        layerOpen311Nodes.addTo(leafletMap);
+    if(localStorage.getItem('rememberLayers') === null) {
+        if(sourceJSON.config.standardActivated) {
+            layerOpen311Nodes.addTo(leafletMap);
+        }
+    } else {
+        const rememberLayers = JSON.parse(localStorage.getItem('rememberLayers'));
+        rememberLayers.forEach(function (rememberLayer) {
+            if(rememberLayer.name === sourceJSON.config.name) {
+                if (rememberLayer.checked) {
+                    layerOpen311Nodes.addTo(leafletMap);
+                }
+            }
+        })
     }
+
+    appendToLayerChooser(sourceJSON.config.name, sourceJSON.config.standardActivated);
     leafletLayerNodes.addOverlay(layerOpen311Nodes, sourceJSON.config.name);
 }

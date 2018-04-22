@@ -7,7 +7,7 @@ export function toJSON (config, rawNodes, cb) {
         nodes: [],
         config: {
             name: config.layerName,
-            open311Nodes: config.open311Nodes
+            standardActivated: config.standardActivated
         }
     };
     rawNodes.forEach((currentNode) => {

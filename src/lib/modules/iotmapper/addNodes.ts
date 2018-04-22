@@ -1,5 +1,6 @@
 ﻿import * as L from 'leaflet';
 import {dBValues} from "./tools";
+import {appendToLayerChooser} from "../../layerChooser/initLayerChooser";
 
 export function addNodes(sourceJSON, leafletMap, leafletLayerNodes) {
     const nodes = sourceJSON.nodes;
@@ -26,9 +27,21 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerNodes) {
             leafletMap.setView(e.latlng, 17);
         });
     })
-    if(sourceJSON.config.iotNodes) {
-        layerIoTMapperNodes.addTo(leafletMap);
+    if(localStorage.getItem('rememberLayers') === null) {
+        if(sourceJSON.config.iotNodes) {
+            layerIoTMapperNodes.addTo(leafletMap);
+        }
+    } else {
+        const rememberLayers = JSON.parse(localStorage.getItem('rememberLayers'));
+        rememberLayers.forEach(function (rememberLayer) {
+            if(rememberLayer.name === sourceJSON.config.name + " Nodes") {
+                if (rememberLayer.checked) {
+                    layerIoTMapperNodes.addTo(leafletMap);
+                }
+            }
+        })
     }
     leafletLayerNodes.addOverlay(layerIoTMapperNodes, sourceJSON.config.name + " Nodes");
+    appendToLayerChooser(sourceJSON.config.name + ' Nodes', sourceJSON.config.iotNodes);
     leafletMap.getPane("iotmapperNodes").style.opacity = 0.6;
 }

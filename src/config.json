@@ -5,6 +5,7 @@
       "moduleName": "freifunk",
       "config": {
         "layerName": "Freifunk Siegburg",
+        "standardActivated": true,
         "dataURL": "https://map.freifunk-siegburg.de/data/nodes.json"
       }
     },
@@ -12,6 +13,7 @@
       "moduleName": "freifunk",
       "config": {
         "layerName": "Freifunk Troisdorf",
+        "standardActivated": false,
         "dataURL": "https://map.freifunk-troisdorf.de/data/nodes.json"
       }
     },
@@ -19,6 +21,7 @@
       "moduleName": "freifunk",
       "config": {
         "layerName": "Freifunk Hennef",
+        "standardActivated": true,
         "dataURL": "https://map.freifunk-hennef.de/data/nodes.json"
       }
     },
@@ -29,6 +32,7 @@
         "dataURL": "https://map.bonn.codefor.de/assets/data/ttn_mapper.json",
         "filterValue": 0.00005,
         "filterMapper": 900000,
+        "standardActivated": true,
         "iotNodes": true,
         "iotMapper": true,
         "iotGateways": true,
@@ -38,6 +42,7 @@
     {
       "moduleName": "open311",
       "config": {
+        "standardActivated": true,
         "layerName": "Open311 Bonn",
         "dataURL": "https://anliegen.bonn.de/georeport/v2/requests.json?status=open",
         "open311Nodes": true
@@ -47,8 +52,8 @@
       "moduleName": "open311",
       "config": {
         "layerName": "Open311 Siegburg",
-        "dataURL": "https://anliegen.siegburg.de/georeport/v2/requests.json?status=open",
-        "open311Nodes": true
+        "standardActivated": true,
+        "dataURL": "https://anliegen.siegburg.de/georeport/v2/requests.json?status=open"
       }
     }
   ],
@@ -72,5 +77,8 @@
       7.206706
     ],
     "maxZoom": 18
+  },
+  "layerChooser": {
+    "activated": true
   }
 }

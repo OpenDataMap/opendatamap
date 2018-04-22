@@ -1,5 +1,6 @@
 import * as L from 'leaflet';
 import {nodeDetailOnClick} from "./initDetails";
+import {appendToLayerChooser} from "../../layerChooser/initLayerChooser";
 export function addNodes(sourceJSON, leafletMap, leafletLayerControl) {
     const nodes = sourceJSON.nodes;
     let layerFreiunkNodes = L.layerGroup();
@@ -32,6 +33,20 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerControl) {
             layerFreiunkNodes.addLayer(mapNodeCircle);
         }
     });
-    layerFreiunkNodes.addTo(leafletMap);
+    if(localStorage.getItem('rememberLayers') === null) {
+        if(sourceJSON.config.standardActivated) {
+            layerFreiunkNodes.addTo(leafletMap);
+        }
+    } else {
+        const rememberLayers = JSON.parse(localStorage.getItem('rememberLayers'));
+        rememberLayers.forEach(function (rememberLayer) {
+            if(rememberLayer.name === sourceJSON.config.name) {
+                if (rememberLayer.checked) {
+                    layerFreiunkNodes.addTo(leafletMap);
+                }
+            }
+        })
+    }
+    appendToLayerChooser(sourceJSON.config.name, sourceJSON.config.standardActivated);
     leafletLayerControl.addOverlay(layerFreiunkNodes, sourceJSON.config.name);
 }

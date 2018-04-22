@@ -1,5 +1,6 @@
 import * as L from 'leaflet';
 import {dBValues, geoDistance} from "./tools";
+import {appendToLayerChooser} from "../../layerChooser/initLayerChooser";
 
 export function addGatewayLines(sourceJSON, leafletMap, leafletLayerNodes) {
     const nodes = sourceJSON.nodes;
@@ -20,11 +21,23 @@ export function addGatewayLines(sourceJSON, leafletMap, leafletLayerNodes) {
                 className: 'leaflet-tooltip-node'
             });
         });
-    })
-    if(sourceJSON.config.iotGatewayLines) {
-        layerIoTMapperGatewaysLines.addTo(leafletMap);
+    });
+    if(localStorage.getItem('rememberLayers') === null) {
+        if(sourceJSON.config.iotGatewayLines) {
+            layerIoTMapperGatewaysLines.addTo(leafletMap);
+        }
+    } else {
+        const rememberLayers = JSON.parse(localStorage.getItem('rememberLayers'));
+        rememberLayers.forEach(function (rememberLayer) {
+            if(rememberLayer.name === sourceJSON.config.name + " Linien") {
+                if (rememberLayer.checked) {
+                    layerIoTMapperGatewaysLines.addTo(leafletMap);
+                }
+            }
+        })
     }
     leafletLayerNodes.addOverlay(layerIoTMapperGatewaysLines, sourceJSON.config.name + " Linien");
+    appendToLayerChooser(sourceJSON.config.name + ' Linien', sourceJSON.config.iotGatewayLines);
     leafletMap.getPane("iotmapperGatewayLines").style.opacity = 0.6;
 
 }

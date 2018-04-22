@@ -3,6 +3,7 @@
 import * as L from 'leaflet';
 import iconIoTMapperMarker from './images/opendatamap_marker_iot-mapper_48px.png';
 import iconIoTMapperMarkerShadow from './images/opendatamap_marker_iot-mapper_shadow_48px.png';
+import {appendToLayerChooser} from "../../layerChooser/initLayerChooser";
 
 export function addMapper(sourceJSON, leafletMap, leafletLayerNodes) {
     let layerIoTMapperMapper = L.layerGroup();
@@ -56,8 +57,20 @@ export function addMapper(sourceJSON, leafletMap, leafletLayerNodes) {
             });
         }
     });
-    if(sourceJSON.config.iotMapper) {
-        layerIoTMapperMapper.addTo(leafletMap);
+    if(localStorage.getItem('rememberLayers') === null) {
+        if(sourceJSON.config.iotMapper) {
+            layerIoTMapperMapper.addTo(leafletMap);
+        }
+    } else {
+        const rememberLayers = JSON.parse(localStorage.getItem('rememberLayers'));
+        rememberLayers.forEach(function (rememberLayer) {
+            if(rememberLayer.name === sourceJSON.config.name + " Mapper") {
+                if (rememberLayer.checked) {
+                    layerIoTMapperMapper.addTo(leafletMap);
+                }
+            }
+        })
     }
+    appendToLayerChooser(sourceJSON.config.name + ' Mapper', sourceJSON.config.iotMapper);
     leafletLayerNodes.addOverlay(layerIoTMapperMapper, sourceJSON.config.name + " Mapper");
 }
