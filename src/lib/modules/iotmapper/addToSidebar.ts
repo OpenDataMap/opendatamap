@@ -1,6 +1,7 @@
+import {addGatewayLinesFilter} from "./addGatewayLines";
 import {addNodesFilter} from "./addNodes";
 
-export function addToSidebar(sourceJSON, leafletMap, layerIoTMapperNodes, moduleID) {
+export function addToSidebar(sourceJSON, leafletMap, layerIoTMapperGatewaysLines, layerIoTMapperNodes, moduleID) {
     let IoTMapperDevice = [];
     let IoTMapperGateway = [];
     $('#sidebar-bottom-nodes-chooser').append('' +
@@ -10,7 +11,7 @@ export function addToSidebar(sourceJSON, leafletMap, layerIoTMapperNodes, module
         '          <table id="iotmapper-gateways" class="responsive-table">' +
         '              <thead>' +
         '                  <tr>' +
-        '                      <th>Gateways</th>\n' +
+        '                      <th width="65%">Gateways</th>\n' +
         '                      <th>Anzeigen</th>\n' +
         '                  </tr>' +
         '              </thead>' +
@@ -20,7 +21,7 @@ export function addToSidebar(sourceJSON, leafletMap, layerIoTMapperNodes, module
         '          <table id="iotmapper-devices" class="responsive-table">' +
         '              <thead>' +
         '                  <tr>' +
-        '                      <th>Devices</th>\n' +
+        '                      <th width="65%">Devices</th>\n' +
         '                      <th>Anzeigen</th>\n' +
         '                  </tr>' +
         '              </thead>' +
@@ -47,7 +48,7 @@ export function addToSidebar(sourceJSON, leafletMap, layerIoTMapperNodes, module
                 '    </td>' +
                 '</tr>')
             let el = document.getElementById(gateway.name);
-            el.addEventListener('change', function() {IoTMapperGateway = IoTMapperGatewayChanged(this, sourceJSON, leafletMap, layerIoTMapperNodes, IoTMapperDevice, IoTMapperGateway)});
+            el.addEventListener('change', function() {IoTMapperGateway = IoTMapperGatewayChanged(this, sourceJSON, leafletMap, layerIoTMapperGatewaysLines, layerIoTMapperNodes, IoTMapperDevice, IoTMapperGateway)});
         }
     })
     sourceJSON.mapper.forEach((mapper) => {
@@ -68,26 +69,28 @@ export function addToSidebar(sourceJSON, leafletMap, layerIoTMapperNodes, module
             '    </td>' +
             '</tr>')
         let el = document.getElementById(mapper.name);
-        el.addEventListener('change', function() {IoTMapperDevice = IoTMapperDeviceChanged(this, sourceJSON, leafletMap, layerIoTMapperNodes, IoTMapperDevice, IoTMapperGateway)});
+        el.addEventListener('change', function() {IoTMapperDevice = IoTMapperDeviceChanged(this, sourceJSON, leafletMap, layerIoTMapperGatewaysLines, layerIoTMapperNodes, IoTMapperDevice, IoTMapperGateway)});
     })
 }
 
-function IoTMapperGatewayChanged(el, sourceJSON, leafletMap, layerIoTMapperNodes, IoTMapperDevice, IoTMapperGateway) {
+function IoTMapperGatewayChanged(el, sourceJSON, leafletMap, layerIoTMapperGatewaysLines, layerIoTMapperNodes, IoTMapperDevice, IoTMapperGateway) {
     if (el.checked) {
         IoTMapperGateway.push(el.name);
     } else {
         IoTMapperGateway = IoTMapperGateway.filter(e => e !== el.name);
     }
+    addGatewayLinesFilter(sourceJSON, leafletMap, layerIoTMapperGatewaysLines, IoTMapperDevice, IoTMapperGateway);
     addNodesFilter(sourceJSON, leafletMap, layerIoTMapperNodes, IoTMapperDevice, IoTMapperGateway);
     return IoTMapperGateway;
 }
 
-function IoTMapperDeviceChanged(el, sourceJSON, leafletMap, layerIoTMapperNodes, IoTMapperDevice, IoTMapperGateway) {
+function IoTMapperDeviceChanged(el, sourceJSON, leafletMap, layerIoTMapperGatewaysLines, layerIoTMapperNodes, IoTMapperDevice, IoTMapperGateway) {
     if (el.checked) {
         IoTMapperDevice.push(el.name);
     } else {
         IoTMapperDevice = IoTMapperDevice.filter(e => e !== el.name);
     }
+    addGatewayLinesFilter(sourceJSON, leafletMap, layerIoTMapperGatewaysLines, IoTMapperDevice, IoTMapperGateway);
     addNodesFilter(sourceJSON, leafletMap, layerIoTMapperNodes, IoTMapperDevice, IoTMapperGateway);
     return IoTMapperDevice;
 }

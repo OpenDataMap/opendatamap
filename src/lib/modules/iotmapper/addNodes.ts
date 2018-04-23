@@ -81,7 +81,18 @@ export function addNodesFilter(sourceJSON, leafletMap, layerIoTMapperNodes, IoTM
             }
         }
     })
-    if(sourceJSON.config.iotNodes) {
-        layerIoTMapperNodes.addTo(leafletMap);
+    if(localStorage.getItem('rememberLayers') === null) {
+        if(sourceJSON.config.iotNodes) {
+            layerIoTMapperNodes.addTo(leafletMap);
+        }
+    } else {
+        const rememberLayers = JSON.parse(localStorage.getItem('rememberLayers'));
+        rememberLayers.forEach(function (rememberLayer) {
+            if(rememberLayer.name === sourceJSON.config.name + " Nodes") {
+                if (rememberLayer.checked) {
+                    layerIoTMapperNodes.addTo(leafletMap);
+                }
+            }
+        })
     }
 }

@@ -13,11 +13,11 @@ export default function moduleIot(moduleConfig, leafletMap, leafletLayerControl,
             console.error('Problem with loading the layer ' + moduleConfig.layerName);
         } else {
             toJSON(moduleConfig, rawNodes, function (formattedNodes) {
-                addGatewayLines(formattedNodes, leafletMap, leafletLayerControl);
+                let layerIoTMapperGatewaysLines = addGatewayLines(formattedNodes, leafletMap, leafletLayerControl);
                 addGateways(formattedNodes, leafletMap, leafletLayerControl);
                 let layerIoTMapperNodes = addNodes(formattedNodes, leafletMap, leafletLayerControl);
                 addMapper(formattedNodes, leafletMap, leafletLayerControl);
-                addToSidebar(formattedNodes, leafletMap, layerIoTMapperNodes, moduleID)
+                addToSidebar(formattedNodes, leafletMap, layerIoTMapperGatewaysLines, layerIoTMapperNodes, moduleID)
             });
         }
     });
