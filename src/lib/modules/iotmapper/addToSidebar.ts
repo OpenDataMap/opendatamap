@@ -1,3 +1,4 @@
+///<reference path="addNodes.ts"/>
 import {addGatewayLinesFilter} from "./addGatewayLines";
 import {addNodesFilter} from "./addNodes";
 
@@ -47,8 +48,9 @@ export function addToSidebar(sourceJSON, leafletMap, layerIoTMapperGatewaysLines
                 '        </div>' +
                 '    </td>' +
                 '</tr>')
-            let el = document.getElementById(gateway.name);
-            el.addEventListener('change', function() {IoTMapperGateway = IoTMapperGatewayChanged(this, sourceJSON, leafletMap, layerIoTMapperGatewaysLines, layerIoTMapperNodes, IoTMapperDevice, IoTMapperGateway)});
+            $('#' + gateway.name).on('change', function() {
+                IoTMapperGateway = IoTMapperGatewayChanged(this, sourceJSON, leafletMap, layerIoTMapperGatewaysLines, layerIoTMapperNodes, IoTMapperDevice, IoTMapperGateway)
+            });
         }
     })
     sourceJSON.mapper.forEach((mapper) => {
@@ -68,8 +70,10 @@ export function addToSidebar(sourceJSON, leafletMap, layerIoTMapperGatewaysLines
             '        </div>' +
             '    </td>' +
             '</tr>')
-        let el = document.getElementById(mapper.name);
-        el.addEventListener('change', function() {IoTMapperDevice = IoTMapperDeviceChanged(this, sourceJSON, leafletMap, layerIoTMapperGatewaysLines, layerIoTMapperNodes, IoTMapperDevice, IoTMapperGateway)});
+
+        $('#' + mapper.name).on('change', function() {
+            IoTMapperDevice = IoTMapperDeviceChanged(this, sourceJSON, leafletMap, layerIoTMapperGatewaysLines, layerIoTMapperNodes, IoTMapperDevice, IoTMapperGateway)
+        });
     })
 }
 
