@@ -85,7 +85,7 @@ export function toJSON (config, rawNodes, cb) {
         }
         if(source.nodes.length != 0) {
             let result = source.nodes.find(function (obj) {
-                return ((Math.abs(obj.latitude - node.latitude) < config.filterValue) && (Math.abs(obj.longitude - node.longitude) < config.filterValue));
+                return ((Math.abs(obj.latitude - node.latitude) < config.filterValue) && (Math.abs(obj.longitude - node.longitude) < config.filterValue) && (obj.name == node.name));
             });
             if(result == null) {
                 source.nodes.push(node);

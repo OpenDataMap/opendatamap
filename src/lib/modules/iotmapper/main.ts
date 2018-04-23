@@ -15,9 +15,9 @@ export default function moduleIot(moduleConfig, leafletMap, leafletLayerControl,
             toJSON(moduleConfig, rawNodes, function (formattedNodes) {
                 addGatewayLines(formattedNodes, leafletMap, leafletLayerControl);
                 addGateways(formattedNodes, leafletMap, leafletLayerControl);
-                addNodes(formattedNodes, leafletMap, leafletLayerControl);
+                let layerIoTMapperNodes = addNodes(formattedNodes, leafletMap, leafletLayerControl);
                 addMapper(formattedNodes, leafletMap, leafletLayerControl);
-                addToSidebar(formattedNodes, moduleID)
+                addToSidebar(formattedNodes, leafletMap, layerIoTMapperNodes, moduleID)
             });
         }
     });
