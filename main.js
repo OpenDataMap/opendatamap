@@ -140,14 +140,18 @@ function buildSass () {
     outputStyle: "compressed"
   }, function(err, result) {
     if(err) throw err;
-    fs.writeFile('dist/css/light.css', result.css);
+    fs.writeFile('dist/css/light.css', result.css, (error) => {
+      if(error) throw error;
+    });
   });
   sass.render({
     file: 'src/scss/night/main.scss',
     outputStyle: "compressed"
   }, function(err, result) {
     if (err) throw err;
-    fs.writeFile("dist/css/night.css", result.css);
+    fs.writeFile("dist/css/night.css", result.css, (error) => {
+        if(error) throw error;
+    });
   })
 }
 function downloadDataSources (config) {
