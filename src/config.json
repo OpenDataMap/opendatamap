@@ -81,5 +81,5 @@
   "layerChooser": {
     "activated": true
   },
-  "dataCaching": false
+  "dataCaching": true
 }
