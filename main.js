@@ -74,7 +74,9 @@ commander
     const config = readConfig();
 
     // download data source trigger
-    downloadDataSourcesTrigger(config);
+    if(config.dataCaching) {
+        downloadDataSourcesTrigger(config);
+    }
 
     // start server
     startServer(port);

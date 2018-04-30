@@ -15,7 +15,7 @@ leafletInit(config, (leafletMap, leafletLayerControl) => {
     // Init Config modules
     for (const moduleID in config.modules) {
         const module = config.modules[moduleID];
-        modules[module.moduleName](module.config, leafletMap, leafletLayerControl, moduleID);
+        modules[module.moduleName](module.config, leafletMap, leafletLayerControl, moduleID, config);
 
     }
     $('#sidebar-bottom-nodes-layerChooser').collapsible();

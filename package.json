@@ -43,7 +43,7 @@
     "jquery": "^3.2.1",
     "leaflet": "^1.2.0",
     "materialize-css": "^0.100.2",
-    "node-sass": "^4.7.2",
+    "node-sass": "^4.9.0",
     "ts-loader": "^3.2.0",
     "typescript": "^2.6.2",
     "uglifyjs-webpack-plugin": "^1.1.6",

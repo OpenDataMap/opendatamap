@@ -6,8 +6,8 @@ import {addGateways} from "./addGateways";
 import {addGatewayLines} from "./addGatewayLines";
 import {addToSidebar} from "./addToSidebar";
 
-export default function moduleIot(moduleConfig, leafletMap, leafletLayerControl, moduleID) {
-    getNodes(moduleConfig, function (rawNodes) {
+export default function moduleIot(moduleConfig, leafletMap, leafletLayerControl, moduleID, generalConfig) {
+    getNodes(moduleConfig, generalConfig, function (rawNodes) {
         if(((new Date().getTime() - new Date(rawNodes.timestamp).getTime()) / 1000 / 60) > 60) {
             Materialize.toast('Problem beim Laden von ' + moduleConfig.layerName, 10000);
             console.error('Problem with loading the layer ' + moduleConfig.layerName);
