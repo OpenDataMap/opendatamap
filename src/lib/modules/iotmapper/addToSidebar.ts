@@ -9,7 +9,7 @@ export function addToSidebar(sourceJSON, leafletMap, layerIoTMapperGatewaysLines
         '  <li id="sidebar-bottom-nodes-chooser-' + moduleID + '">' +
         '      <div class="collapsible-header"><i class="material-icons">layers</i>' + sourceJSON.config.name + '</div>' +
         '      <div class="collapsible-body">' +
-        '          <table id="iotmapper-gateways" class="responsive-table">' +
+        '          <table id="iotmapper-gateways">' +
         '              <thead>' +
         '                  <tr>' +
         '                      <th width="65%">Gateways</th>\n' +
@@ -19,7 +19,7 @@ export function addToSidebar(sourceJSON, leafletMap, layerIoTMapperGatewaysLines
         '              <tbody></tbody>' +
         '          </table>' +
         '          <br />' +
-        '          <table id="iotmapper-devices" class="responsive-table">' +
+        '          <table id="iotmapper-devices">' +
         '              <thead>' +
         '                  <tr>' +
         '                      <th width="65%">Devices</th>\n' +

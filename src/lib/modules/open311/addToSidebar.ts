@@ -3,7 +3,7 @@ export function addToSidebar(sourceJSON, moduleID) {
         '  <li id="sidebar-bottom-nodes-chooser-' + moduleID + '">' +
         '      <div class="collapsible-header"><i class="material-icons">layers</i>' + sourceJSON.config.name + '</div>' +
         '      <div class="collapsible-body">' +
-        '          <table class="responsive-table">' +
+        '          <table>' +
         '              <thead>' +
         '                  <tr>' +
         '                      <th>offene Anliegen</th>\n' +
