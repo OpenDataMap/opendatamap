@@ -3,6 +3,8 @@
 @import "variables";
 // General
 #sidebar-container {
+  z-index: 5;
+  @extend .white;
   width: $sidebar-width;
   float: left;
   height: 100%;
@@ -105,6 +107,24 @@
           text-overflow: ellipsis;
           overflow: hidden;
           white-space: nowrap;
+        }
+      }
+      #sidebar-main-bottom-leftContainer {
+        margin-right: 20px;
+      }
+      #sidebar-main-bottom-minimizeButton {
+        &.open {
+          position: fixed;
+          left: calc(30vw - 50px);
+          top: calc(50% - 37.5px);
+          height: 50px;
+          cursor: pointer;
+        }
+        &.close {
+
+        }
+        .material-icons {
+          font-size: 50px;
         }
       }
     }

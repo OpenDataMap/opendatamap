@@ -17,11 +17,13 @@
         <div class="spinner-layer spinner-magenta-only">
             <div class="circle-clipper left">
                 <div class="circle"></div>
-            </div><div class="gap-patch">
-            <div class="circle"></div>
-        </div><div class="circle-clipper right">
-            <div class="circle"></div>
-        </div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
         </div>
     </div>
     <h5 id="preloader-text">
@@ -63,25 +65,41 @@
                 </div>
             </div>
             <div id="sidebar-main-bottom">
-                <ul class="tabs tabs-fixed-width">
-                    <li class="tab col s6"><a class="active" href="#sidebar-bottom-nodes">Nodes</a></li>
-                    <li class="tab col s6"><a href="#sidebar-bottom-about">&Uuml;ber</a></li>
-                </ul>
-                <div id="sidebar-bottom-nodes" class="container">
-                    <ul class="collapsible" id="sidebar-bottom-nodes-chooser">
+                <div id="sidebar-main-bottom-leftContainer">
+                    <ul class="tabs tabs-fixed-width">
+                        <li class="tab col s6"><a class="active" href="#sidebar-bottom-nodes">Nodes</a></li>
+                        <li class="tab col s6"><a href="#sidebar-bottom-about">&Uuml;ber</a></li>
                     </ul>
+                    <div id="sidebar-bottom-nodes" class="container">
+                        <ul class="collapsible" id="sidebar-bottom-nodes-chooser">
+                        </ul>
+                    </div>
+                    <div id="sidebar-bottom-about" class="container">
+                        <h3>&Uuml;ber OpenDataMap</h3>
+                        <h5>GNU Affero General Public Licence v3.0</h5>
+                        <p>Copyright (C) Leo Maroni, Caspar Armster, <a
+                                href="https://github.com/OpenDataMap/opendatamap/graphs/contributors">contributors</a>
+                        </p>
+                        <p>This program is free software: you can redistribute it and/or modify it under the terms of
+                            the GNU Affero General Public License as published by the Free Software Foundation, either
+                            version 3 of the License, or (at your option) any later version.</p>
+                        <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+                            without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+                            See the GNU Affero General Public License for more details.</p>
+                        <p>You should have received a copy of the GNU Affero General Public License along with this
+                            program. If not, see
+                            <a href="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</a>.</p>
+                        <p>The source code is available at <a href="https://github.com/OpenDataMap/opendatamap">https://github.com/OpenDataMap/opendatamap</a>.
+                        </p>
+                        <h5 id="version">Version: 0.4.6</h5>
+                        <div style="cursor: pointer;"><a onclick="localStorage.clear(); location.reload();">Zur&uuml;cksetzen</a>
+                        </div>
+                    </div>
                 </div>
-                <div id="sidebar-bottom-about" class="container">
-                    <h3>&Uuml;ber OpenDataMap</h3>
-                    <h5>GNU Affero General Public Licence v3.0</h5>
-                    <p>Copyright (C) Leo Maroni, Caspar Armster, <a href="https://github.com/OpenDataMap/opendatamap/graphs/contributors">contributors</a></p>
-                    <p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
-                    <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.</p>
-                    <p>You should have received a copy of the GNU Affero General Public License along with this program. If not, see
-                        <a href="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</a>.</p>
-                    <p>The source code is available at <a href="https://github.com/OpenDataMap/opendatamap">https://github.com/OpenDataMap/opendatamap</a>.</p>
-                    <h5 id="version">Version: 0.4.6</h5>
-                    <div style="cursor: pointer;"><a onclick="localStorage.clear(); location.reload();">Zur&uuml;cksetzen</a></div>
+                <div id="sidebar-main-bottom-minimizeButton" class="open">
+                    <i class="material-icons">
+                        chevron_left
+                    </i>
                 </div>
             </div>
         </div>
@@ -95,7 +113,6 @@
                 </table>
             </div>
         </div>
-    </div>
 </main>
 <script src="/assets/js/main"></script>
 </body>

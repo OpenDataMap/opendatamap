@@ -2,11 +2,11 @@ import 'jquery';
 import {MD5} from "crypto-js";
 
 export function getNodes (moduleConfig, generalConfig, cb) {
-    getData(moduleConfig, generalConfig, function (err, nodes) {
+    getData(moduleConfig, generalConfig, (err, nodes) => {
         if(!err) {
             cb(nodes);
         } else {
-            setTimeout(getData, 2000, moduleConfig, function (err, nodes) {
+            setTimeout(getData, 2000, moduleConfig, generalConfig, function (err, nodes) {
                 if (!err) {
                     cb(nodes);
                 } else {
@@ -18,14 +18,14 @@ export function getNodes (moduleConfig, generalConfig, cb) {
     });
 }
 
-function getData(moduleConfig, generalConfig, cb) {
+function getData(moduleConfig, generalConfig, callback) {
     let dataURL = moduleConfig.dataURL;
     if(generalConfig.dataCaching) {
         dataURL = "/assets/data/" + MD5(moduleConfig.dataURL) + moduleConfig.dataURL.substring(moduleConfig.dataURL.lastIndexOf('.'));
     }
     $.get(dataURL).done((nodes) => {
-        cb(null, nodes);
+        callback(null, nodes);
     }).fail((error) => {
-        cb("Error", null)
+        callback("Error", null)
     })
 }

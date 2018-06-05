@@ -23,4 +23,9 @@ leafletInit(config, (leafletMap, leafletLayerControl) => {
     $('ul.tabs').tabs();
     initLayerChooser(config, leafletMap);
     $('#preloader').remove();
+
+    // $('#sidebar-container').remove();
+    // $('#map-container').width('20vw');
+    // leafletMap.invalidateSize();
+    // leafletMap.layerBase.redraw();
 });
