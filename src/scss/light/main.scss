@@ -1,6 +1,8 @@
+@import "../../../node_modules/materialize-css/sass/materialize";
+@import "variables";
+@import "../general/typography";
 @import "custom";
-@import "typography";
-@import "map";
-@import "sidebar";
-@import "general";
-@import "loader";
+@import "../general/general";
+@import "../general/map";
+@import "../general/sidebar";
+@import "../general/preloader";

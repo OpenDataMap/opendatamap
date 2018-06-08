@@ -1,6 +1,5 @@
-@import "variables";
 #preloader {
-  background-color: #fff;
+  background-color: $color_background_primary;
   z-index: 1;
   height: 100vh;
   width: 100vw;
@@ -24,7 +23,7 @@
     bottom: 0;
     margin: auto;
     .spinner-magenta-only {
-      border-color: $ff_magenta;
+      border-color: $color_primary;
     }
   }
 }

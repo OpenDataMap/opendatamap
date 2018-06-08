@@ -1,11 +1,10 @@
 @import "../../../node_modules/materialize-css/sass/materialize";
 @import "typography";
-@import "variables";
 // General
 #sidebar-container {
+  background-color: $color_background_primary;
   z-index: 5;
-  @extend .white;
-  width: $sidebar-width;
+  width: $width_sidebar;
   float: left;
   height: 100%;
   overflow-y: auto;
@@ -33,7 +32,7 @@
     }
 
     #sidebar-head {
-      @extend .grey, .lighten-4;
+      background-color: $color_background_sidebar_top;
       width: 100%;
     }
 
@@ -41,49 +40,53 @@
       margin-top: 25px;
       /* label color */
       .input-field label {
-        color: #000;
+        color: $color_text_normal;
       }
       /* label focus color */
       .input-field input[type=text]:focus + label {
-        color: #dc0067;
+        color: $color_primary;
       }
       /* label underline focus color */
       .input-field input[type=text]:focus {
-        border-bottom: 1px solid #dc0067;
-        box-shadow: 0 1px 0 0 #dc0067;
+        border-bottom: 1px solid $color_primary;
+        box-shadow: 0 1px 0 0 $color_primary;
       }
       /* valid color */
-      .input-field input[type=text].valid {
-        border-bottom: 1px solid #000;
-        box-shadow: 0 1px 0 0 #000;
-      }
-      /* invalid color */
-      .input-field input[type=text].invalid {
-        border-bottom: 1px solid #dc0067;
-        box-shadow: 0 1px 0 0 #dc0067;
+      .input-field input[type=text] {
+        border-bottom: 1px dotted $color_text_normal !important;
       }
       /* icon prefix focus color */
       .input-field .prefix.active {
-        color: #dc0067;
+        color: $color_primary;
       }
     }
     // Bottom
     #sidebar-main-bottom {
-
       .tabs {
+        background-color: $color_background_primary;
         overflow-x: hidden;
         .tab > a {
-          color: $ff_magenta;
+          color: $color_primary;
         }
         .indicator {
-          background-color: $ff_yellow;
+          background-color: $color_accent;
         }
       }
-      #sidebar-bottom-nodes-chooser {
+      #sidebar-bottom-nodes {
+        margin-right: 20px;
+      }
+      .collapsible#sidebar-bottom-nodes-chooser {
+        .collapsible-header {
+          color: $color_text_normal;
+          background-color: $color_background_primary
+        }
+        .collapsible-body {
+          color: $color_text_normal;
+        }
         .switch label input[type=checkbox]:checked + .lever {
           background-color: #ff99ff;
           &:after {
-            background-color: $ff_magenta;
+            background-color: $color_primary;
           }
         }
       }
@@ -95,7 +98,7 @@
           @extend .thin, .assistant;
         }
         a {
-          color: $ff_magenta;
+          color: $color_primary;
         }
       }
       table {
@@ -112,9 +115,6 @@
           overflow: hidden;
           white-space: nowrap;
         }
-      }
-      #sidebar-main-bottom-leftContainer {
-        margin-right: 20px;
       }
     }
   }
@@ -159,7 +159,7 @@
       width: 3rem;
       border-radius: 25px;
       height: 3rem;
-      background-color: #e0e0e0;
+      background-color: $color_background_lighterDarker;
       position: relative;
       right: 15px;
       top: 15px;
@@ -167,11 +167,11 @@
       float: right;
       cursor: pointer;
       i {
-        color: #424242;
+        color: $color_text_lighterDarker;
         font-size: 3rem;
         transition: color 0.2s;
         &:hover {
-          color: $ff_magenta;
+          color: $color_primary;
         }
       }
     }
