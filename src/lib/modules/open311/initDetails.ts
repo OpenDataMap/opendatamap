@@ -11,10 +11,12 @@ export function nodeDetailOnClick(e) {
     $('#sidebar-details-close').on("click", function () {
        $('#sidebar-details').addClass('hidden');
        $('#sidebar-main').removeClass('hidden');
+        $('#sidebar-main-bottom-smallerBigger').removeClass('hidden');
         leafletMap.setView(actualCenter, actualZoom);
     });
     const nodedata = <IOpen311Node> this.options.dataObj;
     $('#sidebar-details-title').html(nodedata.service_name.toString());
+    $('#sidebar-main-bottom-smallerBigger').addClass('hidden');
     $('#sidebar-details-infotable').empty();
     $('#sidebar-details-infotable').append('<tbody>' +
         '<tr>' +

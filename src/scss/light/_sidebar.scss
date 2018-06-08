@@ -3,17 +3,22 @@
 @import "variables";
 // General
 #sidebar-container {
+  z-index: 5;
+  @extend .white;
   width: $sidebar-width;
   float: left;
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
+  &.close {
+    width: 75px;
+  }
   @media only screen and (max-width: 992px) {
     overflow-x: auto;
   }
   @media screen and (max-width: $medium-screen) {
     width: 100vw;
-    height: 50%;
+    height: 30%;
     float: right !important;
   }
   .container {
@@ -64,6 +69,7 @@
     }
     // Bottom
     #sidebar-main-bottom {
+
       .tabs {
         overflow-x: hidden;
         .tab > a {
@@ -107,6 +113,35 @@
           white-space: nowrap;
         }
       }
+      #sidebar-main-bottom-leftContainer {
+        margin-right: 20px;
+      }
+    }
+  }
+  #sidebar-main-bottom-smallerBigger {
+    @media screen and (max-width: $medium-screen) {
+      display: none;
+    }
+    @media screen and (min-width: $medium-screen + 1) {
+      &.open {
+        position: relative;
+        left: calc(30vw - 50px);
+        //top: calc(50% - 37.5px);
+        height: 50px;
+        cursor: pointer;
+        width: 50px;
+      }
+      &.close {
+        width: 50px;
+        position: relative;
+        margin: auto;
+        height: 50px;
+        cursor: pointer;
+        top: calc(50% - 37.5px);
+      }
+    }
+    .material-icons {
+      font-size: 50px;
     }
   }
 

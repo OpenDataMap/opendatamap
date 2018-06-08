@@ -6,6 +6,7 @@ import {leafletInit} from './lib/map/leafletInit';
 import * as modules from './lib/modules/modules';
 import importConfig from './config.json';
 import {initLayerChooser} from "./lib/layerChooser/initLayerChooser";
+import {sidebarInit} from "./lib/sidebar/sidebarInit";
 const config = (importConfig as any);
 // set website title
 $(document).attr('title', config.title);
@@ -18,9 +19,13 @@ leafletInit(config, (leafletMap, leafletLayerControl) => {
         modules[module.moduleName](module.config, leafletMap, leafletLayerControl, moduleID, config);
 
     }
-    $('#sidebar-bottom-nodes-layerChooser').collapsible();
-    // Init Tabs
-    $('ul.tabs').tabs();
+    console.log(leafletMap.layerBase)
+    sidebarInit(config, leafletMap);
     initLayerChooser(config, leafletMap);
     $('#preloader').remove();
+
+    // $('#sidebar-container').remove();
+    // $('#map-container').width('100vw');
+    // leafletMap.invalidateSize();
+    // leafletMap.layerBase.redraw();
 });

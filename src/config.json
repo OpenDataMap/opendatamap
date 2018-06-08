@@ -1,5 +1,6 @@
 {
   "title": "OpenData Map Bonn-Rhein-Sieg",
+  "shortTitle": "OPDM Bonn/Rhein-Sieg",
   "modules": [
     {
       "moduleName": "freifunk",

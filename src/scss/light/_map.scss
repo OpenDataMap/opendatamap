@@ -4,9 +4,13 @@
   width: 70vw;
   height: 100%;
   float: right;
+  z-index: 4;
+  &.smallSidebar {
+    width: calc(100vw - #{$small-sidebar-width});
+  }
   @media screen and (max-width: $medium-screen) {
     width: 100vw;
-    height: 50%;
+    height: 70%;
   }
   .leaflet-bar {
     border: none;
