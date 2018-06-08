@@ -11,12 +11,14 @@ export function gatewayDetailOnClick(e) {
     let actualZoom = leafletMap.getZoom();
     leafletMap.setView(this._latlng, 17);
     $('#sidebar-details-close').on("click", function () {
-       $('#sidebar-details').addClass('hidden');
-       $('#sidebar-main').removeClass('hidden');
+        $('#sidebar-details').addClass('hidden');
+        $('#sidebar-main').removeClass('hidden');
+        $('#sidebar-main-bottom-smallerBigger').removeClass('hidden');
         leafletMap.setView(actualCenter, actualZoom);
     });
     const gatewaydata = <IIoTMapperGateway> this.options.dataObj;
     $('#sidebar-details-title').html(gatewaydata.name.toString());
+    $('#sidebar-main-bottom-smallerBigger').addClass('hidden');
     let gatewayName = gatewaydata.name;
     let gatewayString = "", statisticsString = "";
     let d = new Date();

@@ -13,6 +13,7 @@ export function nodeDetailOnClick(e) {
     $('#sidebar-details-close').on("click", function () {
        $('#sidebar-details').addClass('hidden');
        $('#sidebar-main').removeClass('hidden');
+        $('#sidebar-main-bottom-smallerBigger').removeClass('hidden');
         leafletMap.setView(actualCenter, actualZoom);
     });
     const nodedata = <INode> this.options.dataObj;
@@ -29,6 +30,7 @@ export function nodeDetailOnClick(e) {
         online = false;
     }
     $('#sidebar-details-title').html(nodedata.name.toString());
+    $('#sidebar-main-bottom-smallerBigger').addClass('hidden');
     let siteName = nodedata.siteName;
     modConfig.siteNames.forEach(function (configSiteName) {
         if (configSiteName.site === siteName) {
