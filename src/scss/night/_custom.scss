@@ -1,0 +1,17 @@
+.collapsible#sidebar-bottom-nodes-chooser {
+  border-top: 1px solid #424242;
+  border-right: 1px solid #424242;
+  border-left: 1px solid #424242;
+  .collapsible-header {
+    color: #fff;
+    @extend .grey.darken-4;
+    border-bottom: 1px solid #424242;
+  }
+  .collapsible-body {
+    @extend .white-text;
+    border-bottom: 1px solid #424242;
+  }
+  thead {
+    border-bottom: 1px solid $color_background_primary;
+  }
+}
