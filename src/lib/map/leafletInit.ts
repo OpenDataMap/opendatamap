@@ -1,6 +1,7 @@
 import * as L from 'leaflet';
 import {leafletInitBaseLayer} from "./initBaseLayer";
 import {leafletNightChange} from "./nightChangeDetect";
+import {initLocateControl} from "./initLocateControl";
 
 export function leafletInit(config, callback: Function) {
 
@@ -23,6 +24,7 @@ export function leafletInit(config, callback: Function) {
     L.control.scale({
         imperial: false
     }).addTo(map);
+    initLocateControl(config, map);
     // Add Leaflet BaseLayer
     leafletInitBaseLayer(config, layerControl, map);
 
