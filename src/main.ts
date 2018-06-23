@@ -11,6 +11,7 @@ const config = (importConfig as any);
 // set website title
 $(document).attr('title', config.title);
 $('.titleMap').html(config.title);
+document.getElementById('preloader-js-enabled').classList.remove('hidden')
 // Init Leaflet
 leafletInit(config, (leafletMap, leafletLayerControl) => {
     // Init Config modules

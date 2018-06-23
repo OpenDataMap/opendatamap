@@ -13,22 +13,30 @@
 </head>
 <body>
 <div id="preloader">
-    <div class="preloader-wrapper big active">
-        <div class="spinner-layer spinner-magenta-only">
-            <div class="circle-clipper left">
-                <div class="circle"></div>
-            </div>
-            <div class="gap-patch">
-                <div class="circle"></div>
-            </div>
-            <div class="circle-clipper right">
-                <div class="circle"></div>
+    <noscript>
+        <i class="material-icons">
+            error
+        </i>
+        <h5>Bitte JavaScript aktivieren</h5>
+    </noscript>
+    <div id="preloader-js-enabled" class="hidden">
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-magenta-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
             </div>
         </div>
+        <h5 id="preloader-text">
+            Laden...
+        </h5>
     </div>
-    <h5 id="preloader-text">
-        Laden...
-    </h5>
 </div>
 <!-- Modal Structure -->
 <div id="modal-chooseModules" class="modal modal-fixed-footer">
