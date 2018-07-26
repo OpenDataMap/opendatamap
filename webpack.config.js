@@ -1,7 +1,8 @@
 const path = require('path');
+const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: './src/main.ts',
@@ -29,20 +30,23 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: [ '.tsx', '.ts', '.js', '.jsx']
+        extensions: ['.tsx', '.ts', '.js', '.jsx']
     },
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
     plugins: [
-      new UglifyJSPlugin(),
-      new HtmlWebpackPlugin({
-        template: 'src/index.html',
-        inject: false
-      }),
-      new CopyWebpackPlugin([
-        { from: 'node_modules/materialize-css/dist/fonts', to: 'fonts' }
-      ])
-    ]
+        new UglifyJSPlugin(),
+        new HtmlWebpackPlugin({
+            template: 'src/index.html',
+            inject: false
+        }),
+        new CopyWebpackPlugin([
+            {from: 'node_modules/materialize-css/dist/fonts', to: 'fonts'}
+        ]),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('production')
+        })
+    ],
 };
