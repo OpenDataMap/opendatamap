@@ -56,6 +56,14 @@
         "standardActivated": true,
         "dataURL": "https://anliegen.siegburg.de/georeport/v2/requests.json?status=open"
       }
+    },
+    {
+      "moduleName": "open311",
+      "config": {
+        "layerName": "Open311 Köln",
+        "standardActivated": true,
+        "dataURL": "https://sags-uns.stadt-koeln.de/georeport/v2/requests.json?status=open"
+      }
     }
   ],
   "map": {

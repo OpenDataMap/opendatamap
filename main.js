@@ -5,7 +5,6 @@ const child_process = require('child_process');
 const sass = require('node-sass');
 const watch = require('recursive-watch');
 const cryptojs = require('crypto-js');
-const server = require('./backend/server');
 commander
     .version('0.4.6')
     .description('Server for OpenDataMap');
@@ -18,17 +17,11 @@ commander
     .action(function (port) {
         // build the assets
         console.log('Please wait! The assets were built');
-       buildAssets();
+        buildAssets();
 
         // start server
-         server.start(port);
-        console.log(server.start)
-
-        // read config
-        const config = readConfig();
-
-        // download data source trigger
-        downloadDataSourcesTrigger(config);
+        const server = require('./backend/server');
+        server.start(port);
 
         console.log('start watching')
         watch('./src/', function (filename) {
@@ -46,7 +39,7 @@ commander
                 }
             }
         })
-    })
+    });
 
 // test server
 commander
@@ -69,14 +62,7 @@ commander
         console.log('Please wait! The assets were built');
         buildAssets();
 
-        // read config
-        const config = readConfig();
-
-        // download data source trigger
-        if (config.dataCaching) {
-            downloadDataSourcesTrigger(config);
-        }
-
+        const server = require('./backend/server');
         // start server
         server.start(port);
     })
@@ -97,7 +83,10 @@ function buildAssets() {
 
 function buildWebpack() {
     //typescript server
-    child_process.spawnSync('node_modules/typescript/bin/tsc backend/server.ts  --lib es2015,dom,esnext.asynciterable');
+    const backendBuild = child_process.spawnSync('node_modules/typescript/bin/tsc', ['backend/server.ts', '--lib', 'es2015,dom,esnext.asynciterable', '-m', 'commonjs']);
+    if (backendBuild.stderr.toString()) throw backendBuild.stderr.toString();
+    if (backendBuild.stdout.toString().includes('Error') || backendBuild.stdout.toString().includes('ERROR')) throw backendBuild.stdout.toString();
+
     // webpack-build
     const webpackBuild = child_process.spawnSync('node_modules/webpack/bin/webpack.js');
     if (webpackBuild.stderr.toString()) throw webpackBuild.stderr.toString();

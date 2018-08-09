@@ -17,10 +17,8 @@ export function start(port) {
                     const module = config.modules[moduleI];
                     if (module.config.layerName === dataSourceName) {
                         let err = false;
-                        console.log(dataSourceName)
                         const dataURL = module.config.dataURL;
                         axios.get(dataURL).then(function (response) {
-                            console.log(response.data)
                             resolve(response.data)
                         }).catch(function (error) {
                             console.error('Error downloading ' + dataURL + ' - StatusCode: ' + error.response.status);
