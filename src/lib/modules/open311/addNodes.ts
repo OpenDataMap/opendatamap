@@ -6,8 +6,12 @@ import iconOpen311MarkerShadow from './images/opendatamap_marker_open311_shadow_
 import {nodeDetailOnClick} from "./initDetails";
 import {appendToLayerChooser} from "../../layerChooser/initLayerChooser";
 
-export function addNodes(sourceJSON, leafletMap, leafletLayerNodes) {
-    let layerOpen311Nodes = L.layerGroup();
+export function addNodes(sourceJSON, leafletMap, leafletLayerControl?, layerOpen311Nodes?) {
+    if(layerOpen311Nodes !== undefined && layerOpen311Nodes !== null) {
+        layerOpen311Nodes.clearLayers();
+    } else {
+        layerOpen311Nodes = L.layerGroup();
+    }
     const nodes = sourceJSON.nodes;
     var iconOpen311Node = L.icon({
         iconUrl: iconOpen311Marker, // Anpassen an file-loader
@@ -49,7 +53,9 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerNodes) {
             }
         })
     }
-
     appendToLayerChooser(sourceJSON.config.name, sourceJSON.config.standardActivated);
-    leafletLayerNodes.addOverlay(layerOpen311Nodes, sourceJSON.config.name);
+    if(leafletLayerControl !== undefined && leafletLayerControl !== null) {
+        leafletLayerControl.addOverlay(layerOpen311Nodes, sourceJSON.config.name);
+    }
+    return layerOpen311Nodes;
 }

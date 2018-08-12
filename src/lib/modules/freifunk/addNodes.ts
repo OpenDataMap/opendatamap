@@ -1,9 +1,13 @@
 import * as L from 'leaflet';
 import {nodeDetailOnClick} from "./initDetails";
 import {appendToLayerChooser} from "../../layerChooser/initLayerChooser";
-export function addNodes(sourceJSON, leafletMap, leafletLayerControl) {
+export function addNodes(sourceJSON, leafletMap, leafletLayerControl?, layerFreifunkNodes?) {
     const nodes = sourceJSON.nodes;
-    let layerFreiunkNodes = L.layerGroup();
+    if(layerFreifunkNodes !== undefined && layerFreifunkNodes !== null) {
+        layerFreifunkNodes.clearLayers();
+    } else {
+        layerFreifunkNodes = L.layerGroup();
+    }
     nodes.forEach((currentNode) => {
         if(currentNode.latitude !== 0 && currentNode.longitude !== 0) {
             let nodeColorOnMap;
@@ -30,23 +34,26 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerControl) {
             mapNodeCircle.bindTooltip(currentNode.name, {
                 className: 'leaflet-tooltip-node'
             });
-            layerFreiunkNodes.addLayer(mapNodeCircle);
+            layerFreifunkNodes.addLayer(mapNodeCircle);
         }
     });
     if(localStorage.getItem('rememberLayers') === null) {
         if(sourceJSON.config.standardActivated) {
-            layerFreiunkNodes.addTo(leafletMap);
+            layerFreifunkNodes.addTo(leafletMap);
         }
     } else {
         const rememberLayers = JSON.parse(localStorage.getItem('rememberLayers'));
         rememberLayers.forEach(function (rememberLayer) {
             if(rememberLayer.name === sourceJSON.config.name) {
                 if (rememberLayer.checked) {
-                    layerFreiunkNodes.addTo(leafletMap);
+                    layerFreifunkNodes.addTo(leafletMap);
                 }
             }
         })
     }
     appendToLayerChooser(sourceJSON.config.name, sourceJSON.config.standardActivated);
-    leafletLayerControl.addOverlay(layerFreiunkNodes, sourceJSON.config.name);
+    if(leafletLayerControl !== undefined && leafletLayerControl !== null) {
+        leafletLayerControl.addOverlay(layerFreifunkNodes, sourceJSON.config.name);
+    }
+    return layerFreifunkNodes;
 }

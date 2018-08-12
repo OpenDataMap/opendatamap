@@ -2,9 +2,11 @@
 import {addGatewayLinesFilter} from "./addGatewayLines";
 import {addNodesFilter} from "./addNodes";
 
+export let IoTMapperGateway = [];
+export let IoTMapperDevice = [];
+
 export function addToSidebar(sourceJSON, leafletMap, layerIoTMapperGatewaysLines, layerIoTMapperNodes, moduleID) {
-    let IoTMapperDevice = [];
-    let IoTMapperGateway = [];
+
     $('#sidebar-bottom-nodes-chooser').append('' +
         '  <li id="sidebar-bottom-nodes-chooser-' + moduleID + '">' +
         '      <div class="collapsible-header"><i class="material-icons">layers</i>' + sourceJSON.config.name + '</div>' +
@@ -74,7 +76,7 @@ export function addToSidebar(sourceJSON, leafletMap, layerIoTMapperGatewaysLines
         $('#' + mapper.name).on('change', function() {
             IoTMapperDevice = IoTMapperDeviceChanged(this, sourceJSON, leafletMap, layerIoTMapperGatewaysLines, layerIoTMapperNodes, IoTMapperDevice, IoTMapperGateway)
         });
-    })
+    });
 }
 
 function IoTMapperGatewayChanged(el, sourceJSON, leafletMap, layerIoTMapperGatewaysLines, layerIoTMapperNodes, IoTMapperDevice, IoTMapperGateway) {

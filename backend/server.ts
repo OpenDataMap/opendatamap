@@ -5,8 +5,12 @@ import * as express from 'express'
 import * as path from 'path';
 const {ApolloServer} = require('apollo-server-express');
 import schema from './schema'
+import * as socketIO from 'socket.io'
+import {socketUpdateDataSource} from "./socketUpdateDataSource";
 export function start(port) {
     let expressServer = express();
+    const httpServer = require('http').Server(expressServer);
+    const io = socketIO(httpServer);
     expressServer.use(cors());
 
     expressServer.get('/', function (req, res) {
@@ -36,7 +40,10 @@ export function start(port) {
 
     apolloServer.applyMiddleware({app: expressServer, path: "/api"});
 
-    expressServer.listen(port, '0.0.0.0');
+    httpServer.listen(port, '0.0.0.0');
 
+    io.on('connection', function (socket) {
+        socketUpdateDataSource(socket);
+    });
     console.log("OpenDataMap-expressServer is listening on port " + port);
 }

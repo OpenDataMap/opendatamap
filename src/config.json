@@ -13,14 +13,6 @@
     {
       "moduleName": "freifunk",
       "config": {
-        "layerName": "Freifunk Troisdorf",
-        "standardActivated": false,
-        "dataURL": "https://map.freifunk-troisdorf.de/data/nodes.json"
-      }
-    },
-    {
-      "moduleName": "freifunk",
-      "config": {
         "layerName": "Freifunk Hennef",
         "standardActivated": true,
         "dataURL": "https://map.freifunk-hennef.de/data/nodes.json"
