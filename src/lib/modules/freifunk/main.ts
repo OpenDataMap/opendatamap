@@ -13,7 +13,6 @@ export default function moduleFreifunk(moduleConfig, leafletMap, leafletLayerCon
             toJSON(moduleConfig, rawNodes, function (formattedNodes) {
                 const layerNodes = addNodes(formattedNodes, leafletMap, leafletLayerControl);
                 configHelper.modifyModule(moduleConfig.layerName, {
-                    "formattedNodes": formattedNodes,
                     "layerFreifunkNodes": layerNodes
                 });
                 addToSidebar(formattedNodes, moduleID);
@@ -21,8 +20,11 @@ export default function moduleFreifunk(moduleConfig, leafletMap, leafletLayerCon
         }
     });
 };
-export function updateDataSource(moduleConfig, leafletMap) {
+export function updateDataSource(moduleConfig, generalConfig, leafletMap) {
     const mConfCurr = moduleConfig.current;
-
-    addNodes(mConfCurr.formattedNodes, leafletMap, null, mConfCurr.layerFreifunkNodes)
+    getNodeData(moduleConfig.config,  generalConfig, function (rawNodes) {
+        toJSON(moduleConfig.config, rawNodes, function (formattedNodes) {
+            addNodes(formattedNodes, leafletMap, null, mConfCurr.layerFreifunkNodes)
+        })
+    });
 }

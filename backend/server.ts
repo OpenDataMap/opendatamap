@@ -6,8 +6,16 @@ import * as path from 'path';
 const {ApolloServer} = require('apollo-server-express');
 import schema from './schema'
 import * as socketIO from 'socket.io'
-import {socketUpdateDataSource} from "./socketUpdateDataSource";
+import {downloadDataSource, socketUpdateDataSource} from "./socketUpdateDataSource";
+import * as fs from "fs";
+const config = JSON.parse(fs.readFileSync("src/config.json").toString());
 export function start(port) {
+    for (let moduleI in config.modules) {
+        if (config.modules.hasOwnProperty(moduleI)) {
+            downloadDataSource(config.modules[moduleI].config.layerName)
+
+        }
+    }
     let expressServer = express();
     const httpServer = require('http').Server(expressServer);
     const io = socketIO(httpServer);

@@ -9,7 +9,6 @@ export default function moduleIot(moduleConfig, leafletMap, leafletLayerControl,
         toJSON(moduleConfig, rawNodes, function (formattedNodes) {
             const layerNodes = addNodes(formattedNodes, leafletMap, leafletLayerControl);
             configHelper.modifyModule(moduleConfig.layerName, {
-                "formattedNodes": formattedNodes,
                 "layerOpen311Nodes": layerNodes
             });
             addToSidebar(formattedNodes, moduleID)
@@ -17,7 +16,11 @@ export default function moduleIot(moduleConfig, leafletMap, leafletLayerControl,
     });
 };
 
-export function updateDataSource(moduleConfig, leafletMap) {
-    const mConfCurr = moduleConfig.current;
-    addNodes(mConfCurr.formattedNodes, leafletMap, null, mConfCurr.layerOpen311Nodes)
+export function updateDataSource(moduleConfig, generalConfig, leafletMap) {
+    getNodeData(moduleConfig.config,  generalConfig, function (rawNodes) {
+        toJSON(moduleConfig.config, rawNodes, function (formattedNodes) {
+            const mConfCurr = moduleConfig.current;
+            addNodes(formattedNodes, leafletMap, null, mConfCurr.layerOpen311Nodes)
+        });
+    });
 }

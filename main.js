@@ -78,6 +78,9 @@ function buildAssets() {
     if (!fs.existsSync('dist/data')) {
         fs.mkdirSync('dist/data')
     }
+    if (!fs.existsSync('backend/dataSources')) {
+        fs.mkdirSync('backend/dataSources')
+    }
     console.log('The assets finished building!');
 }
 

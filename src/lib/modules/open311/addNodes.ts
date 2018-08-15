@@ -53,8 +53,8 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerControl?, layerOpen
             }
         })
     }
-    appendToLayerChooser(sourceJSON.config.name, sourceJSON.config.standardActivated);
     if(leafletLayerControl !== undefined && leafletLayerControl !== null) {
+        appendToLayerChooser(sourceJSON.config.name, sourceJSON.config.standardActivated);
         leafletLayerControl.addOverlay(layerOpen311Nodes, sourceJSON.config.name);
     }
     return layerOpen311Nodes;

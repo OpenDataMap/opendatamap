@@ -1,3 +1,4 @@
+/// <reference path="config.d.ts" />
 import importConfig from '../config.json';
 
 const config = (importConfig as any);

@@ -1,4 +1,4 @@
-﻿import * as L from 'leaflet';
+﻿import* as L from 'leaflet';
 import {dBValues} from "./tools";
 import {appendToLayerChooser} from "../../layerChooser/initLayerChooser";
 

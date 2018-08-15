@@ -1,5 +1,3 @@
-/// <reference path="main.d.ts" />
-
 import 'jquery';
 import 'materialize-css';
 import {leafletInit} from './lib/map/leafletInit';
@@ -33,7 +31,7 @@ leafletInit(config, (leafletMap, leafletLayerControl) => {
             if (config.modules.hasOwnProperty(moduleID)) {
                 const module = config.modules[moduleID];
                 if (module.config.layerName === data.name) {
-                    modules[module.moduleName + "_updateDataSource"](module, leafletMap);
+                    modules[module.moduleName + "_updateDataSource"](module, config, leafletMap);
                 }
             }
         }

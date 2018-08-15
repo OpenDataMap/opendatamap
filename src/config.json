@@ -7,7 +7,8 @@
       "config": {
         "layerName": "Freifunk Siegburg",
         "standardActivated": true,
-        "dataURL": "https://map.freifunk-siegburg.de/data/nodes.json"
+        "dataURL": "https://map.freifunk-siegburg.de/data/nodes.json",
+        "timestampName": "timestamp"
       }
     },
     {
@@ -15,7 +16,8 @@
       "config": {
         "layerName": "Freifunk Hennef",
         "standardActivated": true,
-        "dataURL": "https://map.freifunk-hennef.de/data/nodes.json"
+        "dataURL": "https://map.freifunk-hennef.de/data/nodes.json",
+        "timestampName": "timestamp"
       }
     },
     {
@@ -29,7 +31,8 @@
         "iotNodes": true,
         "iotMapper": true,
         "iotGateways": true,
-        "iotGatewayLines": false
+        "iotGatewayLines": false,
+        "timestampName": "timestamp"
       }
     },
     {
@@ -38,7 +41,8 @@
         "standardActivated": true,
         "layerName": "Open311 Bonn",
         "dataURL": "https://anliegen.bonn.de/georeport/v2/requests.json?status=open",
-        "open311Nodes": true
+        "open311Nodes": true,
+        "timestampName": "no"
       }
     },
     {
@@ -46,7 +50,8 @@
       "config": {
         "layerName": "Open311 Siegburg",
         "standardActivated": true,
-        "dataURL": "https://anliegen.siegburg.de/georeport/v2/requests.json?status=open"
+        "dataURL": "https://anliegen.siegburg.de/georeport/v2/requests.json?status=open",
+        "timestampName": "no"
       }
     },
     {
@@ -54,7 +59,8 @@
       "config": {
         "layerName": "Open311 Köln",
         "standardActivated": true,
-        "dataURL": "https://sags-uns.stadt-koeln.de/georeport/v2/requests.json?status=open"
+        "dataURL": "https://sags-uns.stadt-koeln.de/georeport/v2/requests.json?status=open",
+        "timestampName": "no"
       }
     }
   ],
@@ -82,5 +88,5 @@
   "layerChooser": {
     "activated": true
   },
-  "dataCaching": true
+  "dataRefreshingTime": 30000
 }

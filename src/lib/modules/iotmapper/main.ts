@@ -21,16 +21,21 @@ export default function moduleIot(moduleConfig, leafletMap, leafletLayerControl,
                 addToSidebar.addToSidebar(formattedNodes, leafletMap, layerIoTMapperGatewaysLines, layerIoTMapperNodes, moduleID)
                 configHelper.modifyModule(moduleConfig.layerName, {
                     "layerIoTMapperGatewaysLines": layerIoTMapperGatewaysLines,
-                    "layerIoTMapperNodes": layerIoTMapperNodes,
-                    "formattedNodes": formattedNodes
+                    "layerIoTMapperNodes": layerIoTMapperNodes
                 })
             });
         }
     });
 };
 
-export function updateDataSource(moduleConfig, leafletMap) {
+export function updateDataSource(moduleConfig, generalConfig, leafletMap) {
     const mConfCurr = moduleConfig.current;
-    addNodesFilter(mConfCurr.formattedNodes, leafletMap, mConfCurr.layerIoTMapperNodes, addToSidebar.IoTMapperDevice, addToSidebar.IoTMapperGateway);
-    addGatewayLinesFilter(mConfCurr.formattedNodes, leafletMap, mConfCurr.layerIoTMapperGatewaysLines, addToSidebar.IoTMapperDevice, addToSidebar.IoTMapperGateway);
+
+    getNodeData(moduleConfig.config,  generalConfig, function (rawNodes) {
+        toJSON(moduleConfig.config, rawNodes, function (formattedNodes) {
+            addToSidebar.addToSidebarUpdate(formattedNodes, leafletMap, mConfCurr.layerIoTMapperGatewayLines, mConfCurr.layerIoTMapperNodes)
+            addNodesFilter(formattedNodes, leafletMap, mConfCurr.layerIoTMapperNodes, addToSidebar.IoTMapperDevice, addToSidebar.IoTMapperGateway);
+            addGatewayLinesFilter(formattedNodes, leafletMap, mConfCurr.layerIoTMapperGatewaysLines, addToSidebar.IoTMapperDevice, addToSidebar.IoTMapperGateway);
+        })
+    })
 }
