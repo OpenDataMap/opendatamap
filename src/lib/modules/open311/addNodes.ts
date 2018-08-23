@@ -45,13 +45,23 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerControl?, layerOpen
         }
     } else {
         const rememberLayers = JSON.parse(localStorage.getItem('rememberLayers'));
+        let found = false;
         rememberLayers.forEach(function (rememberLayer) {
             if(rememberLayer.name === sourceJSON.config.name) {
                 if (rememberLayer.checked) {
+                    found = true;
                     layerOpen311Nodes.addTo(leafletMap);
                 }
             }
         })
+        if(!found) {
+            rememberLayers.push({
+                "name": sourceJSON.config.name,
+                "checked": true
+            });
+            localStorage.setItem('rememberLayers', JSON.stringify(rememberLayers));
+            layerOpen311Nodes.addTo(leafletMap);
+        }
     }
     if(leafletLayerControl !== undefined && leafletLayerControl !== null) {
         appendToLayerChooser(sourceJSON.config.name, sourceJSON.config.standardActivated);

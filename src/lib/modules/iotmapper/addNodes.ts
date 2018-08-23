@@ -86,13 +86,23 @@ export function addNodesFilter(sourceJSON, leafletMap, layerIoTMapperNodes, IoTM
             layerIoTMapperNodes.addTo(leafletMap);
         }
     } else {
-        const rememberLayers = JSON.parse(localStorage.getItem('rememberLayers'));
+        let rememberLayers = JSON.parse(localStorage.getItem('rememberLayers'));
+        let found = true;
         rememberLayers.forEach(function (rememberLayer) {
             if(rememberLayer.name === sourceJSON.config.name + " Nodes") {
                 if (rememberLayer.checked) {
+                    found = true;
                     layerIoTMapperNodes.addTo(leafletMap);
                 }
             }
         })
+        if(!found) {
+            rememberLayers.push({
+                "name": sourceJSON.config.name,
+                "checked": true
+            });
+            localStorage.setItem('rememberLayers', JSON.stringify(rememberLayers));
+            layerIoTMapperNodes.addTo(leafletMap);
+        }
     }
 }

@@ -41,13 +41,23 @@ export function addGateways(sourceJSON, leafletMap, leafletLayerNodes) {
         }
     } else {
         const rememberLayers = JSON.parse(localStorage.getItem('rememberLayers'));
+        let found = false;
         rememberLayers.forEach(function (rememberLayer) {
             if(rememberLayer.name === sourceJSON.config.name + " Gateways") {
                 if (rememberLayer.checked) {
+                    found = true;
                     layerIoTMapperGateways.addTo(leafletMap);
                 }
             }
         })
+        if(!found) {
+            rememberLayers.push({
+                "name": sourceJSON.config.name,
+                "checked": true
+            });
+            localStorage.setItem('rememberLayers', JSON.stringify(rememberLayers));
+            layerIoTMapperGateways.addTo(leafletMap);
+        }
     }
     appendToLayerChooser(sourceJSON.config.name + ' Gateways', sourceJSON.config.iotGateways);
     leafletLayerNodes.addOverlay(layerIoTMapperGateways, sourceJSON.config.name + " Gateways");

@@ -63,13 +63,22 @@ export function addMapper(sourceJSON, leafletMap, leafletLayerNodes) {
         }
     } else {
         const rememberLayers = JSON.parse(localStorage.getItem('rememberLayers'));
+        let found = false
         rememberLayers.forEach(function (rememberLayer) {
             if(rememberLayer.name === sourceJSON.config.name + " Mapper") {
                 if (rememberLayer.checked) {
                     layerIoTMapperMapper.addTo(leafletMap);
                 }
             }
-        })
+        });
+        if(!found) {
+            rememberLayers.push({
+                "name": sourceJSON.config.name,
+                "checked": true
+            });
+            localStorage.setItem('rememberLayers', JSON.stringify(rememberLayers));
+            layerIoTMapperMapper.addTo(leafletMap);
+        }
     }
     appendToLayerChooser(sourceJSON.config.name + ' Mapper', sourceJSON.config.iotMapper);
     leafletLayerNodes.addOverlay(layerIoTMapperMapper, sourceJSON.config.name + " Mapper");

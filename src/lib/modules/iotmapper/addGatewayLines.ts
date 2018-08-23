@@ -72,12 +72,22 @@ export function addGatewayLinesFilter(sourceJSON, leafletMap, layerIoTMapperGate
         }
     } else {
         const rememberLayers = JSON.parse(localStorage.getItem('rememberLayers'));
+        let found = false;
         rememberLayers.forEach(function (rememberLayer) {
             if(rememberLayer.name === sourceJSON.config.name + " Linien") {
                 if (rememberLayer.checked) {
+                    found = true;
                     layerIoTMapperGatewaysLines.addTo(leafletMap);
                 }
             }
-        })
+        });
+        if(!found) {
+            rememberLayers.push({
+                "name": sourceJSON.config.name,
+                "checked": true
+            });
+            localStorage.setItem('rememberLayers', JSON.stringify(rememberLayers));
+            layerIoTMapperGatewaysLines.addTo(leafletMap);
+        }
     }
 }
