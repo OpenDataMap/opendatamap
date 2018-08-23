@@ -54,18 +54,24 @@ export function socketUpdateDataSource(socket) {
                     } else {
                         filename = configCopyModule.moduleName + "_" + SHA256(dataURL) + dataURL.substring(dataURL.lastIndexOf('.'), dataURL.indexOf('?'));
                     }
-                    const sourceJSON = JSON.parse(fs.readFileSync(__dirname + "/dataSources/" + filename).toString());
-                    if (configCopyModule.config.timestampName !== "no") {
-                        const timestamp = sourceJSON[configCopyModule.config.timestampName];
-                        if (timestamp !== configCopyModule.lastTimeStamp || configCopyModule.lastTimeStamp === undefined) {
-                            socket.emit('updatedDataSource', {name: configCopyModule.config.layerName});
-                            configCopyModule.lastTimeStamp = timestamp;
-                        } else {
-                            configCopyModule.lastTimeStamp = timestamp;
+                    fs.readFile(__dirname + "/dataSources/" + filename, (err, data) => {
+                        if(data) {
+                            const json = data.toString().trim();
+
+                            const sourceJSON =  JSON.parse(json);
+                            if (configCopyModule.config.timestampName !== "no") {
+                                const timestamp = sourceJSON[configCopyModule.config.timestampName];
+                                if (timestamp !== configCopyModule.lastTimeStamp || configCopyModule.lastTimeStamp === undefined) {
+                                    socket.emit('updatedDataSource', {name: configCopyModule.config.layerName});
+                                    configCopyModule.lastTimeStamp = timestamp;
+                                } else {
+                                    configCopyModule.lastTimeStamp = timestamp;
+                                }
+                            } else {
+                                socket.emit('updatedDataSource', {name: configCopyModule.config.layerName});
+                            }
                         }
-                    } else {
-                        socket.emit('updatedDataSource', {name: configCopyModule.config.layerName});
-                    }
+                    })
                 }).catch((err) => {
                     console.error(err)
                 });
