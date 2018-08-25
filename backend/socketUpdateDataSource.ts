@@ -57,18 +57,21 @@ export function socketUpdateDataSource(socket) {
                     fs.readFile(__dirname + "/dataSources/" + filename, (err, data) => {
                         if(data) {
                             const json = data.toString().trim();
-
-                            const sourceJSON =  JSON.parse(json);
-                            if (configCopyModule.config.timestampName !== "no") {
-                                const timestamp = sourceJSON[configCopyModule.config.timestampName];
-                                if (timestamp !== configCopyModule.lastTimeStamp || configCopyModule.lastTimeStamp === undefined) {
-                                    socket.emit('updatedDataSource', {name: configCopyModule.config.layerName});
-                                    configCopyModule.lastTimeStamp = timestamp;
+                            try {
+                                const sourceJSON =  JSON.parse(json);
+                                if (configCopyModule.config.timestampName !== "no") {
+                                    const timestamp = sourceJSON[configCopyModule.config.timestampName];
+                                    if (timestamp !== configCopyModule.lastTimeStamp || configCopyModule.lastTimeStamp === undefined) {
+                                        socket.emit('updatedDataSource', {name: configCopyModule.config.layerName});
+                                        configCopyModule.lastTimeStamp = timestamp;
+                                    } else {
+                                        configCopyModule.lastTimeStamp = timestamp;
+                                    }
                                 } else {
-                                    configCopyModule.lastTimeStamp = timestamp;
+                                    socket.emit('updatedDataSource', {name: configCopyModule.config.layerName});
                                 }
-                            } else {
-                                socket.emit('updatedDataSource', {name: configCopyModule.config.layerName});
+                            } catch (e) {
+                                // Oh well, but whatever...
                             }
                         }
                     })
