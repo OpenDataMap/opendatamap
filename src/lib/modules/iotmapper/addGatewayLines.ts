@@ -28,13 +28,24 @@ export function addGatewayLines(sourceJSON, leafletMap, leafletLayerNodes) {
         }
     } else {
         const rememberLayers = JSON.parse(localStorage.getItem('rememberLayers'));
+        let found = false;
         rememberLayers.forEach(function (rememberLayer) {
             if(rememberLayer.name === sourceJSON.config.name + " Linien") {
+                found = true;
                 if (rememberLayer.checked) {
                     layerIoTMapperGatewaysLines.addTo(leafletMap);
                 }
             }
         })
+        if(!found) {
+            rememberLayers.push({
+                "name": sourceJSON.config.name,
+                "checked": true
+            });
+            console.log("aaa");
+            localStorage.setItem('rememberLayers', JSON.stringify(rememberLayers));
+            layerIoTMapperGatewaysLines.addTo(leafletMap);
+        }
     }
     leafletLayerNodes.addOverlay(layerIoTMapperGatewaysLines, sourceJSON.config.name + " Linien");
     appendToLayerChooser(sourceJSON.config.name + ' Linien', sourceJSON.config.iotGatewayLines);
@@ -75,8 +86,8 @@ export function addGatewayLinesFilter(sourceJSON, leafletMap, layerIoTMapperGate
         let found = false;
         rememberLayers.forEach(function (rememberLayer) {
             if(rememberLayer.name === sourceJSON.config.name + " Linien") {
+                found = true;
                 if (rememberLayer.checked) {
-                    found = true;
                     layerIoTMapperGatewaysLines.addTo(leafletMap);
                 }
             }
@@ -86,6 +97,7 @@ export function addGatewayLinesFilter(sourceJSON, leafletMap, layerIoTMapperGate
                 "name": sourceJSON.config.name,
                 "checked": true
             });
+            console.log("aaa");
             localStorage.setItem('rememberLayers', JSON.stringify(rememberLayers));
             layerIoTMapperGatewaysLines.addTo(leafletMap);
         }

@@ -48,8 +48,8 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerControl?, layerOpen
         let found = false;
         rememberLayers.forEach(function (rememberLayer) {
             if(rememberLayer.name === sourceJSON.config.name) {
+                found = true;
                 if (rememberLayer.checked) {
-                    found = true;
                     layerOpen311Nodes.addTo(leafletMap);
                 }
             }

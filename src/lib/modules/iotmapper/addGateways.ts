@@ -44,8 +44,8 @@ export function addGateways(sourceJSON, leafletMap, leafletLayerNodes) {
         let found = false;
         rememberLayers.forEach(function (rememberLayer) {
             if(rememberLayer.name === sourceJSON.config.name + " Gateways") {
+                found = true;
                 if (rememberLayer.checked) {
-                    found = true;
                     layerIoTMapperGateways.addTo(leafletMap);
                 }
             }

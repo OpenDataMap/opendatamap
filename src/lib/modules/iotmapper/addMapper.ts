@@ -66,6 +66,7 @@ export function addMapper(sourceJSON, leafletMap, leafletLayerNodes) {
         let found = false
         rememberLayers.forEach(function (rememberLayer) {
             if(rememberLayer.name === sourceJSON.config.name + " Mapper") {
+                found = true;
                 if (rememberLayer.checked) {
                     layerIoTMapperMapper.addTo(leafletMap);
                 }
