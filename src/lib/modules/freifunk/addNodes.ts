@@ -10,7 +10,7 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerControl?, layerFrei
         layerFreifunkNodes = L.layerGroup();
     }
     nodes.forEach((currentNode) => {
-        if (currentNode.latitude !== 0 && currentNode.longitude !== 0) {
+        if (currentNode.latitude !== 0 && currentNode.longitude !== 0 && currentNode.latitude !== undefined && currentNode.longitude !== undefined) {
             let nodeColorOnMap;
             const currentTimeLastseenDiff = ((new Date().getTime() - currentNode.lastseen.getTime()) / 1000 / 60);
             if (currentTimeLastseenDiff < 15 && currentNode.online) {
