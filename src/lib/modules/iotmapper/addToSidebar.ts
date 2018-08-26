@@ -84,7 +84,6 @@ export function addToSidebar(sourceJSON, leafletMap, layerIoTMapperGatewaysLines
     sourceJSON.nodes.forEach(function (node) {
         nodesTimes.push(new Date(node.time).getTime());
     });
-    console.log(nodesTimes);
     var htmlSlider = document.getElementById('iot-' + moduleID + '-time-slider');
 
     let noUizedSlider = noUiSlider.create(htmlSlider, {

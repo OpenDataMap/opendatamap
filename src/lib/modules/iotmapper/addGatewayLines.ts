@@ -42,7 +42,6 @@ export function addGatewayLines(sourceJSON, leafletMap, leafletLayerNodes) {
                 "name": sourceJSON.config.name,
                 "checked": true
             });
-            console.log("aaa");
             localStorage.setItem('rememberLayers', JSON.stringify(rememberLayers));
             layerIoTMapperGatewaysLines.addTo(leafletMap);
         }
@@ -97,7 +96,6 @@ export function addGatewayLinesFilter(sourceJSON, leafletMap, layerIoTMapperGate
                 "name": sourceJSON.config.name,
                 "checked": true
             });
-            console.log("aaa");
             localStorage.setItem('rememberLayers', JSON.stringify(rememberLayers));
             layerIoTMapperGatewaysLines.addTo(leafletMap);
         }
