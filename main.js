@@ -47,8 +47,6 @@ commander
     .description('test')
     .action(function () {
         buildAssets();
-        const config = readConfig();
-        downloadDataSources(config);
         console.log('Passed');
     })
 
@@ -119,33 +117,4 @@ function buildSass() {
             if (error) throw error;
         });
     })
-}
-
-function downloadDataSources(config) {
-    config.modules.forEach(function (module) {
-        const dataURL = module.config.dataURL;
-        let filename;
-        if (dataURL.indexOf("?") === -1) {
-            filename = cryptojs.MD5(dataURL) + dataURL.substring(dataURL.lastIndexOf('.'));
-        } else {
-            filename = cryptojs.MD5(dataURL) + dataURL.substring(dataURL.lastIndexOf('.'), dataURL.indexOf('?'));
-        }
-        axios.get(dataURL, {
-            responseType: 'stream'
-        }).then(function (response) {
-            let file = fs.createWriteStream("dist/data/" + filename);
-            response.data.pipe(file);
-        }).catch(function (error) {
-            console.error('Error downloading ' + dataURL + ' - StatusCode: ' + error.response.status);
-        })
-    });
-}
-
-function downloadDataSourcesTrigger(config) {
-    downloadDataSources(config);
-    setInterval(downloadDataSources, 60000, config);
-}
-
-function readConfig() {
-    return JSON.parse(fs.readFileSync("src/config.json"));
 }
