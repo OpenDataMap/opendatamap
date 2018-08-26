@@ -24,9 +24,9 @@
       transition: .3s ease;
       &:hover {
         color: $color_accent;
-        &.leaflet-disabled {
-          color: #bbb !important;
-        }
+      }
+      &.leaflet-disabled {
+        color: #bbb !important;
       }
       &:first-child {
         border-top-left-radius: 5px;

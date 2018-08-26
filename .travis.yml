@@ -11,11 +11,16 @@ before_deploy:
   - chmod 600 /tmp/deploy-key
   - ssh-add /tmp/deploy-key
 deploy:
-  provider: script
-  skip_cleanup: true
-  script: bash .travis/deploy.sh
-  on:
-    branch: master
+  - provider: script
+    skip_cleanup: true
+    script: bash .travis/deploy.sh
+    on:
+      branch: master
+  - provider: script
+    skip_cleanup: true
+    script: bash .travis/deploy-develop.sh
+    on:
+      branch: develop
 notifications:
   slack:
     rooms:

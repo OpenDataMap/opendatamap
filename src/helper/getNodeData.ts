@@ -10,4 +10,5 @@ export function getNodeData (moduleConfig, generalConfig, cb) {
         const dataSources = JSON.parse(data.getDataSource);
         cb(dataSources)
     })
+
 }
