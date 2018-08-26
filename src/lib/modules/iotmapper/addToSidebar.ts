@@ -3,7 +3,7 @@ import {addGatewayLinesFilter} from "./addGatewayLines";
 import {addNodesFilter} from "./addNodes";
 import {map} from "leaflet";
 import {filterByTime} from "./filterByTime";
-const noUiSlider = require('../../../helper/materialize_nouislider.js');
+const noUiSlider = require('materialize-css/extras/noUiSlider/nouislider.js');
 const wnumb = require('wnumb');
 
 export let IoTMapperGateway = [];
