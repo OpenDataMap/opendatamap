@@ -4,3 +4,4 @@ dist
 node_modules
 backend/*.js
 /backend/dataSources/
+src/config.json
