@@ -5,6 +5,8 @@ dist: xenial
 addons:
   ssh_known_hosts: 
     - secure: Ds6L3MYzFSB5NWrBhrf30SJKUt9UVX0VHbqiMQFF2QQT8yE0NdO35Gej285ZX4K36ZoBGICo1gCgcNWPVtdZ5uzDGHx2Ysa8hjeVrwqip2KIQiZ2YmBMZkrRH7UE5InKSS4vMxSmHUdzhWQjqbCQBHhn5UxPCYu+9qFmyBS9/ClErbBdQtR/w8mSAvKietHq9pu/lhylDEjS3KQc+XGuDgr48KKI+AmmaGrb2PzMUfoAcE0kDpP0+oQ4p7voLZ4F9FH5G/r5ru/Q5VxoDcYO4TMscgNy05J9k1cIwloPFxxDYSDO+ylWkOJKp3QtGZYx95spxOXbVEHeqny12jGZjBNQxFpVrlMRUU83aWVtnt/62u1NJVq1romBU0b+PuMNhicoAQbcoqrMnuskVLZLN0IEZJufGimLmDPEG+RgU3xUpuxSeBQPg/U4w77e9jcNkkugU+ZCurpLW93nBNrdmkipJ6ukkwz60fa2qwuCdzKsxSSkx15GGfnxJpb69RVXYrzly6EhOWbcAV7nrqTZz9kSig1eQUmWj02UTDHjpzDtcpJGVCvCzbfY85NzbwB1JmgMbh+mopndKR4cP1V1P2Zx10JiGm/w1pb9vQ/J6gcVk95ZPpb7W+zH6hoUgrFj4UPBq0AYvT/sHQ7e8Z5wLwEsdHosBTVj7EPp9MIdFVQ=
+before_script:
+    - cp src/config.sample.json src/config.json
 before_deploy:
   - openssl aes-256-cbc -K $encrypted_52c0b3e48ca4_key -iv $encrypted_52c0b3e48ca4_iv -in .travis/deploy-key.enc -out /tmp/deploy-key -d
   - eval "$(ssh-agent -s)"
