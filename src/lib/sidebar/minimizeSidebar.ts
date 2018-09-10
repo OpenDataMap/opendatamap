@@ -1,3 +1,5 @@
+import * as $ from 'jquery';
+
 export function minimizeSidebar(leafletMap) {
     const $sidebar_container = $('#sidebar-container');
     const $sidebar_main = $('#sidebar-main');

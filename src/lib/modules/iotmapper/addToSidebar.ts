@@ -1,7 +1,7 @@
 ///<reference path="addNodes.ts"/>
+import * as $ from 'jquery';
 import {addGatewayLinesFilter} from "./addGatewayLines";
 import {addNodesFilter} from "./addNodes";
-import {map} from "leaflet";
 import {filterByTime} from "./filterByTime";
 const noUiSlider = require('materialize-css/extras/noUiSlider/nouislider.js');
 const wnumb = require('wnumb');

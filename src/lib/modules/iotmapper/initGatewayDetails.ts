@@ -1,7 +1,7 @@
 import './IGateway';
 //import importModConfig from './moduleConfig.json';
 import importConfig from './../../../config.json';
-import * as L from 'leaflet';
+import * as $ from 'jquery';
 //const modConfig = (importModConfig as any);
 const config = (importConfig as any);
 

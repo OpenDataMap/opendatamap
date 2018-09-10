@@ -1,5 +1,5 @@
-import 'jquery';
-import 'materialize-css';
+import  * as $ from 'jquery';
+import * as M from 'materialize-css';
 import {leafletInit} from './lib/map/leafletInit';
 import * as modules from './lib/modules/modules';
 import {initLayerChooser} from "./lib/layerChooser/initLayerChooser";
@@ -36,6 +36,8 @@ leafletInit(config, (leafletMap, leafletLayerControl) => {
             }
         }
     });
+    // @ts-ignore
+    M.AutoInit();
     // $('#sidebar-container').remove();
     // $('#map-container').width('100vw');
     // leafletMap.invalidateSize();

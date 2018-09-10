@@ -1,4 +1,3 @@
-import 'jquery';
 import './INode';
 import './IGateway';
 import './ISource';

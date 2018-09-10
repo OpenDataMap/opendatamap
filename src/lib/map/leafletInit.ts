@@ -1,3 +1,4 @@
+import * as $ from 'jquery';
 import * as L from 'leaflet';
 import {leafletInitBaseLayer} from "./initBaseLayer";
 import {leafletNightChange} from "./nightChangeDetect";

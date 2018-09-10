@@ -1,6 +1,6 @@
 import './INode';
+import * as $ from 'jquery';
 import importConfig from './../../../config.json';
-import * as L from 'leaflet';
 const config = (importConfig as any);
 
 export function nodeDetailOnClick(e) {

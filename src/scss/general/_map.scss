@@ -73,12 +73,12 @@
     }
   }
   .leaflet-control-layers-selector[type=radio] {
-    opacity: 1 !important;
-    position: relative !important;
+    opacity: 0 !important;
+    position: absolute !important;
   }
   .leaflet-control-layers-selector[type=checkbox] {
-    position: relative !important;
-    opacity: 1 !important;
+    position: absolute !important;
+    opacity: 0 !important;
   }
   .leaflet-control-zoom {
     .leaflet-control-zoom-in, .leaflet-control-zoom-out {
@@ -89,6 +89,12 @@
   .leaflet-control-attribution {
     color: $color_text_normal;
     background: $color_background_primary;
+  }
+  .leaflet-control-layers {
+    margin: 0 2px;
+  }
+  .leaflet-control-layers-overlays label {
+    padding: 0 5px;
   }
 }
 

@@ -1,3 +1,5 @@
+import * as $ from 'jquery';
+
 export function leafletNightChange (leafletMap) {
     leafletMap.on('baselayerchange', function(e) {
         // Check current Layer for the night Classname

@@ -1,4 +1,5 @@
 import * as L from "leaflet";
+import * as $ from 'jquery';
 
 export function initLocateControl(config, leafletMap) {
     if( document.location.protocol === 'https:' || window.location.protocol === 'https:') {

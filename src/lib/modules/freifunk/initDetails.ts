@@ -1,7 +1,7 @@
 import './INode';
+import * as $ from 'jquery';
 import importModConfig from './moduleConfig.json';
 import importConfig from './../../../config.json';
-import * as L from 'leaflet';
 const modConfig = (importModConfig as any);
 const config = (importConfig as any);
 

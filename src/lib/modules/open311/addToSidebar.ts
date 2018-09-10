@@ -1,3 +1,5 @@
+import * as $ from 'jquery';
+
 export function addToSidebar(sourceJSON, moduleID) {
     $('#sidebar-bottom-nodes-chooser').append('' +
         '  <li id="sidebar-bottom-nodes-chooser-' + moduleID + '">' +
