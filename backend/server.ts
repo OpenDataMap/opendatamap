@@ -33,8 +33,8 @@ export function start(port) {
     expressServer.get('/assets/js/main', function (req, res) {
         res.sendFile(path.join(__dirname + '/../dist/bundle.js'));
     });
-    expressServer.get('/assets/fonts/roboto/*', function (req, res) {
-        res.sendFile(path.join(__dirname + '/../dist/fonts/roboto/' + req.params[0]));
+    expressServer.get('/assets/fonts/*', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../dist/fonts/' + req.params[0]));
     });
     expressServer.get('/assets/images/*', function (req, res) {
         res.sendFile(path.join(__dirname + '/../dist/images/' + req.params[0]));

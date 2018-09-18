@@ -37,12 +37,13 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     },
     plugins: [
-        // new UglifyJSPlugin(),
+        new UglifyJSPlugin(),
         new HtmlWebpackPlugin({
             template: 'src/index.html',
             inject: false
         }),
         new CopyWebpackPlugin([
+            {from: 'src/scss/general/fonts/', to: 'fonts'},
             {from: 'node_modules/materialize-css/dist/fonts', to: 'fonts'}
         ]),
         new webpack.DefinePlugin({

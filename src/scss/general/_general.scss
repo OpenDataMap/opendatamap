@@ -10,5 +10,5 @@ main {
   color: $color_text_normal;
 }
 .hidden {
-  display: none;
+  display: none !important;
 }
