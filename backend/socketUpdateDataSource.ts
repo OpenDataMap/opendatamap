@@ -60,11 +60,9 @@ export function socketUpdateDataSource(socket) {
                             try {
                                 const sourceJSON =  JSON.parse(json);
                                 if (configCopyModule.config.timestampName !== "no") {
-                                    const timestamp = sourceJSON[configCopyModule.config.timestampName];
-                                    if (timestamp !== configCopyModule.lastTimeStamp || configCopyModule.lastTimeStamp === undefined) {
+                                    const timestamp = new Date(sourceJSON[configCopyModule.config.timestampName]);
+                                    if (timestamp.getTime() - new Date(configCopyModule.lastTimeStamp).getTime() > 60000 || configCopyModule.lastTimeStamp === undefined) {
                                         socket.emit('updatedDataSource', {name: configCopyModule.config.layerName});
-                                        configCopyModule.lastTimeStamp = timestamp;
-                                    } else {
                                         configCopyModule.lastTimeStamp = timestamp;
                                     }
                                 } else {
