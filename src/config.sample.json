@@ -24,7 +24,8 @@
       "moduleName": "iotmapper",
       "config": {
         "layerName": "IoT Mapper Hennef",
-        "dataURL": "https://map.bonn.codefor.de/assets/data/ttn_mapper.json",
+        "dataURL": "/srv/opendatamap/dist/data/ttn_mapper.json",
+        "localDataFile": true,
         "filterValue": 0.00005,
         "filterMapper": 900000,
         "standardActivated": true,

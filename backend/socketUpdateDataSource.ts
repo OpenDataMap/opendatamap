@@ -19,20 +19,24 @@ export function downloadDataSource (dataSourceName) {
                     } else {
                         filename = module.moduleName + "_" + SHA256(dataURL) + dataURL.substring(dataURL.lastIndexOf('.'), dataURL.indexOf('?'));
                     }
-                    axios.get(dataURL, {
-                        responseType: 'stream'
-                    }).then(function (response) {
-                        let file = fs.createWriteStream(__dirname + "/dataSources/" + filename);
-                        response.data.pipe(file);
-                        file.on('finish', () => {
-                            resolve("OK");
+                    if(module.config.localDataFile) {
+                        fs.createReadStream(dataURL).pipe(fs.createWriteStream(__dirname + "/dataSources/" + filename));
+                    } else {
+                        axios.get(dataURL, {
+                            responseType: 'stream'
+                        }).then(function (response) {
+                            let file = fs.createWriteStream(__dirname + "/dataSources/" + filename);
+                            response.data.pipe(file);
+                            file.on('finish', () => {
+                                resolve("OK");
+                            });
+                        }).catch(function (error) {
+                            console.error('Error downloading ' + dataURL + ' - StatusCode: ' + error.response.status);
+                            reject("Error")
                         });
-                    }).catch(function (error) {
-                        console.error('Error downloading ' + dataURL + ' - StatusCode: ' + error.response.status);
-                        reject("Error")
-                    });
-                    if (!err) {
-                        break;
+                        if (!err) {
+                            break;
+                        }
                     }
                 }
             }
