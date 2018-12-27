@@ -15,7 +15,7 @@ export default function moduleIot(moduleConfig, leafletMap, leafletLayerControl,
         } else {
             toJSON(moduleConfig, rawNodes, function (formattedNodes) {
                 let layerIoTMapperGatewaysLines = addGatewayLines(formattedNodes, leafletMap, leafletLayerControl);
-                addGateways(formattedNodes, leafletMap, leafletLayerControl);
+                addGateways(moduleConfig, formattedNodes, leafletMap, leafletLayerControl);
                 let layerIoTMapperNodes = addNodes(formattedNodes, leafletMap, leafletLayerControl);
                 addMapper(formattedNodes, leafletMap, leafletLayerControl);
                 addToSidebar.addToSidebar(formattedNodes, leafletMap, layerIoTMapperGatewaysLines, layerIoTMapperNodes, moduleID)

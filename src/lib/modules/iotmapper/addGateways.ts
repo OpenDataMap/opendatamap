@@ -6,7 +6,7 @@ import iconIoTGatewayMarkerShadow from './images/opendatamap_marker_iot-gateway_
 import {gatewayDetailOnClick} from "./initGatewayDetails";
 import {appendToLayerChooser} from "../../layerChooser/initLayerChooser";
 
-export function addGateways(sourceJSON, leafletMap, leafletLayerNodes) {
+export function addGateways(moduleConfig, sourceJSON, leafletMap, leafletLayerNodes) {
     let layerIoTMapperGateways = L.layerGroup();
     const gateways = sourceJSON.gateways;
     var iconIoTMapperGateway = L.icon({
@@ -27,7 +27,9 @@ export function addGateways(sourceJSON, leafletMap, leafletLayerNodes) {
         const mapGatewayMarker = new customMapGatewayMarker([currentGateway.latitude, currentGateway.longitude], {
             icon: iconIoTMapperGateway,
             dataObj: currentGateway
-        }).on('click', gatewayDetailOnClick);
+        }).on('click', (e) => {
+            gatewayDetailOnClick(e, moduleConfig);
+        });
         layerIoTMapperGateways.addLayer(mapGatewayMarker);
 
         // add Tooltip to cicle
