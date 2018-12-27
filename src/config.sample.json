@@ -33,6 +33,12 @@
         "iotMapper": true,
         "iotGateways": true,
         "iotGatewayLines": false,
+        "iotGatewayStats_systemlast": "https://grafana.opendatamap.net/d-solo/ZlV_uvWmz/gateway_statistiks?orgId=2&panelId=2",
+        "iotGatewayStats_speicherauslastung": "https://grafana.opendatamap.net/d-solo/ZlV_uvWmz/gateway_statistiks?orgId=2&panelId=24",
+        "iotGatewayStats_prozesse": "https://grafana.opendatamap.net/d-solo/ZlV_uvWmz/gateway_statistiks?orgId=2&panelId=16",
+        "iotGatewayStats_netzwerklast": "https://grafana.opendatamap.net/d-solo/ZlV_uvWmz/gateway_statistiks?orgId=2&panelId=8",
+        "iotGatewayStats_gatewaystats": "https://grafana.opendatamap.net/d-solo/ZlV_uvWmz/gateway_statistiks?orgId=2&panelId=6",
+        "iotGatewayStats_cputemperatur": "https://grafana.opendatamap.net/d-solo/ZlV_uvWmz/gateway_statistiks?orgId=2&panelId=12",
         "timestampName": "timestamp"
       }
     },
