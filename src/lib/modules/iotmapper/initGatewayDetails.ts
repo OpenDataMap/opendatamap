@@ -34,42 +34,42 @@ export function gatewayDetailOnClick(e) {
         '<tr>' +
             '<th colspan="2">Systemlast' +
             '<p>' +
-                '<iframe src="https://grafana.bonn.codefor.de/d-solo/ZlV_uvWmz/gateway_statistiks?orgId=2&panelId=2&from' + dFrom + '&to' + dTo + '&var-gateway_name=' + gatewaydata.name.toString() + '" width="400" height="250" frameborder="0"></iframe>' +
+                '<iframe src="https://grafana.opendatamap.net/d-solo/ZlV_uvWmz/gateway_statistiks?orgId=2&panelId=2&from' + dFrom + '&to' + dTo + '&var-gateway_name=' + gatewaydata.name.toString() + '" width="400" height="250" frameborder="0"></iframe>' +
             '</p>' +
             '</th>' +
         '</tr>' +
         '<tr>' +
             '<th colspan="2">Speicherauslastung' +
             '<p>' +
-                '<iframe src="https://grafana.bonn.codefor.de/d-solo/ZlV_uvWmz/gateway_statistiks?orgId=2&panelId=24&from' + dFrom + '&to' + dTo + '&var-gateway_name=' + gatewaydata.name.toString() + '" width="400" height="250" frameborder="0"></iframe>' +
+                '<iframe src="https://grafana.opendatamap.net/d-solo/ZlV_uvWmz/gateway_statistiks?orgId=2&panelId=24&from' + dFrom + '&to' + dTo + '&var-gateway_name=' + gatewaydata.name.toString() + '" width="400" height="250" frameborder="0"></iframe>' +
             '</p>' +
             '</th>' +
         '</tr>'+
         '<tr>' +
             '<th colspan="2">Prozesse' +
             '<p>' +
-                '<iframe src="https://grafana.bonn.codefor.de/d-solo/ZlV_uvWmz/gateway_statistiks?orgId=2&panelId=16&from' + dFrom + '&to' + dTo + '&var-gateway_name=' + gatewaydata.name.toString() + '" width="400" height="250" frameborder="0"></iframe>' +
+                '<iframe src="https://grafana.opendatamap.net/d-solo/ZlV_uvWmz/gateway_statistiks?orgId=2&panelId=16&from' + dFrom + '&to' + dTo + '&var-gateway_name=' + gatewaydata.name.toString() + '" width="400" height="250" frameborder="0"></iframe>' +
             '</p>' +
             '</th>' +
         '</tr>' +
         '<tr>' +
             '<th colspan="2">Netzwerklast' +
             '<p>' +
-                '<iframe src="https://grafana.bonn.codefor.de/d-solo/ZlV_uvWmz/gateway_statistiks?orgId=2&panelId=8&from' + dFrom + '&to' + dTo + '&var-gateway_name=' + gatewaydata.name.toString() + '" width="400" height="250" frameborder="0"></iframe>' +
+                '<iframe src="https://grafana.opendatamap.net/d-solo/ZlV_uvWmz/gateway_statistiks?orgId=2&panelId=8&from' + dFrom + '&to' + dTo + '&var-gateway_name=' + gatewaydata.name.toString() + '" width="400" height="250" frameborder="0"></iframe>' +
             '</p>' +
             '</th>' +
         '</tr>' +
         '<tr>' +
             '<th colspan="2">Gateway Stats' +
             '<p>' +
-                '<iframe src="https://grafana.bonn.codefor.de/d-solo/ZlV_uvWmz/gateway_statistiks?orgId=2&panelId=6&from' + dFrom + '&to' + dTo + '&var-gateway_name=' + gatewaydata.name.toString() + '" width="400" height="250" frameborder="0"></iframe>' +
+                '<iframe src="https://grafana.opendatamap.net/d-solo/ZlV_uvWmz/gateway_statistiks?orgId=2&panelId=6&from' + dFrom + '&to' + dTo + '&var-gateway_name=' + gatewaydata.name.toString() + '" width="400" height="250" frameborder="0"></iframe>' +
             '</p>' +
             '</th>' +
         '</tr>' +
         '<tr>' +
             '<th colspan="2">CPU Temperatur' +
             '<p>' +
-                '<iframe src="https://grafana.bonn.codefor.de/d-solo/ZlV_uvWmz/gateway_statistiks?orgId=2&panelId=12&from' + dFrom + '&to' + dTo + '&var-gateway_name=' + gatewaydata.name.toString() + '" width="400" height="250" frameborder="0"></iframe>' +
+                '<iframe src="https://grafana.opendatamap.net/d-solo/ZlV_uvWmz/gateway_statistiks?orgId=2&panelId=12&from' + dFrom + '&to' + dTo + '&var-gateway_name=' + gatewaydata.name.toString() + '" width="400" height="250" frameborder="0"></iframe>' +
             '</p>' +
             '</th>' +
         '</tr>';
