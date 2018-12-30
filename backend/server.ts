@@ -39,6 +39,11 @@ export function start(port) {
     expressServer.get('/assets/images/*', function (req, res) {
         res.sendFile(path.join(__dirname + '/../dist/images/' + req.params[0]));
     });
+    if(config.serveDataFiles) {
+        expressServer.get('/assets/data/*',  function (req, res) {
+            res.sendFile(path.join(__dirname + '/../dist/data/' + req.params[0]));
+        })
+    }
 
     const apolloServer = new ApolloServer({schema});
 

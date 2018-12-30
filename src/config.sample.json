@@ -95,5 +95,6 @@
   "layerChooser": {
     "activated": true
   },
-  "dataRefreshingTime": 30000
+  "dataRefreshingTime": 30000,
+  "serveDataFiles": true
 }
