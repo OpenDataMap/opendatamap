@@ -82,7 +82,7 @@ export function socketUpdateDataSource(socket) {
                         }
                     })
                 }).catch((err) => {
-                    console.error(err)
+                    // There was error
                 });
             }
         }
