@@ -31,8 +31,12 @@ export function downloadDataSource (dataSourceName) {
                                 resolve("OK");
                             });
                         }).catch(function (error) {
-                            console.error('Error downloading ' + dataURL + ' - StatusCode: ' + error.response.status);
-                            reject("Error")
+                            if(error.response !== undefined) {
+                                console.error('Error downloading ' + dataURL + ' - StatusCode: ' + error.response.status);
+                                reject("Error")
+                            } else {
+                                reject("Error")
+                            }
                         });
                         if (!err) {
                             break;

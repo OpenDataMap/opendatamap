@@ -12,7 +12,9 @@ const config = JSON.parse(fs.readFileSync("src/config.json").toString());
 export function start(port) {
     for (let moduleI in config.modules) {
         if (config.modules.hasOwnProperty(moduleI)) {
-            downloadDataSource(config.modules[moduleI].config.layerName)
+            downloadDataSource(config.modules[moduleI].config.layerName).catch((err) => {
+                // ERROR
+            });
 
         }
     }
@@ -39,11 +41,6 @@ export function start(port) {
     expressServer.get('/assets/images/*', function (req, res) {
         res.sendFile(path.join(__dirname + '/../dist/images/' + req.params[0]));
     });
-    if(config.serveDataFiles) {
-        expressServer.get('/assets/data/*',  function (req, res) {
-            res.sendFile(path.join(__dirname + '/../dist/data/' + req.params[0]));
-        })
-    }
 
     const apolloServer = new ApolloServer({schema});
 
