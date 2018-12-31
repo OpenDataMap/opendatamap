@@ -1,6 +1,7 @@
 import './INode';
 import * as $ from 'jquery';
 import importConfig from './../../../config.json';
+import {formatDate} from "./tools";
 const config = (importConfig as any);
 
 export function nodeDetailOnClick(e) {
@@ -14,6 +15,8 @@ export function nodeDetailOnClick(e) {
         $('#sidebar-main-bottom-smallerBigger').removeClass('hidden');
         leafletMap.setView(actualCenter, actualZoom);
     });
+
+
     const nodedata = <IEnvironemntNode> this.options.dataObj;
     $('#sidebar-details-title').html(nodedata.node_id.toString() + "(" + nodedata.sensor_type.toString() + ")");
     $('#sidebar-main-bottom-smallerBigger').addClass('hidden');
@@ -29,7 +32,7 @@ export function nodeDetailOnClick(e) {
         '</tr>' +
         '<tr>' +
             '<th>Datum (Letzte Daten)</th>' +
-            '<td>' + nodedata.lastDataTimestamp + '</td>' +
+            '<td>' + formatDate(nodedata.lastDataTimestamp) + '</td>' +
         '</tr>' +
         '<tr>' +
             '<th>Letzte Daten</th>' +

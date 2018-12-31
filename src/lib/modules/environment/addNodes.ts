@@ -6,14 +6,14 @@ import iconEnvironmentMarkerShadow from './images/opendatamap_marker_environment
 import {nodeDetailOnClick} from "./initDetails";
 import {appendToLayerChooser} from "../../layerChooser/initLayerChooser";
 
-export function addNodes(sourceJSON, leafletMap, leafletLayerControl?, layerOpen311Nodes?) {
-    if(layerOpen311Nodes !== undefined && layerOpen311Nodes !== null) {
-        layerOpen311Nodes.clearLayers();
+export function addNodes(sourceJSON, leafletMap, leafletLayerControl?, layerEnvironmentNodes?) {
+    if(layerEnvironmentNodes !== undefined && layerEnvironmentNodes !== null) {
+        layerEnvironmentNodes.clearLayers();
     } else {
-        layerOpen311Nodes = L.layerGroup();
+        layerEnvironmentNodes = L.layerGroup();
     }
     const nodes = sourceJSON.nodes;
-    var iconOpen311Node = L.icon({
+    var iconEnvironmentNode = L.icon({
         iconUrl: iconEnvironmentMarker, // Anpassen an file-loader
         shadowUrl: iconEnvironmentMarkerShadow, // Anpassen an file-loader
         iconSize:     [48, 48], // size of the icon
@@ -29,19 +29,19 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerControl?, layerOpen
     });
     nodes.forEach((currentNode) => {
         const mapNodeMarker = new customMapNodeMarker([currentNode.latitude, currentNode.longitude], {
-            icon: iconOpen311Node,
+            icon: iconEnvironmentNode,
             dataObj: currentNode
         }).on('click', nodeDetailOnClick);
-        layerOpen311Nodes.addLayer(mapNodeMarker);
+        layerEnvironmentNodes.addLayer(mapNodeMarker);
 
         // add Tooltip to cicle
-        mapNodeMarker.bindTooltip(currentNode.service_name, {
+        mapNodeMarker.bindTooltip(currentNode.node_id + ": " + currentNode.lastData + " " + currentNode.dataUnit, {
             className: 'leaflet-tooltip-node'
         });
     });
     if(localStorage.getItem('rememberLayers') === null) {
         if(sourceJSON.config.standardActivated) {
-            layerOpen311Nodes.addTo(leafletMap);
+            layerEnvironmentNodes.addTo(leafletMap);
         }
     } else {
         const rememberLayers = JSON.parse(localStorage.getItem('rememberLayers'));
@@ -50,22 +50,22 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerControl?, layerOpen
             if(rememberLayer.name === sourceJSON.config.name) {
                 found = true;
                 if (rememberLayer.checked) {
-                    layerOpen311Nodes.addTo(leafletMap);
+                    layerEnvironmentNodes.addTo(leafletMap);
                 }
             }
-        })
+        });
         if(!found) {
             rememberLayers.push({
                 "name": sourceJSON.config.name,
                 "checked": true
             });
             localStorage.setItem('rememberLayers', JSON.stringify(rememberLayers));
-            layerOpen311Nodes.addTo(leafletMap);
+            layerEnvironmentNodes.addTo(leafletMap);
         }
     }
     if(leafletLayerControl !== undefined && leafletLayerControl !== null) {
         appendToLayerChooser(sourceJSON.config.name, sourceJSON.config.standardActivated);
-        leafletLayerControl.addOverlay(layerOpen311Nodes, sourceJSON.config.name);
+        leafletLayerControl.addOverlay(layerEnvironmentNodes, sourceJSON.config.name);
     }
-    return layerOpen311Nodes;
+    return layerEnvironmentNodes;
 }

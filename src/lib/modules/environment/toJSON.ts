@@ -1,7 +1,7 @@
 import './INode';
 import './ISource';
 
-export function toJSON (config, rawNodes, cb) {
+export function toJSON (config, rawData, cb) {
     let source = <IEnvironmentSource> {
         nodes: [],
         config: {
@@ -9,16 +9,16 @@ export function toJSON (config, rawNodes, cb) {
             standardActivated: config.standardActivated
         }
     };
-    rawNodes.forEach((currentNode) => {
+    rawData.nodes.forEach((currentNode) => {
         let node = <IEnvironemntNode> {
-            node_id: rawNodes.nodeinfo.node_id,
-            sensor_type: rawNodes.nodeinfo.sensor_type,
-            description: rawNodes.nodeinfo.description,
-            latitude: rawNodes.nodeinfo.latitude,
-            longitude: rawNodes.nodeinfo.longitude,
-            dataUnit: rawNodes.nodeinfo.dateUnit,
-            lastData: rawNodes.lastData.data,
-            lastDataTimestamp: rawNodes.lastData.timestamp,
+            node_id: currentNode.nodeinfo.node_id,
+            sensor_type: currentNode.nodeinfo.sensor_type,
+            description: currentNode.nodeinfo.description,
+            latitude: currentNode.nodeinfo.location.latitude,
+            longitude: currentNode.nodeinfo.location.longitude,
+            dataUnit: currentNode.nodeinfo.dataUnit,
+            lastData: currentNode.lastData.data,
+            lastDataTimestamp: currentNode.lastData.timestamp,
             showOnMap: false
         };
         if(currentNode.lat !== undefined) {

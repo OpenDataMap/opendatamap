@@ -8,7 +8,8 @@ export function addToSidebar(sourceJSON, moduleID) {
         '          <table>' +
         '              <thead>' +
         '                  <tr>' +
-        '                      <th>offene Anliegen</th>\n' +
+        '                      <th>Sensoren</th>' +
+        '                      <th>Letzte Daten</th>' +
         '                  </tr>' +
         '              </thead>' +
         '              <tbody></tbody>' +
@@ -18,7 +19,8 @@ export function addToSidebar(sourceJSON, moduleID) {
     sourceJSON.nodes.forEach((node) => {
         $('#sidebar-bottom-nodes-chooser-' + moduleID + ' .collapsible-body table tbody').append('' +
             '<tr>' +
-            '    <td>' + node.service_name + '</td>' +
+            '    <td>' + node.node_id + " (" + node.sensor_type + ")" + '</td>' +
+            '    <td>' + node.lastData + " " + node.dataUnit + '</td>' +
             '</tr>')
     })
 }

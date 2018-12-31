@@ -4,7 +4,7 @@ import {addNodes} from "./addNodes";
 import {addToSidebar} from "./addToSidebar";
 import configHelper from "../../../helper/config";
 
-export default function moduleIot(moduleConfig, leafletMap, leafletLayerControl, moduleID, generalConfig) {
+export default function moduleEnvironment(moduleConfig, leafletMap, leafletLayerControl, moduleID, generalConfig) {
     getNodeData(moduleConfig, generalConfig, function (rawNodes) {
         toJSON(moduleConfig, rawNodes, function (formattedNodes) {
             const layerNodes = addNodes(formattedNodes, leafletMap, leafletLayerControl);

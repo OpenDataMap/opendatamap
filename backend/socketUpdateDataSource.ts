@@ -1,9 +1,10 @@
 import * as fs from "fs";
 
 const config = JSON.parse(fs.readFileSync("src/config.json").toString());
-const axios = require('axios');
+const axios = require('axios').create({
+    timeout: 30000
+});
 import {SHA256} from 'crypto-js'
-
 
 export function downloadDataSource (dataSourceName) {
     return new Promise((resolve, reject) => {
