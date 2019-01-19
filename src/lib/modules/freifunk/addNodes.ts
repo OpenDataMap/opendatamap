@@ -38,16 +38,16 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerControl?, layerFrei
 			for(let i = 0; (i < currentNode.clients) && (i < 90); i++) {
 				switch(true) {
 					case(i < 12):
-						point = rotate(currentNode.latitude, currentNode.longitude, currentNode.latitude + clientDistance[13], currentNode.longitude, - 30 * i);
+						point = rotate(currentNode.latitude, currentNode.longitude, currentNode.latitude + clientDistance[leafletMap.getZoom()], currentNode.longitude, - 30 * i);
 						break;
 					case((i > 11) && (i < 30)):
-						point = rotate(currentNode.latitude, currentNode.longitude, currentNode.latitude + clientDistance[13] * 1.5, currentNode.longitude, - 20 * (i-12));
+						point = rotate(currentNode.latitude, currentNode.longitude, currentNode.latitude + clientDistance[leafletMap.getZoom()] * 1.5, currentNode.longitude, - 20 * (i-12));
 						break;
 					case((i > 29) && (i < 54)):
-						point = rotate(currentNode.latitude, currentNode.longitude, currentNode.latitude + clientDistance[13] * 2, currentNode.longitude, - 15 * (i-30));
+						point = rotate(currentNode.latitude, currentNode.longitude, currentNode.latitude + clientDistance[leafletMap.getZoom()] * 2, currentNode.longitude, - 15 * (i-30));
 						break;
 					case((i > 53) && (i < 90)):
-						point = rotate(currentNode.latitude, currentNode.longitude, currentNode.latitude + clientDistance[13] * 2.5, currentNode.longitude, - 10 * (i-54));
+						point = rotate(currentNode.latitude, currentNode.longitude, currentNode.latitude + clientDistance[leafletMap.getZoom()] * 2.5, currentNode.longitude, - 10 * (i-54));
 						break;	
 				}
 				mapNodeCircleClients[i] = new L.CircleMarker([point[0], point[1]], {
