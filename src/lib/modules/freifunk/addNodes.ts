@@ -103,13 +103,16 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerControl?, layerFrei
 	} else {
 		let rememberLayers = JSON.parse(localStorage.getItem('rememberLayers'));
 		let found = false;
-		for(let rememberLayer of rememberLayers) {
-			if (rememberLayer.name === sourceJSON.config.name) {
-				found = true;
-				if (rememberLayer.checked) {
-					layerFreifunkNodes.addTo(leafletMap);
+		for(let rememberLayerI in rememberLayers) {
+			if(rememberLayers.hasOwnProperty(rememberLayerI)) {
+				let rememberLayer = rememberLayers[rememberLayerI];
+				if (rememberLayer.name === sourceJSON.config.name) {
+					found = true;
+					if (rememberLayer.checked) {
+						layerFreifunkNodes.addTo(leafletMap);
+					}
+					break;
 				}
-				return;
 			}
 		}
 		if(!found) {
