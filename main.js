@@ -1,10 +1,7 @@
 const fs = require('fs');
-const axios = require('axios');
 const commander = require('commander');
 const child_process = require('child_process');
 const sass = require('node-sass');
-const watch = require('recursive-watch');
-const cryptojs = require('crypto-js');
 commander
     .version('0.4.6')
     .description('Server for OpenDataMap');
@@ -15,6 +12,7 @@ commander
     .alias('dev')
     .description('server for development use')
     .action(function (portInput) {
+        const watch = require('recursive-watch');
         // build the assets
         console.log('Please wait! The assets were built');
         buildAssets();
