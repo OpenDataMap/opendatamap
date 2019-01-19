@@ -11,17 +11,17 @@ commander
 
 // development server
 commander
-    .command('development <port>')
+    .command('development [port]')
     .alias('dev')
     .description('server for development use')
-    .action(function (port) {
+    .action(function (portInput) {
         // build the assets
         console.log('Please wait! The assets were built');
         buildAssets();
 
         // start server
         const server = require('./backend/server');
-        server.start(port);
+        server.start(portInput || process.env.PORT || 4000);
 
         console.log('start watching')
         watch('./src/', function (filename) {
@@ -52,18 +52,18 @@ commander
 
 // server for production use
 commander
-    .command('production <port>')
+    .command('production [port]')
     .alias('prod')
     .description('server for production use')
-    .action(function (port) {
+    .action(function (portInput) {
         // build the assets
         console.log('Please wait! The assets were built');
         buildAssets();
 
         const server = require('./backend/server');
         // start server
-        server.start(port);
-    })
+        server.start(portInput || process.env.PORT || 4000);
+    });
 // show help if no command was entered
 commander.parse(process.argv)
 if (commander.args.length === 0) {
