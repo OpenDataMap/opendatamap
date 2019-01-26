@@ -2,6 +2,7 @@ import './INode';
 import * as $ from 'jquery';
 import importModConfig from './moduleConfig.json';
 import importConfig from './../../../config.json';
+import {formatDate} from "./tools";
 const modConfig = (importModConfig as any);
 const config = (importConfig as any);
 
@@ -18,7 +19,7 @@ export function nodeDetailOnClick(e) {
     });
     const nodedata = <INode> this.options.dataObj;
     let online = nodedata.online;
-    const statusString = "Letzte Meldung: " + nodedata.lastseen.getHours() + ":" + nodedata.lastseen.getMinutes() + ":" + nodedata.lastseen.getSeconds() +  " - " + nodedata.lastseen.getDate() + "." + nodedata.lastseen.getMonth() + "." + nodedata.lastseen.getFullYear();
+    const statusString = "Letzte Meldung: " + formatDate(nodedata.lastseen);
     let statusColor = "";
     const currentTimeLastseenDiff = ((new Date().getTime() - nodedata.lastseen.getTime()) / 1000 / 60);
     if (currentTimeLastseenDiff < 5 && nodedata.online) {
