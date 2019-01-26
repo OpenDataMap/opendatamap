@@ -27,7 +27,7 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerControl?, layerEnvi
             dataObj: Object
         }
     });
-    nodes.forEach((currentNode) => {
+    nodes.forEach((currentNode: IEnvironemntNode) => {
         const mapNodeMarker = new customMapNodeMarker([currentNode.latitude, currentNode.longitude], {
             icon: iconEnvironmentNode,
             dataObj: currentNode
@@ -35,7 +35,7 @@ export function addNodes(sourceJSON, leafletMap, leafletLayerControl?, layerEnvi
         layerEnvironmentNodes.addLayer(mapNodeMarker);
 
         // add Tooltip to cicle
-        mapNodeMarker.bindTooltip(currentNode.node_id + ": " + currentNode.lastData + " " + currentNode.dataUnit, {
+        mapNodeMarker.bindTooltip(currentNode.pubId + " (" + currentNode.nodeType + ")" , {
             className: 'leaflet-tooltip-node'
         });
     });

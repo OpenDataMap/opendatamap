@@ -9,18 +9,16 @@ export function addToSidebar(sourceJSON, moduleID) {
         '              <thead>' +
         '                  <tr>' +
         '                      <th>Sensoren</th>' +
-        '                      <th>Letzte Daten</th>' +
         '                  </tr>' +
         '              </thead>' +
         '              <tbody></tbody>' +
         '          </table>' +
         '     </div>' +
         '   </li>');
-    sourceJSON.nodes.forEach((node) => {
+    sourceJSON.nodes.forEach((node: IEnvironemntNode) => {
         $('#sidebar-bottom-nodes-chooser-' + moduleID + ' .collapsible-body table tbody').append('' +
             '<tr>' +
-            '    <td>' + node.node_id + " (" + node.sensor_type + ")" + '</td>' +
-            '    <td>' + node.lastData + " " + node.dataUnit + '</td>' +
+            '    <td>' + node.pubId + " (" + node.nodeType + ")" + '</td>' +
             '</tr>')
     })
 }
