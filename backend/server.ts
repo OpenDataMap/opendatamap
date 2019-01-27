@@ -6,13 +6,13 @@ import * as path from 'path';
 const {ApolloServer} = require('apollo-server-express');
 import schema from './schema'
 import * as socketIO from 'socket.io'
-import {downloadDataSource, socketUpdateDataSource} from "./socketUpdateDataSource";
+import {downloadDataSource, socketUpdateDataSource, updateDataSourcesPerodically} from "./socketUpdateDataSource";
 import * as fs from "fs";
 const config = JSON.parse(fs.readFileSync("src/config.json").toString());
 export function start(port) {
     for (let moduleI in config.modules) {
         if (config.modules.hasOwnProperty(moduleI)) {
-            downloadDataSource(config.modules[moduleI].config.layerName).catch((err) => {
+            downloadDataSource(config.modules[moduleI]).catch((err) => {
                 // ERROR
             });
 
@@ -48,6 +48,7 @@ export function start(port) {
 
     httpServer.listen(port, '0.0.0.0');
 
+    updateDataSourcesPerodically();
     io.on('connection', function (socket) {
         socketUpdateDataSource(socket);
     });

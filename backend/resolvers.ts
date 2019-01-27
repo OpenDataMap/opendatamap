@@ -9,15 +9,21 @@ function getDataSource(dataSourceName) {
             if (config.modules.hasOwnProperty(moduleI)) {
                 const module = config.modules[moduleI];
                 if (module.config.layerName === dataSourceName) {
-                    const dataURL = module.config.dataURL;
-                    let filename;
-                    if (dataURL.indexOf("?") === -1) {
-                        filename = module.moduleName + "_" + SHA256(dataURL) + dataURL.substring(dataURL.lastIndexOf('.'));
-                    } else {
-                        filename = module.moduleName + "_" + SHA256(dataURL) + dataURL.substring(dataURL.lastIndexOf('.'), dataURL.indexOf('?'));
+                    const files = fs.readdirSync(__dirname + "/dataSources/" + dataSourceName.split(" ").join("-"));
+                    files.reverse();
+                    for (let fileI in files) {
+                        if(files.hasOwnProperty(fileI)) {
+                            const file = files[fileI];
+                            try {
+                                JSON.parse(fs.readFileSync(__dirname + "/dataSources/" + dataSourceName.split(" ").join("-") + "/" + file).toString())
+                            } catch {
+                                fs.unlinkSync(__dirname + "/dataSources/" + dataSourceName.split(" ").join("-") + "/" + file)
+                                continue;
+                            }
+                            resolve(fs.readFileSync(__dirname + "/dataSources/" + dataSourceName.split(" ").join("-") + "/" + file).toString());
+                            break;
+                        }
                     }
-                    resolve(fs.readFileSync(__dirname + "/dataSources/" + filename).toString());
-                    break;
                 }
             }
         }
