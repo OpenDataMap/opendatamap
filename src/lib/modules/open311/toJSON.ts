@@ -44,5 +44,6 @@ export function toJSON (config, rawNodes, cb) {
         }
         source.nodes.push(node);
     });
+    source.nodes.sort((a:any,b:any) => (a.service_name > b.service_name) ? 1 : ((b.service_name > a.service_name) ? -1 : 0));
     cb(source);
 }

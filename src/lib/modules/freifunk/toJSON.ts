@@ -67,5 +67,6 @@ export function toJSON (config, rawData, cb) {
         }
         source.nodes.push(node);
     });
+    source.nodes.sort((a:any,b:any) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
     cb(source);
 }

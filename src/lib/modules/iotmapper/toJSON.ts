@@ -93,6 +93,7 @@ export function toJSON (config, rawNodes, cb) {
             source.nodes.push(node);
         }
     });
+    source.gateways.sort((a:any,b:any) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
     // sort nodes for dB
     source.nodes.sort(function(a, b) { return a.dB - b.dB });
     cb(source);
