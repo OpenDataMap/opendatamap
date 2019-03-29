@@ -6,6 +6,10 @@ node_js:
 dist: xenial
 before_script:
     - cp src/config.sample.json src/config.json
+branches:
+  only:
+    - master
+    - develop
 notifications:
   slack:
     rooms:
