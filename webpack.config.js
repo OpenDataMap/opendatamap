@@ -26,18 +26,23 @@ module.exports = {
                         }
                     }
                 ]
+            },
+            {
+                test: /\.mjs$/,
+                include: /node_modules/,
+                type: 'javascript/auto'
             }
         ]
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.js', '.jsx']
+        extensions: ['.tsx', '.ts', '.js', '.jsx', '.mjs']
     },
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
     plugins: [
-        new UglifyJSPlugin(),
+        // new UglifyJSPlugin(),
         new HtmlWebpackPlugin({
             template: 'src/index.html',
             inject: false
