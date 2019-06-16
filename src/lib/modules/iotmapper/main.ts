@@ -6,6 +6,7 @@ import {addGateways} from "./addGateways";
 import {addGatewayLines, addGatewayLinesFilter} from "./addGatewayLines";
 import * as addToSidebar from "./addToSidebar";
 import configHelper from '../../../helper/config'
+import {filterByTime} from "./filterByTime";
 
 export default function moduleIot(moduleConfig, leafletMap, leafletLayerControl, moduleID, generalConfig) {
     getNodeData(moduleConfig, generalConfig, function (rawNodes) {
@@ -30,12 +31,9 @@ export default function moduleIot(moduleConfig, leafletMap, leafletLayerControl,
 
 export function updateDataSource(moduleConfig, generalConfig, leafletMap) {
     const mConfCurr = moduleConfig.current;
-
     getNodeData(moduleConfig.config,  generalConfig, function (rawNodes) {
         toJSON(moduleConfig.config, rawNodes, function (formattedNodes) {
-            addToSidebar.addToSidebarUpdate(formattedNodes, leafletMap, mConfCurr.layerIoTMapperGatewayLines, mConfCurr.layerIoTMapperNodes)
-            addNodesFilter(formattedNodes, leafletMap, mConfCurr.layerIoTMapperNodes, addToSidebar.IoTMapperDevice, addToSidebar.IoTMapperGateway);
-            addGatewayLinesFilter(formattedNodes, leafletMap, mConfCurr.layerIoTMapperGatewaysLines, addToSidebar.IoTMapperDevice, addToSidebar.IoTMapperGateway);
-        })
+            addToSidebar.addToSidebarUpdate(formattedNodes, leafletMap, mConfCurr.layerIoTMapperGatewayLines, mConfCurr.layerIoTMapperNodes);
+            filterByTime(formattedNodes, mConfCurr.filterTimestamp, leafletMap, mConfCurr.layerIoTMapperNodes, addToSidebar.IoTMapperDevice, addToSidebar.IoTMapperGateway, mConfCurr.layerIoTMapperGatewaysLines);        })
     })
 }
