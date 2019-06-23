@@ -66,10 +66,10 @@ commander
             default: false
         }).then((answers) => {
             if (answers.continue) {
-                child_process.spawnSync("git", ['reset --hard HEAD']);
-                child_process.spawnSync("git", ['pull origin master']);
+                child_process.spawnSync("git", ['reset', '--hard', 'HEAD']);
+                child_process.spawnSync("git", ['pull', 'origin', 'master']);
                 child_process.spawnSync('npm', ['install']);
-                child_process.spawnSync('pm2', ['restart opendatamap']);
+                child_process.spawnSync('pm2', ['restart', 'opendatamap']);
             } else {
                 console.error("Quit");
             }
