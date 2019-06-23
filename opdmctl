@@ -23,7 +23,7 @@ commander
         const server = require('./backend/server');
         server.start(options.port || process.env.PORT || 4000);
 
-        if(options.watch) {
+        if (options.watch) {
             const watch = require('recursive-watch');
             console.log('Start watching');
             watch('./src/', (filename) => {
@@ -33,7 +33,7 @@ commander
                         case "ts":
                         case "html":
                         case "json":
-                           buildWebpack();
+                            buildWebpack();
                             break;
                         case "scss":
                             buildSass();
@@ -53,6 +53,28 @@ commander
         console.log('Passed');
     });
 
+// update
+commander
+    .command('update')
+    .description('Update the OpenDataMap from the current version')
+    .action(() => {
+        const inquirer = require('inquirer');
+        inquirer.prompt({
+            type: 'confirm',
+            name: 'continue',
+            message: 'You you really want to update the OpenDataMap? You will LOSE all changed files since your last commit except the config file.',
+            default: false
+        }).then((answers) => {
+            if (answers.continue) {
+                child_process.spawnSync("git", ['reset --hard HEAD']);
+                child_process.spawnSync("git", ['pull origin master']);
+                child_process.spawnSync('npm', ['install']);
+                child_process.spawnSync('pm2', ['restart opendatamap']);
+            } else {
+                console.error("Quit");
+            }
+        });
+    });
 
 // show help if no command was entered
 commander.parse(process.argv);
