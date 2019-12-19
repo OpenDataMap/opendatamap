@@ -10,7 +10,7 @@ import {filterByTime} from "./filterByTime";
 
 export default function moduleIot(moduleConfig, leafletMap, leafletLayerControl, moduleID, generalConfig) {
     getNodeData(moduleConfig, generalConfig, function (rawNodes) {
-        if (((new Date().getTime() - new Date(rawNodes.timestamp).getTime()) / 1000 / 60) > 60) {
+        if ((((new Date().getTime() - new Date(rawNodes.timestamp).getTime()) / 1000 / 60) >= moduleConfig.filterTime) && (moduleConfig.filterTime != 0)) {
             M.toast({html: 'Problem beim Laden von ' + moduleConfig.layerName, displayLength: 10000});
             console.error('Problem with loading the layer ' + moduleConfig.layerName);
         } else {

@@ -26,6 +26,7 @@
         "layerName": "IoT Mapper Hennef",
         "dataURL": "/srv/opendatamap/dist/data/ttn_mapper.json",
         "localDataFile": true,
+        "filterTime": 0,
         "filterValue": 0.00005,
         "filterMapper": 900000,
         "standardActivated": true,
