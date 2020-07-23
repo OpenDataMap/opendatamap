@@ -36,7 +36,7 @@ export function toJSON (config, rawData, cb) {
         if (currentNode.nodeinfo.system !== undefined) {
             node.siteName = currentNode.nodeinfo.system.site_code;
         }
-        if (currentNode.nodeinfo.owner !== undefined) {
+        if (currentNode.nodeinfo.owner !== undefined && currentNode.nodeinfo.owner !== null) {
             if (currentNode.nodeinfo.owner.contact !== 0 && currentNode.nodeinfo.owner.contact !== "" && currentNode.nodeinfo.owner.contact !== undefined && currentNode.nodeinfo.owner.contact !== null) {
                 node.contact = currentNode.nodeinfo.owner.contact;
             }
