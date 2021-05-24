@@ -9,7 +9,7 @@ export function leafletInit(config, callback: Function) {
     const map = L.map('map-container', {
         zoomControl: false,
         center: config.map.center,
-        zoom: 13,
+        zoom: config.map.defaultZoom,
         maxZoom: config.map.maxZoom
     });
 

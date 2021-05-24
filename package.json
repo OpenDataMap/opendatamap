@@ -13,7 +13,9 @@
       "email": "hello@labcode.de"
     },
     {
-      "name": "Caspar Armster"
+      "name": "Caspar Armster",
+      "url": "https://www.dasdigidings.de",
+      "email": "caspar@dasdigidings.de"
     }
   ],
   "repository": {
