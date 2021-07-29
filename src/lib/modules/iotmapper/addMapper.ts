@@ -19,7 +19,7 @@ export function addMapper(sourceJSON, leafletMap, leafletLayerNodes) {
     });
     mapper.forEach((currentMapper) => {
         if(currentMapper.showOnMap) {
-            const mapMapperMarker = L.marker([currentMapper.latitude, currentMapper.longitude], {icon: iconIoTMapperMapper});
+            const mapMapperMarker = L.marker([currentMapper.latitude, currentMapper.longitude], {icon: iconIoTMapperMapper, zIndexOffset: 10000});
             layerIoTMapperMapper.addLayer(mapMapperMarker);
 
             // add Tooltip to cicle
